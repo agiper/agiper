@@ -1,0 +1,2 @@
+docker rm -f agiper
+docker run -d -p 8111:8111 -v ~/volume/master/mysql:/var/lib/mysql -v ~/volume/master/teamcity:/var/lib/teamcity --name agiper quay.io/agiper/agiper

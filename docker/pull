@@ -1,0 +1,13 @@
+set -e
+docker pull quay.io/agiper/base
+docker pull quay.io/agiper/mono
+docker pull quay.io/agiper/java
+docker pull quay.io/agiper/mono-java
+docker pull quay.io/agiper/tool
+docker pull quay.io/agiper/nginx
+docker pull quay.io/agiper/redis
+docker pull quay.io/agiper/agiper
+docker pull quay.io/agiper/elastic
+docker pull quay.io/agiper/mariadb
+docker pull quay.io/agiper/rabbitmq
+docker pull quay.io/agiper/hyperfastcgi

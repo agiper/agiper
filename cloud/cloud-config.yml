@@ -1,0 +1,14 @@
+#cloud-config
+coreos:
+  etcd:
+    discovery: TOKEN
+    addr: $private_ipv4:4001
+    peer-addr: $private_ipv4:7001
+  fleet:
+    public-ip: $private_ipv4
+    metadata: region=REGION,ip=$public_ipv4,METADATA
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start

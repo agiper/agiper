@@ -1,0 +1,4 @@
+set -e
+mkdir -p ~/volume/$1
+curl https://agiper-backup.s3-ap-southeast-1.amazonaws.com/agiper/$1/backup.tar.gz | tar -xzC ~/volume/$1
+chmod -R a+rwX ~/volume/$1

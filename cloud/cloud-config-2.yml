@@ -1,0 +1,23 @@
+#cloud-config
+coreos:
+  etcd2:
+    discovery: TOKEN
+    listen-peer-urls: http://$private_ipv4:2380
+    listen-client-urls: http://$private_ipv4:2379
+    advertise-client-urls: http://$private_ipv4:2379
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+  fleet:
+    public-ip: $private_ipv4
+    etcd-servers: http://$private_ipv4:2379
+    metadata: ip=$public_ipv4,region=singapore,METADATA
+  locksmith:
+    endpoint: http://$private_ipv4:2379
+  units:
+    - name: etcd2.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: locksmithd.service
+      command: start
+    - name: docker.service
+      command: start
