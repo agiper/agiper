@@ -1,11 +1,10 @@
 FROM quay.io/agiper/mono-java
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-RUN apt-add-repository ppa:ansible/ansible && \
-	add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu trusty main" && \
+RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu trusty main" && \
 	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db && \
 	apt-get update && \
-	apt-get install ansible mariadb-server -y && \
+	apt-get install mariadb-server -y && \
 	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.0.4.tar.gz | tar -xzC /opt && \
 	sed -i -e 's/Default/Local/g' /opt/TeamCity/buildAgent/conf/buildAgent.properties
 

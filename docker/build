@@ -1,15 +1,15 @@
 docker rm -f $(docker ps -a -q)
 docker rmi $(docker images -q)
 set -e
-docker build -t agiper/base agiper-base/
-docker build -t agiper/mono agiper-mono/
-docker build -t agiper/java agiper-java/
-docker build -t agiper/mono-java agiper-mono-java/
-docker build -t agiper/tool agiper-tool/
-docker build -t agiper/nginx agiper-nginx/
-docker build -t agiper/redis agiper-redis/
-docker build -t agiper/agiper agiper-agiper/
-docker build -t agiper/mariadb agiper-mariadb/
-docker build -t agiper/elastic agiper-elastic/
-docker build -t agiper/rabbitmq agiper-rabbitmq/
-docker build -t agiper/hyperfastcgi agiper-hyperfastcgi/
+docker build -t quay.io/agiper/base agiper-base/
+docker build -t quay.io/agiper/mono agiper-mono/
+docker build -t quay.io/agiper/java agiper-java/
+docker build -t quay.io/agiper/mono-java agiper-mono-java/
+docker build -t quay.io/agiper/tool agiper-tool/
+docker build -t quay.io/agiper/nginx agiper-nginx/
+docker build -t quay.io/agiper/redis agiper-redis/
+docker build -t quay.io/agiper/agiper agiper-agiper/
+docker build -t quay.io/agiper/mariadb agiper-mariadb/
+docker build -t quay.io/agiper/elastic agiper-elastic/
+docker build -t quay.io/agiper/rabbitmq agiper-rabbitmq/
+docker build -t quay.io/agiper/hyperfastcgi agiper-hyperfastcgi/
