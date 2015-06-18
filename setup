@@ -1,4 +1,3 @@
 git config --global user.name "Tom Nuen" 
 git config --global user.email "tomnuen@agiper.com"
-./restore agiper
-docker/run
+./restore agiper && docker/run
