@@ -11,11 +11,11 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 RUN rm -rf /usr/lib/mono/4.0 && \
 	ln -s /usr/lib/mono/4.5 /usr/lib/mono/4.0
 
-COPY setup /setup
+ADD setup /setup/
 RUN /setup && rm /setup
 
-COPY my.cnf /etc/mysql/my.cnf
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD my.cnf /etc/mysql/
+ADD supervisord.conf /etc/supervisor/conf.d/
 
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
