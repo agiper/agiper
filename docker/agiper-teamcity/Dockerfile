@@ -11,7 +11,7 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 RUN rm -rf /usr/lib/mono/4.0 && \
 	ln -s /usr/lib/mono/4.5 /usr/lib/mono/4.0
 
-ADD setup /setup/
+ADD setup /
 RUN /setup && rm /setup
 
 ADD my.cnf /etc/mysql/
