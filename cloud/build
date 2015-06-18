@@ -2,12 +2,11 @@ export API_KEY=6c3fb55388aeaafd66f6ee9e8e35d45bf64df5e67ebca53cdefe560835a21941
 
 create_droplet() 
 {
-	user_data=$(cat cloud-config.yml | sed "s#TOKEN#$1#g" | sed "s#REGION#$2#g" | sed "s#SWAPSIZE#$5#g" | sed "s#METADATA#$6#g")
-	body='{"name":"'"$3"'","size":"'"$4"'","region":"'"$2"'","image":"coreos-alpha","ssh_keys":["dc:ee:97:32:9f:58:da:8f:da:10:46:95:80:3f:5a:69"],"private_networking":true,"user_data":"'"$user_data"'"}'
+	user_data=$(cat cloud-config.yml | sed "s#TOKEN#$1#g" | sed "s#ENVIRONMENT#$2#g" | sed "s#REGION#$3#g" | sed "s#SWAPSIZE#$6#g" | sed "s#METADATA#$7#g")
+	body='{"region":"'"$3"'","name":"'"$4"'","size":"'"$5"'","image":"coreos-alpha","ssh_keys":["dc:ee:97:32:9f:58:da:8f:da:10:46:95:80:3f:5a:69"],"private_networking":true,"user_data":"'"$user_data"'"}'
 	curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" -d''"$body"'' https://api.digitalocean.com/v2/droplets
 }
 
 #rolene-test
 export TOKEN=$(curl -X GET https://discovery.etcd.io/new?size=3)
-create_droplet $TOKEN "sgp1" "rolene-test-1" "1gb" "2gb" "balancer=1,database=1"
-#create_droplet $TOKEN "sgp1" "rolene-test-2" "1gb" "2gb"
+create_droplet $TOKEN 'TEST' "sgp1" "rolene-test-1" "1gb" "2gb" "balancer=1,database=1"
