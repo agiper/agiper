@@ -11,3 +11,5 @@ RUN apt-get update && \
 	chmod +x confd && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+
+ENV TERM xterm	
