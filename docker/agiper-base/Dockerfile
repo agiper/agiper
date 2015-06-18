@@ -5,7 +5,7 @@ RUN groupadd -g 500 core && \
 	useradd -ms /bin/bash -u 500 -g 500 core
 	
 RUN apt-get update && \
-	apt-get install software-properties-common git wget nano htop curl nmap haveged swapspace supervisor -y && \
+	apt-get install software-properties-common git wget nano htop curl nmap haveged supervisor -y && \
 	cd /usr/local/bin && \
 	curl -L https://github.com/kelseyhightower/confd/releases/download/v0.9.0/confd-0.9.0-linux-amd64 -o confd && \
 	chmod +x confd && \
