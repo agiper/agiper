@@ -12,12 +12,20 @@ coreos:
       command: start
     - name: fleet.service
       command: start
+    - name: environment.service
+      command: start      
+      content: |
+            [Unit]
+            After=etcd.service
+            Requires=etcd.service
+            [Service]
+            ExecStart=/usr/bin/sh -c 'while true; do etcdctl set /agiper.com/environment ENVIRONMENT;sleep 60;done'
+            [Install]
+            WantedBy=local.target
     - name: swapfile.service
       command: start      
       content: |
             [Unit]
-            Description=Swapfile
-
             [Service]
             Type=oneshot
             RemainAfterExit=true
@@ -28,6 +36,5 @@ coreos:
             ExecStart=/usr/bin/sh -c '/sbin/swapon $(/usr/sbin/losetup -j swapfile | /usr/bin/cut -d : -f 1)'
             ExecStop=/usr/bin/sh -c '/sbin/swapoff $(/usr/sbin/losetup -j swapfile | /usr/bin/cut -d : -f 1)'
             ExecStopPost=/usr/bin/sh -c '/usr/sbin/losetup -d $(/usr/sbin/losetup -j swapfile | /usr/bin/cut -d : -f 1)'
-
             [Install]
             WantedBy=local.target
