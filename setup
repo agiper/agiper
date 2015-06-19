@@ -1,3 +1,5 @@
 git config --global user.name "Tom Nuen" 
 git config --global user.email "tomnuen@agiper.com"
-./restore teamcity && fleet/start
+./restore teamcity
+cd fleet
+./start
