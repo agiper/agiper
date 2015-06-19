@@ -1,0 +1,24 @@
+[Unit]
+Description=TeamCity Service
+
+Requires=etcd.service
+Requires=docker.service
+Requires=teamcity-discovery.service
+
+After=etcd.service
+After=docker.service
+Before=teamcity-discovery.service
+
+[Service]
+KillMode=none
+TimeoutStartSec=0
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill teamcity
+ExecStartPre=-/usr/bin/docker rm teamcity
+ExecStartPre=/usr/bin/docker pull quay.io/rolene/teamcity
+ExecStart=/usr/bin/docker run -d -p 8111:8111 -v ~/volume/teamcity/mysql:/var/lib/mysql -v ~/volume/teamcity/teamcity:/var/lib/teamcity --name teamcity quay.io/agiper/teamcity
+ExecStop=/usr/bin/docker stop teamcity
+
+[X-Fleet]
+Conflicts=teamcity.service
+#MachineMetadata=teamcity=1
