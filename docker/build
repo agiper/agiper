@@ -13,3 +13,4 @@ docker build -t quay.io/agiper/elastic agiper-elastic/
 docker build -t quay.io/agiper/rabbitmq agiper-rabbitmq/
 docker build -t quay.io/agiper/teamcity agiper-teamcity/
 docker build -t quay.io/agiper/hyperfastcgi agiper-hyperfastcgi/
+docker build -t quay.io/agiper/alpine-golang agiper-alpine-golang/
