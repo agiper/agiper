@@ -4,7 +4,9 @@ MAINTAINER Tom Nuen <tomnuen@agiper.com>
 RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu trusty main" && \
 	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db && \
 	apt-get update && \
+	export TERM=dumb && \
 	apt-get install mariadb-server -y && \
+	export TERM=xterm && \
 	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.0.4.tar.gz | tar -xzC /opt && \
 	sed -i -e 's/Default/Local/g' /opt/TeamCity/buildAgent/conf/buildAgent.properties
 
