@@ -1,0 +1,21 @@
+[Unit]
+Description=TeamCity Service Discovery
+
+Requires=etcd.service
+Requires=docker.service
+Requires=teamcity.service
+
+After=etcd.service
+After=docker.service
+After=teamcity.service
+
+BindsTo=teamcity.service
+
+[Service]
+Restart=always
+EnvironmentFile=/etc/environment
+ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/teamcity '${COREOS_PRIVATE_IPV4}:8111' --ttl 10; sleep 5; done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/teamcity
+
+[X-Fleet]
+MachineOf=teamcity.service

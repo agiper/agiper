@@ -33,6 +33,8 @@ coreos:
             ExecStartPre=/usr/bin/chmod 600 swapfile
             ExecStartPre=/usr/sbin/mkswap swapfile
             ExecStartPre=/usr/sbin/losetup -f swapfile
+            ExecStartPre=/usr/sbin/sysctl vm.swappiness=10
+            ExecStartPre=/usr/bin/sh -c 'echo vm.swappiness=10 >> /etc/sysctl.conf'
             ExecStart=/usr/bin/sh -c '/sbin/swapon $(/usr/sbin/losetup -j swapfile | /usr/bin/cut -d : -f 1)'
             ExecStop=/usr/bin/sh -c '/sbin/swapoff $(/usr/sbin/losetup -j swapfile | /usr/bin/cut -d : -f 1)'
             ExecStopPost=/usr/bin/sh -c '/usr/sbin/losetup -d $(/usr/sbin/losetup -j swapfile | /usr/bin/cut -d : -f 1)'

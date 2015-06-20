@@ -7,6 +7,8 @@ create_droplet()
 	curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $API_KEY" -d''"$body"'' https://api.digitalocean.com/v2/droplets
 }
 
-#rolene-test
+#cat /run/systemd/system/etcd.service.d/20-cloudinit.conf
 export TOKEN=$(curl -X GET https://discovery.etcd.io/new?size=3)
+
+#rolene-test
 create_droplet $TOKEN 'TEST' "sgp1" "rolene-test-1" "1gb" "2gb" "balancer=1,database=1"
