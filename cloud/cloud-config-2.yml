@@ -9,9 +9,7 @@ coreos:
   fleet:
     public-ip: $private_ipv4
     etcd-servers: http://$private_ipv4:2379
-    metadata: region=REGION,ip=$public_ipv4,METADATA
-  locksmith:
-    endpoint: http://$private_ipv4:2379
+    metadata: ip=$public_ipv4,region=REGION,METADATA
   units:
     - name: etcd2.service
       command: start
