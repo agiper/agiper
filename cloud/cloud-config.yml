@@ -6,7 +6,7 @@ coreos:
     peer-addr: $private_ipv4:7001
   fleet:
     public-ip: $private_ipv4
-    metadata: region=REGION,ip=$public_ipv4,METADATA
+    metadata: ip=$public_ipv4,region=REGION,METADATA
   units:
     - name: etcd.service
       command: start
