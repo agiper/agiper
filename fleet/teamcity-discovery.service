@@ -1,12 +1,7 @@
 [Unit]
 Description=TeamCity Service Discovery
 
-Requires=etcd.service
-Requires=docker.service
 Requires=teamcity.service
-
-After=etcd.service
-After=docker.service
 After=teamcity.service
 
 BindsTo=teamcity.service
