@@ -18,4 +18,3 @@ ExecStop=/usr/bin/docker stop teamcity
 
 [X-Fleet]
 Conflicts=teamcity.service
-#MachineMetadata=teamcity=1
