@@ -2,10 +2,10 @@
 coreos:
   etcd2:
     discovery: TOKEN # https://discovery.etcd.io/new?size=1
-    listen-peer-urls: http://$private_ipv4:2380
     advertise-client-urls: http://$private_ipv4:2379
     initial-advertise-peer-urls: http://$private_ipv4:2380
-    listen-client-urls: http://$private_ipv4:2379,http://127.0.0.1:2379
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
   fleet:
     public-ip: $private_ipv4
     etcd-servers: http://$private_ipv4:2379
