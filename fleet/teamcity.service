@@ -1,13 +1,9 @@
 [Unit]
 Description=TeamCity Service
 
-Requires=etcd.service
-Requires=docker.service
 Requires=teamcity-discovery.service
-
-After=etcd.service
-After=docker.service
 Before=teamcity-discovery.service
+After=docker.service
 
 [Service]
 KillMode=none
