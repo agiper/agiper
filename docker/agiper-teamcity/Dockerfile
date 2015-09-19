@@ -7,7 +7,7 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 	export TERM=dumb && \
 	apt-get install mariadb-server -y && \
 	export TERM=xterm && \
-	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.2.tar.gz | tar -xzC /opt && \
+	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.3.tar.gz | tar -xzC /opt && \
 	sed -i -e 's/Default/Local/g' /opt/TeamCity/buildAgent/conf/buildAgent.properties
 
 RUN rm -rf /usr/lib/mono/4.0 && \
