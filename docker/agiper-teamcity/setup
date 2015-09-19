@@ -1,4 +1,3 @@
-sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
 mysqld_safe &
 mysqld_pid=$! &
 mysqladmin --silent --wait=30 ping || exit 1
