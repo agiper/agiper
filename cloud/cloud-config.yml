@@ -15,14 +15,14 @@ coreos:
       command: start
     - name: fleet.service
       command: start
-    - name: environment.service
+    - name: silo.service
       command: start      
       content: |
             [Unit]
             After=etcd2.service
             Requires=etcd2.service
             [Service]
-            ExecStart=/usr/bin/sh -c 'while true; do etcdctl set /agiper.com/rolene/environment ENVIRONMENT;sleep 60;done'
+            ExecStart=/usr/bin/sh -c 'while true; do etcdctl set /agiper.com/rolene/silo SILO;sleep 60;done'
             [Install]
             WantedBy=local.target
     - name: swapfile.service
