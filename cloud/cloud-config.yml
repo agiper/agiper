@@ -1,14 +1,17 @@
 #cloud-config
 coreos:
-  etcd:
-    discovery: TOKEN
-    addr: $private_ipv4:4001
-    peer-addr: $private_ipv4:7001
+  etcd2:
+    discovery: TOKEN # https://discovery.etcd.io/new?size=1
+    advertise-client-urls: http://$private_ipv4:2379
+    initial-advertise-peer-urls: http://$private_ipv4:2380
+    listen-client-urls: http://0.0.0.0:2379,http://0.0.0.0:4001
+    listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
   fleet:
     public-ip: $private_ipv4
+    etcd-servers: http://$private_ipv4:2379
     metadata: ip=$public_ipv4,region=REGION,METADATA
   units:
-    - name: etcd.service
+    - name: etcd2.service
       command: start
     - name: fleet.service
       command: start
@@ -16,10 +19,10 @@ coreos:
       command: start      
       content: |
             [Unit]
-            After=etcd.service
-            Requires=etcd.service
+            After=etcd2.service
+            Requires=etcd2.service
             [Service]
-            ExecStart=/usr/bin/sh -c 'while true; do etcdctl set /agiper.com/environment ENVIRONMENT;sleep 60;done'
+            ExecStart=/usr/bin/sh -c 'while true; do etcdctl set /agiper.com/rolene/environment ENVIRONMENT;sleep 60;done'
             [Install]
             WantedBy=local.target
     - name: swapfile.service
