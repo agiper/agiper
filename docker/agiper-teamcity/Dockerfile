@@ -13,9 +13,8 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 RUN rm -rf /usr/lib/mono/4.0 && \
 	ln -s /usr/lib/mono/4.5 /usr/lib/mono/4.0
 
-ADD setup /
-RUN /setup && rm /setup
-
+ADD backup /
+RUN /backup && rm /backup
 ADD my.cnf /etc/mysql/
 ADD supervisord.conf /etc/supervisor/conf.d/
 
@@ -24,4 +23,4 @@ ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
 
 EXPOSE 8111
 
-CMD [ "$(ls -A /var/lib/mysql)" ] || tar xpzvf setup.tar.gz && rm setup.tar.gz && /usr/bin/supervisord
+CMD /usr/bin/supervisord
