@@ -10,9 +10,6 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.6.tar.gz | tar -xzC /opt && \
 	sed -i -e 's/Default/Local/g' /opt/TeamCity/buildAgent/conf/buildAgent.properties
 
-RUN rm -rf /usr/lib/mono/4.0 && \
-	ln -s /usr/lib/mono/4.5 /usr/lib/mono/4.0
-
 ADD backup /
 RUN /backup && rm /backup
 ADD my.cnf /etc/mysql/
