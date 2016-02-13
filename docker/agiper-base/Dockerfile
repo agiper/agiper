@@ -1,6 +1,8 @@
 FROM phusion/baseimage
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
+CMD ["/sbin/my_init"]
+
 RUN apt-get update && \
 	apt-get install software-properties-common git wget nano htop curl nmap haveged supervisor -y && \
 	cd /usr/local/bin && \
