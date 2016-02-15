@@ -7,16 +7,16 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 	export TERM=dumb && \
 	apt-get install mariadb-server -y && \
 	export TERM=xterm && \
-	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.6.tar.gz | tar -xzC /var/lib && \
-	mv /var/lib/TeamCity /var/lib/teamcity && \
-	sed -i -e 's/Default/Local/g' /var/lib/teamcity/buildAgent/conf/buildAgent.properties
+	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.6.tar.gz | tar -xzC /opt && \
+	mv /opt/TeamCity /opt/teamcity && \
+	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
 RUN ln -s /usr/lib/mono/4.5/Microsoft.Build.Utilities.v4.0.dll /usr/lib/mono/4.5/Microsoft.Build.Utilities.dll
 ADD backup /
 RUN /backup && rm /backup
 ADD my.cnf /etc/mysql/
 ADD supervisord.conf /etc/supervisor/conf.d/
 
-ENV TEAMCITY_DATA_PATH /var/lib/teamcity/data
+ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
 
 EXPOSE 8111
