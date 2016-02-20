@@ -8,7 +8,7 @@ RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key 
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN /usr/share/elasticsearch/bin/plugin install elasticsearch/marvel/latest && \
-	/usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
+#RUN /usr/share/elasticsearch/bin/plugin install elasticsearch/marvel/latest && \
+# 	/usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
 
 EXPOSE 9200
