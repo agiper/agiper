@@ -1,7 +1,7 @@
 FROM quay.io/agiper/java
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-RUN add-apt-repository "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" && \
+RUN add-apt-repository "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" && \
 	wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
 	apt-get update && \
 	apt-get install elasticsearch -y && \
