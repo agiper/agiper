@@ -10,5 +10,4 @@ docker pull quay.io/agiper/mariadb
 docker pull quay.io/agiper/rabbitmq
 docker pull quay.io/agiper/teamcity
 docker pull quay.io/agiper/mono-java
-docker pull quay.io/agiper/alpine-go
 docker pull quay.io/agiper/hyperfastcgi
