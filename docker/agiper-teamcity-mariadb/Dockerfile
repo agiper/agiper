@@ -1,11 +1,19 @@
 FROM quay.io/agiper/mono-java
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-RUN curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.6.tar.gz | tar -xzC /opt && \
+RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu trusty main" && \
+	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db && \
+	apt-get update && \
+	export TERM=dumb && \
+	apt-get install mariadb-server -y && \
+	export TERM=xterm && \
+	curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.6.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties && \
 	ln -s /usr/lib/mono/4.5/Microsoft.Build.Utilities.v4.0.dll /usr/lib/mono/4.5/Microsoft.Build.Utilities.dll
-
+ADD backup /
+RUN /backup && rm /backup
+ADD my.cnf /etc/mysql/
 ADD supervisord.conf /etc/supervisor/conf.d/
 
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
