@@ -10,10 +10,11 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 ADD backup /
-RUN /backup && rm /backup
 ADD my.cnf /etc/mysql/
-RUN sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
 ADD supervisord.conf /etc/supervisor/conf.d/
+
+RUN /backup && rm /backup
+RUN sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
 
 EXPOSE 3306
 
