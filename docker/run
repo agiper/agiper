@@ -1,2 +1,0 @@
-docker rm -f teamcity
-docker run -d -p 8111:8111 -v ~/volume/teamcity/mysql:/var/lib/mysql -v ~/volume/teamcity/teamcity:/var/lib/teamcity --name teamcity quay.io/agiper/teamcity

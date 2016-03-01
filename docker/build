@@ -10,8 +10,8 @@ docker build -t quay.io/agiper/redis agiper-redis/
 docker build -t quay.io/agiper/mariadb agiper-mariadb/
 docker build -t quay.io/agiper/rabbitmq agiper-rabbitmq/
 docker build -t quay.io/agiper/teamcity agiper-teamcity/
+docker build -t quay.io/agiper/logstash agiper-logstash/
 docker build -t quay.io/agiper/mono-java agiper-mono-java/
 docker build -t quay.io/agiper/hyperfastcgi agiper-hyperfastcgi/
 docker build -t quay.io/agiper/elasticsearch agiper-elasticsearch/
-docker build -t quay.io/agiper/elk agiper-elk/
 docker build -t quay.io/agiper/teamcity-mariadb agiper-teamcity-mariadb/
