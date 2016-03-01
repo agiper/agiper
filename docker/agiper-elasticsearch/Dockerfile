@@ -8,6 +8,8 @@ RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key 
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+RUN /usr/share/elasticsearch/bin/plugin install license && /usr/share/elasticsearch/bin/plugin install marvel-agent
+
 ADD elasticsearch.yml /etc/elasticsearch/
 
 EXPOSE 9200
