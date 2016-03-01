@@ -11,8 +11,8 @@ RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key 
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN /usr/share/elasticsearch/bin/plugin install license && \ 
-	/usr/share/elasticsearch/bin/plugin install marvel-agent && \
-	/usr/local/opt/kibana/bin/kibana plugin --install elasticsearch/marvel/latest
+	/usr/share/elasticsearch/bin/plugin install marvel-agent
+#	/usr/local/opt/kibana/bin/kibana plugin --install elasticsearch/marvel/latest
 
 ADD elasticsearch.yml /etc/elasticsearch/
 
