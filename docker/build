@@ -13,5 +13,4 @@ docker build -t quay.io/agiper/rabbitmq agiper-rabbitmq/
 docker build -t quay.io/agiper/teamcity agiper-teamcity/
 docker build -t quay.io/agiper/mono-java agiper-mono-java/
 docker build -t quay.io/agiper/hyperfastcgi agiper-hyperfastcgi/
-docker build -t quay.io/agiper/elasticsearch agiper-elasticsearch/
 docker build -t quay.io/agiper/teamcity-mariadb agiper-teamcity-mariadb/
