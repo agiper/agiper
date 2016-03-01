@@ -8,4 +8,6 @@ RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key 
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+ADD elasticsearch.yml /etc/elasticsearch/
+
 EXPOSE 9200
