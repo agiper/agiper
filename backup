@@ -1,4 +1,0 @@
-set -e
-tar -cvzf backup.tar.gz -C ~/volume/$1 . --exclude=./teamcity/system
-curl -v --request PUT --upload-file "backup.tar.gz" "https://agiper-backup.s3-ap-southeast-1.amazonaws.com/agiper/$1/"
-rm backup.tar.gz
