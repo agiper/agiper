@@ -1,0 +1,16 @@
+[Unit]
+Description=Logstash Service Discovery
+
+Requires=logstash.service
+After=logstash.service
+
+BindsTo=logstash.service
+
+[Service]
+Restart=always
+EnvironmentFile=/etc/environment
+ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/rolene/logstash '${COREOS_PRIVATE_IPV4}:9300' --ttl 600; sleep 300; done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/logstash
+
+[X-Fleet]
+MachineOf=logstash.service

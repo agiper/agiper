@@ -1,0 +1,8 @@
+fleetctl stop redis redis-discovery
+fleetctl stop rabbitmq rabbitmq-discovery
+fleetctl stop logstash logstash-discovery
+fleetctl stop elasticsearch elasticsearch-discovery
+
+fleetctl stop sse sse-discovery
+fleetctl stop api@1 api-discovery@1
+fleetctl stop job@1 job-discovery@1

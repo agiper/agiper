@@ -1,0 +1,25 @@
+[Unit]
+Description=SSE Service Discovery
+
+Requires=sse.service
+After=sse.service
+
+BindsTo=sse.service
+
+[Service]
+Restart=always
+EnvironmentFile=/etc/environment
+ExecStart=/bin/bash -c "\
+	while true; do \
+	curl -f ${COREOS_PRIVATE_IPV4}:81; \
+	if [ $? -eq 0 ]; then \
+	  etcdctl set /agiper.com/rolene/sse '${COREOS_PRIVATE_IPV4}:81' --ttl 120; \
+	else \
+	  etcdctl rm /agiper.com/rolene/sse; \
+	fi; \
+	sleep 60; \
+	done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/sse
+
+[X-Fleet]
+MachineOf=sse.service

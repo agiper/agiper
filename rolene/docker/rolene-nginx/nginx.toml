@@ -1,0 +1,9 @@
+
+[template]
+mode = "0755"
+owner = "root"
+src = "nginx.tmpl"
+dest = "/etc/nginx/nginx.conf"
+keys = ["/agiper.com/rolene/api"]
+check_cmd = "/usr/sbin/nginx -t"
+reload_cmd = "/usr/sbin/service nginx reload"

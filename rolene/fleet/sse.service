@@ -1,0 +1,22 @@
+[Unit]
+Description=SSE Service
+
+Requires=sse-discovery.service
+Before=sse-discovery.service
+After=redis.service
+After=docker.service
+After=rabbitmq.service
+After=elasticsearch.service
+
+[Service]
+KillMode=none
+Restart=always
+TimeoutStartSec=0
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker rm -f sse
+ExecStartPre=/usr/bin/docker pull quay.io/rolene/service
+ExecStart=/usr/bin/docker run -p 81:81 -p 8081:8081 -v /home/core/volume/sse:/var/lib/service --name sse quay.io/rolene/service
+ExecStop=/usr/bin/docker stop sse
+
+[X-Fleet]
+Conflicts=sse.service

@@ -1,0 +1,5 @@
+fleetctl list-unit-files | sed 1d | while read -r line ; do fleetctl destroy $(echo $line | cut -f1 -d ' '); done
+etcdctl rm /agiper.com --recursive
+docker kill $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
