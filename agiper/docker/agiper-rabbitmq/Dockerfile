@@ -2,7 +2,7 @@ FROM quay.io/agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN add-apt-repository "deb http://www.rabbitmq.com/debian testing main" && \
-	wget -qO - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | apt-key add - && \
+	wget -qO - https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | apt-key add - && \
 	apt-get update && \
 	apt-get install rabbitmq-server -y && \
 	rabbitmq-plugins enable rabbitmq_management && \
