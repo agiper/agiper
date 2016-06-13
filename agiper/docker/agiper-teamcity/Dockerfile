@@ -1,7 +1,7 @@
 FROM quay.io/agiper/mono-java
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
+MAINTAINER To Nuen <tomnuen@agiper.com>https://download.jetbrains.com/teamcity/TeamCity-9.1.7.tar.gz
 
-RUN curl http://download-ln.jetbrains.com/teamcity/TeamCity-9.1.7.tar.gz | tar -xzC /opt && \
+RUN curl http://download.jetbrains.com/teamcity/TeamCity-9.1.7.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties && \
 	ln -s /usr/lib/mono/4.5/Microsoft.Build.Utilities.v4.0.dll /usr/lib/mono/4.5/Microsoft.Build.Utilities.dll
