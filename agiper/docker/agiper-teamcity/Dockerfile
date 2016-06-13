@@ -1,5 +1,5 @@
 FROM quay.io/agiper/mono-java
-MAINTAINER To Nuen <tomnuen@agiper.com>https://download.jetbrains.com/teamcity/TeamCity-9.1.7.tar.gz
+MAINTAINER To Nuen <tomnuen@agiper.com>
 
 RUN curl http://download.jetbrains.com/teamcity/TeamCity-9.1.7.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
