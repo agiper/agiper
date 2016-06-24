@@ -1,0 +1,22 @@
+[Unit]
+Description=WEB Service
+
+Requires=web-discovery@%i.service
+Before=web-discovery@%i.service
+After=redis.service
+After=docker.service
+After=rabbitmq.service
+After=elasticsearch.service
+
+[Service]
+KillMode=none
+Restart=always
+TimeoutStartSec=0
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker rm -f web
+ExecStartPre=/usr/bin/docker pull quay.io/rolene/service
+ExecStart=/usr/bin/docker run -p 80:80 -p 8080:8080 -v /home/core/volume/web:/var/lib/service --name web quay.io/rolene/service
+ExecStop=/usr/bin/docker stop web
+
+[X-Fleet]
+Conflicts=web@*.service
