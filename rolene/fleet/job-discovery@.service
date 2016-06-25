@@ -11,9 +11,9 @@ Restart=always
 EnvironmentFile=/etc/environment
 ExecStart=/bin/bash -c "\
 	while true; do \
-	curl -f ${COREOS_PRIVATE_IPV4}:82; \
+	curl -f ${COREOS_PRIVATE_IPV4}:83; \
 	if [ $? -eq 0 ]; then \
-	  etcdctl set /agiper.com/rolene/job/${COREOS_PRIVATE_IPV4} '${COREOS_PRIVATE_IPV4}:82' --ttl 120; \
+	  etcdctl set /agiper.com/rolene/job/${COREOS_PRIVATE_IPV4} '${COREOS_PRIVATE_IPV4}:83' --ttl 120; \
 	else \
 	  etcdctl rm /agiper.com/rolene/job/${COREOS_PRIVATE_IPV4}; \
 	fi; \

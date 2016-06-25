@@ -15,7 +15,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f api
 ExecStartPre=/usr/bin/docker pull quay.io/rolene/service
-ExecStart=/usr/bin/docker run -p 80:80 -p 8080:8080 -v /home/core/volume/api:/var/lib/service --name api quay.io/rolene/service
+ExecStart=/usr/bin/docker run -p 81:81 -p 8081:8081 -v /home/core/volume/api:/var/lib/service --name api quay.io/rolene/service
 ExecStop=/usr/bin/docker stop api
 
 [X-Fleet]
