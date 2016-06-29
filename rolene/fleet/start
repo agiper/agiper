@@ -4,6 +4,6 @@ fleetctl start logstash logstash-discovery
 fleetctl start elasticsearch elasticsearch-discovery
 
 fleetctl start sse sse-discovery
-fleetctl start web@1 web-discovery@1
+fleetctl start mvc@1 mvc-discovery@1
 fleetctl start api@1 api-discovery@1
 fleetctl start job@1 job-discovery@1
