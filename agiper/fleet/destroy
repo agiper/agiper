@@ -1,0 +1,1 @@
+fleetctl list-unit-files | sed 1d | while read -r line ; do fleetctl destroy $(echo $line | cut -f1 -d ' '); done
