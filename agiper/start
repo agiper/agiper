@@ -1,4 +1,0 @@
-fleetctl start redis redis-discovery
-fleetctl start rabbitmq rabbitmq-discovery
-fleetctl start logstash logstash-discovery
-fleetctl start elasticsearch elasticsearch-discovery

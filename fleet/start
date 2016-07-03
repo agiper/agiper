@@ -1,0 +1,10 @@
+fleetctl start nginx nginx-discovery
+fleetctl start redis redis-discovery
+fleetctl start rabbitmq rabbitmq-discovery
+fleetctl start logstash logstash-discovery
+fleetctl start elasticsearch elasticsearch-discovery
+
+fleetctl start service-sse service-sse-discovery
+fleetctl start service-api@1 service-api-discovery@1
+fleetctl start service-job@1 service-job-discovery@1
+fleetctl start service-web@1 service-web-discovery@1

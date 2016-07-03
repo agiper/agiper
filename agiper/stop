@@ -1,4 +1,0 @@
-fleetctl stop redis redis-discovery
-fleetctl stop rabbitmq rabbitmq-discovery
-fleetctl stop logstash logstash-discovery
-fleetctl stop elasticsearch elasticsearch-discovery

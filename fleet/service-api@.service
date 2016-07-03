@@ -3,6 +3,7 @@ Description=API Service
 
 Requires=api-discovery@%i.service
 Before=api-discovery@%i.service
+After=nginx.service
 After=redis.service
 After=docker.service
 After=rabbitmq.service
