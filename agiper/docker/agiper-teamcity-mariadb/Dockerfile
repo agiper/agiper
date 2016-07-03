@@ -9,6 +9,7 @@ RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10
 	export TERM=xterm && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+	
 ADD backup /
 ADD my.cnf /etc/mysql/
 ADD supervisord.conf /etc/supervisor/conf.d/

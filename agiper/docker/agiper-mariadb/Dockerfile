@@ -14,4 +14,10 @@ RUN add-apt-repository "deb http://repo.percona.com/apt trusty main" && \
 
 RUN sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
 
+ADD backup /
+RUN chmod 755 backup && /backup && rm /backup
+ADD supervisord.conf /etc/supervisor/
+
+CMD /usr/bin/supervisord
+
 EXPOSE 3306

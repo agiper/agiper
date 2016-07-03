@@ -8,5 +8,10 @@ RUN apt-get update && \
 	rm -v /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default
 
 ADD nginx.conf /etc/nginx/
+ADD nginx.toml /etc/confd/conf.d/
+ADD nginx.tmpl /etc/confd/templates/
+ADD supervisord.conf /etc/supervisor/
+
+CMD /usr/bin/supervisord
 
 EXPOSE 80

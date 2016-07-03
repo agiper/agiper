@@ -14,8 +14,8 @@ Restart=always
 TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f web
-ExecStartPre=/usr/bin/docker pull quay.io/rolene/service
-ExecStart=/usr/bin/docker run -p 80:80 -p 8080:8080 -v /home/core/volume/web:/var/lib/service --name web quay.io/rolene/service
+ExecStartPre=/usr/bin/docker pull quay.io/agiper/service
+ExecStart=/usr/bin/docker run -p 80:80 -p 8080:8080 -v /home/core/volume/web:/var/lib/service --name web quay.io/agiper/service
 ExecStop=/usr/bin/docker stop web
 
 [X-Fleet]
