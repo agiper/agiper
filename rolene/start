@@ -1,4 +1,0 @@
-fleetctl start sse sse-discovery
-fleetctl start api@1 api-discovery@1
-fleetctl start job@1 job-discovery@1
-fleetctl start web@1 web-discovery@1
