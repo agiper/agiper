@@ -5,6 +5,7 @@ After=api@.service
 After=redis.service
 After=docker.service
 After=rabbitmq.service
+After=logstash.service
 After=elasticsearch.service
 
 [Service]

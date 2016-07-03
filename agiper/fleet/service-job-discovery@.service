@@ -1,0 +1,25 @@
+[Unit]
+Description=Job Service Discovery
+
+Requires=job@%i.service
+After=job@%i.service
+
+BindsTo=job@%i.service
+
+[Service]
+Restart=always
+EnvironmentFile=/etc/environment
+ExecStart=/bin/bash -c "\
+	while true; do \
+	curl -f ${COREOS_PRIVATE_IPV4}:83; \
+	if [ $? -eq 0 ]; then \
+	  etcdctl set /agiper.com/service/job/${COREOS_PRIVATE_IPV4} '${COREOS_PRIVATE_IPV4}:83' --ttl 120; \
+	else \
+	  etcdctl rm /agiper.com/service/job/${COREOS_PRIVATE_IPV4}; \
+	fi; \
+	sleep 60; \
+	done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/service/job/${COREOS_PRIVATE_IPV4}
+
+[X-Fleet]
+MachineOf=job@%i.service
