@@ -13,13 +13,13 @@ ExecStart=/bin/bash -c "\
 	while true; do \
 	curl -f ${COREOS_PRIVATE_IPV4}:82; \
 	if [ $? -eq 0 ]; then \
-	  etcdctl set /agiper.com/rolene/sse '${COREOS_PRIVATE_IPV4}:82' --ttl 120; \
+	  etcdctl set /agiper.com/service/sse '${COREOS_PRIVATE_IPV4}:82' --ttl 120; \
 	else \
-	  etcdctl rm /agiper.com/rolene/sse; \
+	  etcdctl rm /agiper.com/service/sse; \
 	fi; \
 	sleep 60; \
 	done"
-ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/sse
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/service/sse
 
 [X-Fleet]
 MachineOf=sse.service

@@ -10,5 +10,9 @@ RUN add-apt-repository "deb http://www.rabbitmq.com/debian testing main" && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+ADD supervisord.conf /etc/supervisor/
+
+CMD /usr/bin/supervisord
+
 EXPOSE 5672
 EXPOSE 15672

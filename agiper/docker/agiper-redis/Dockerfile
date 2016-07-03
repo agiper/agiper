@@ -13,4 +13,8 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+ADD supervisord.conf /etc/supervisor/
+
+CMD /usr/bin/supervisord
+
 EXPOSE 6379	

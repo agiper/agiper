@@ -11,8 +11,8 @@ Restart=always
 TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f logstash
-ExecStartPre=/usr/bin/docker pull quay.io/rolene/logstash
-ExecStart=/usr/bin/docker run -p 9300:9300 --name logstash quay.io/rolene/logstash
+ExecStartPre=/usr/bin/docker pull quay.io/agiper/logstash
+ExecStart=/usr/bin/docker run -p 9300:9300 --name logstash quay.io/agiper/logstash
 ExecStop=/usr/bin/docker stop logstash
 
 [X-Fleet]
