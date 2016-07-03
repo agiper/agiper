@@ -9,8 +9,8 @@ BindsTo=rabbitmq.service
 [Service]
 Restart=always
 EnvironmentFile=/etc/environment
-ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/rolene/rabbitmq '${COREOS_PRIVATE_IPV4}:5672' --ttl 600; sleep 300; done"
-ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/rabbitmq
+ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/rabbitmq '${COREOS_PRIVATE_IPV4}:5672' --ttl 600; sleep 300; done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/rabbitmq
 
 [X-Fleet]
 MachineOf=rabbitmq.service

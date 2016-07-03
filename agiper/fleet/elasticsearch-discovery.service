@@ -9,8 +9,8 @@ BindsTo=elasticsearch.service
 [Service]
 Restart=always
 EnvironmentFile=/etc/environment
-ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/rolene/elasticsearch '${COREOS_PRIVATE_IPV4}:9200' --ttl 600; sleep 300; done"
-ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/elasticsearch
+ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/elasticsearch '${COREOS_PRIVATE_IPV4}:9200' --ttl 600; sleep 300; done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/elasticsearch
 
 [X-Fleet]
 MachineOf=elasticsearch.service

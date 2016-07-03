@@ -1,0 +1,25 @@
+[Unit]
+Description=MVC Service Discovery
+
+Requires=mvc@%i.service
+After=mvc@%i.service
+
+BindsTo=mvc@%i.service
+
+[Service]
+Restart=always
+EnvironmentFile=/etc/environment
+ExecStart=/bin/bash -c "\
+	while true; do \
+	curl -f ${COREOS_PRIVATE_IPV4}:80; \
+	if [ $? -eq 0 ]; then \
+	  etcdctl set /agiper.com/rolene/mvc/${COREOS_PRIVATE_IPV4} '${COREOS_PRIVATE_IPV4}:80' --ttl 120; \
+	else \
+	  etcdctl rm /agiper.com/rolene/mvc/${COREOS_PRIVATE_IPV4}; \
+	fi; \
+	sleep 60; \
+	done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/mvc/${COREOS_PRIVATE_IPV4}
+
+[X-Fleet]
+MachineOf=mvc@%i.service

@@ -9,8 +9,8 @@ BindsTo=redis.service
 [Service]
 Restart=always
 EnvironmentFile=/etc/environment
-ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/rolene/redis '${COREOS_PRIVATE_IPV4}:6379' --ttl 600; sleep 300; done"
-ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/redis
+ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/redis '${COREOS_PRIVATE_IPV4}:6379' --ttl 600; sleep 300; done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/redis
 
 [X-Fleet]
 MachineOf=redis.service

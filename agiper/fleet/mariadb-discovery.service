@@ -9,8 +9,8 @@ BindsTo=mariadb.service
 [Service]
 Restart=always
 EnvironmentFile=/etc/environment
-ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/rolene/mariadb '${COREOS_PRIVATE_IPV4}' --ttl 600; sleep 300; done"
-ExecStop=-/usr/bin/etcdctl rm /agiper.com/rolene/mariadb
+ExecStart=/bin/sh -c "while true; do etcdctl set /agiper.com/mariadb '${COREOS_PRIVATE_IPV4}' --ttl 600; sleep 300; done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/mariadb
 
 [X-Fleet]
 MachineOf=mariadb.service

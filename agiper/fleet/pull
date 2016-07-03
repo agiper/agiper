@@ -1,7 +1,6 @@
 set -e
 docker pull quay.io/rolene/redis
 docker pull quay.io/rolene/nginx
-docker pull quay.io/rolene/service
 docker pull quay.io/rolene/mariadb
 docker pull quay.io/rolene/rabbitmq
 docker pull quay.io/rolene/logstash
