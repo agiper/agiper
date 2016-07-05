@@ -1,0 +1,22 @@
+[Unit]
+Description=Web Host Service
+
+After=redis.service
+After=docker.service
+After=rabbitmq.service
+After=elasticsearch.service
+Before=web-host-discovery@%i.service
+Requires=web-host-discovery@%i.service
+
+[Service]
+KillMode=none
+Restart=always
+TimeoutStartSec=0
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker rm -f web-host
+ExecStartPre=/usr/bin/docker pull quay.io/agiper/host
+ExecStart=/usr/bin/docker run -p 80:80 -p 8080:8080 -v /home/core/volume/web-host:/var/lib/host --name web-host quay.io/agiper/host
+ExecStop=/usr/bin/docker stop web-host
+
+[X-Fleet]
+Conflicts=web-host@*.service

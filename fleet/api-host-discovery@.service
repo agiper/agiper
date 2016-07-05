@@ -1,0 +1,25 @@
+[Unit]
+Description=Api Service Discovery
+
+After=api-host@%i.service
+Requires=api-host@%i.service
+
+BindsTo=api-host@%i.service
+
+[Service]
+Restart=always
+EnvironmentFile=/etc/environment
+ExecStart=/bin/bash -c "\
+	while true; do \
+	curl -f ${COREOS_PRIVATE_IPV4}:81; \
+	if [ $? -eq 0 ]; then \
+	  etcdctl set /agiper.com/host/api/${COREOS_PRIVATE_IPV4} '${COREOS_PRIVATE_IPV4}:81' --ttl 120; \
+	else \
+	  etcdctl rm /agiper.com/host/api/${COREOS_PRIVATE_IPV4}; \
+	fi; \
+	sleep 60; \
+	done"
+ExecStop=-/usr/bin/etcdctl rm /agiper.com/host/api/${COREOS_PRIVATE_IPV4}
+
+[X-Fleet]
+MachineOf=service-api-host@%i.service
