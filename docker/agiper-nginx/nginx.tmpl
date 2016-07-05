@@ -29,7 +29,7 @@ http
 	}	
 	upstream backend 
 	{
-		{{ range getvs "/agiper.com/rolene/api/*" }}
+		{{ range getvs "/agiper.com/host/api/*" }}
 		server {{ . }};{{ end }}
 		keepalive 32;
 	}
