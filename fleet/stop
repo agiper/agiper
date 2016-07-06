@@ -4,6 +4,6 @@ fleetctl stop logstash logstash-discovery
 fleetctl stop elasticsearch elasticsearch-discovery
 
 fleetctl stop sse-host sse-host-discovery
-fleetctl stop api-host@1..2 api-host-discovery@1..2
-fleetctl stop job-host@1..2 job-host-discovery@1..2
-fleetctl stop web-host@1..2 web-host-discovery@1..2
+fleetctl stop api-host@{1..2} api-host-discovery@{1..2}
+fleetctl stop job-host@{1..2} job-host-discovery@{1..2}
+fleetctl stop web-host@{1..2} web-host-discovery@1{..2}
