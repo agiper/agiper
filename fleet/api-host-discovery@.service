@@ -1,5 +1,5 @@
 [Unit]
-Description=Api Service Discovery
+Description=Api Host Service Discovery
 
 After=api-host@%i.service
 Requires=api-host@%i.service
@@ -22,4 +22,4 @@ ExecStart=/bin/bash -c "\
 ExecStop=-/usr/bin/etcdctl rm /agiper.com/host/api/${COREOS_PRIVATE_IPV4}
 
 [X-Fleet]
-MachineOf=service-api-host@%i.service
+MachineOf=api-host@%i.service
