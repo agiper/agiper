@@ -12,7 +12,7 @@ EnvironmentFile=/etc/environment
 ExecStart=/bin/bash -c "\
 	while true; do \
 	sleep 60; \
-	curl -f ${COREOS_PRIVATE_IPV4}:82; \
+	curl -f ${COREOS_PRIVATE_IPV4}:8082; \
 	if [ $? -eq 0 ]; then \
 	  etcdctl set /agiper.com/host/sse '${COREOS_PRIVATE_IPV4}:82' --ttl 120; \
 	else \
