@@ -15,7 +15,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f sse-host
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/host
-ExecStart=/usr/bin/docker run -p 82:82 -p 8082:8082 -v /home/core/volume/sse-host:/var/lib/host --name sse-host quay.io/agiper/host
+ExecStart=/usr/bin/docker run -p 82:82 -p 82:82 -v /home/core/volume/sse-host:/var/lib/host --name sse-host quay.io/agiper/host
 ExecStop=/usr/bin/docker stop sse-host
 
 [X-Fleet]

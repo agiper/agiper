@@ -15,7 +15,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f job-host
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/host
-ExecStart=/usr/bin/docker run -p 83:83 -p 8083:8083 -v /home/core/volume/job-host:/var/lib/host --name job-host quay.io/agiper/host
+ExecStart=/usr/bin/docker run -p 83:83 -p 83:83 -v /home/core/volume/job-host:/var/lib/host --name job-host quay.io/agiper/host
 ExecStop=/usr/bin/docker stop job-host
 
 [X-Fleet]
