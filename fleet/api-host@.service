@@ -1,0 +1,23 @@
+[Unit]
+Description=Api Host Service
+
+After=nginx.service
+After=redis.service
+After=docker.service
+After=rabbitmq.service
+After=elasticsearch.service
+Before=api-host-discovery@%i.service
+Requires=api-host-discovery@%i.service
+
+[Service]
+KillMode=none
+Restart=always
+TimeoutStartSec=0
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker rm -f api-host
+ExecStartPre=/usr/bin/docker pull quay.io/agiper/host
+ExecStart=/usr/bin/docker run -p 81:81 -p 8081:8081 -v /home/core/volume/api-host:/var/lib/host --name api-host -h api-host@%i quay.io/agiper/host
+ExecStop=/usr/bin/docker stop api-host
+
+[X-Fleet]
+Conflicts=api-host@*.service
