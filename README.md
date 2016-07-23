@@ -14,3 +14,4 @@
 | agiper-mono-java     | ![agiper-mono-java](https://quay.io/repository/agiper/mono-java/status)         |
 | agiper-elasticstack  | ![agiper-elasticstack](https://quay.io/repository/agiper/elasticstack/status)   |
 | agiper-elasticsearch | ![agiper-elasticsearch](https://quay.io/repository/agiper/elasticsearch/status) |
+|:---------------------|:-------------------------------------------------------------------------------:|
