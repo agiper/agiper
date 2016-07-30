@@ -1,8 +1,8 @@
 FROM quay.io/agiper/teamcity
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-RUN add-apt-repository "deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu trusty main" && \
-	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db && \
+RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db && \
+	add-apt-repository "deb http://ftp.osuosl.org/pub/mariadb/repo/10.0/ubuntu trusty main" && \
 	apt-get update && \
 	export TERM=dumb && \
 	apt-get install mariadb-server -y && \
