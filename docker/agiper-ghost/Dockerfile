@@ -34,8 +34,9 @@ RUN buildDeps=' \
 	' \
 	&& set -x \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
-	&& curl -L -o ghost.zip "https://github.com/agiper/ghost/archive/stable.zip" \
-	&& unzip ghost.zip 'ghost-stable/*' -d . \
+	&& curl -L -o ghost.zip https://github.com/agiper/ghost/archive/stable.zip \
+ 	&& unzip ghost.zip \
+ 	&& mv ghost-stable/* . \
 	&& npm install --production \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
 	&& rm ghost.zip \
