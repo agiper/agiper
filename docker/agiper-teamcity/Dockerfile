@@ -1,7 +1,7 @@
 FROM quay.io/agiper/mono-java
 MAINTAINER To Nuen <tomnuen@agiper.com>
 
-RUN curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.1.tar.gz | tar -xzC /opt && \
+RUN curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.2.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
 
