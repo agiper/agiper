@@ -1,7 +1,7 @@
 FROM quay.io/agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-RUN apt-get install software-properties-common
+RUN apt-get install software-properties-common && \
 	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db && \
 	add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirror.fibergrid.in/mariadbrepo/10.1/ubuntu trusty main" && \
 	apt-get update && \
