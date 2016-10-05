@@ -2,8 +2,8 @@ FROM quay.io/agiper/teamcity
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN apt-get install software-properties-common && \
-	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db && \
-	add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirror.fibergrid.in/mariadbrepo/10.1/ubuntu trusty main" && \
+	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 && \
+	add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirror.fibergrid.in/mariadbrepo/10.1/ubuntu xenial main" && \
 	apt-get update && \
 	export TERM=dumb && \
 	apt-get install mariadb-server -y && \
