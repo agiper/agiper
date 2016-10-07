@@ -1,7 +1,13 @@
 FROM quay.io/agiper/mono-java
 MAINTAINER To Nuen <tomnuen@agiper.com>
 
-RUN curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.2.tar.gz | tar -xzC /opt && \
+RUN apt-get update && \
+	apt-get install npm -y && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* && \
+	npm install -g bower && \
+	ln -s /usr/bin/nodejs /usr/bin/node && \
+	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.2.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
 
