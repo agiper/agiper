@@ -1,10 +1,10 @@
 [Unit]
 Description=Web Host Service Discovery
 
-After=web-host@%i.service
-Requires=web-host@%i.service
+After=webhost@%i.service
+Requires=webhost@%i.service
 
-BindsTo=web-host@%i.service
+BindsTo=webhost@%i.service
 
 [Service]
 Restart=always
@@ -22,4 +22,4 @@ ExecStart=/bin/bash -c "\
 ExecStop=-/usr/bin/etcdctl rm /agiper.com/host/web/${COREOS_PRIVATE_IPV4}
 
 [X-Fleet]
-MachineOf=web-host@%i.service
+MachineOf=webhost@%i.service
