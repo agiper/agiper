@@ -6,12 +6,10 @@ docker pull quay.io/agiper/java
 docker pull quay.io/agiper/tool
 docker pull quay.io/agiper/nginx
 docker pull quay.io/agiper/redis
+docker pull quay.io/agiper/dotnet
 docker pull quay.io/agiper/mariadb
+docker pull quay.io/agiper/elastic
 docker pull quay.io/agiper/rabbitmq
 docker pull quay.io/agiper/teamcity
 docker pull quay.io/agiper/logstash
-docker pull quay.io/agiper/mono-java
-docker pull quay.io/agiper/hyperfastcgi
-docker pull quay.io/agiper/elasticstack
 docker pull quay.io/agiper/elasticsearch
-docker pull quay.io/agiper/teamcity-mariadb
