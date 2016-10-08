@@ -1,10 +1,10 @@
 [Unit]
 Description=SSE Host ervice Discovery
 
-After=sse-host.service
-Requires=sse-host.service
+After=ssehost.service
+Requires=ssehost.service
 
-BindsTo=sse-host.service
+BindsTo=ssehost.service
 
 [Service]
 Restart=always
@@ -22,4 +22,4 @@ ExecStart=/bin/bash -c "\
 ExecStop=-/usr/bin/etcdctl rm /agiper.com/host/sse
 
 [X-Fleet]
-MachineOf=sse-host.service
+MachineOf=ssehost.service
