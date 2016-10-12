@@ -3,7 +3,7 @@ fleetctl stop rabbitmq rabbitmq-discovery
 fleetctl stop logstash logstash-discovery
 fleetctl stop elasticsearch elasticsearch-discovery
 
-fleetctl stop sse-host sse-host-discovery
-fleetctl stop api-host@{1..2} api-host-discovery@{1..2}
-fleetctl stop job-host@{1..2} job-host-discovery@{1..2}
-fleetctl stop web-host@{1..2} web-host-discovery@1{..2}
+#fleetctl stop sse-host sse-host-discovery
+fleetctl stop apihost@{1..2} apihost-discovery@{1..2}
+fleetctl stop jobhost@{1..2} jobhost-discovery@{1..2}
+fleetctl stop webhost@{1..2} webhost-discovery@1{..2}
