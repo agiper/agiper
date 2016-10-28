@@ -9,11 +9,11 @@ RUN apt-get install apt-transport-https && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN /usr/share/kibana/bin/kibana-plugin install x-pack && \
-	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack && \
+	/usr/share/kibana/bin/kibana-plugin install x-pack
 	
+ADD elasticsearch.yml /etc/elasticsearch/	
 ADD kibana.yml /etc/kibana/
-ADD elasticsearch.yml /etc/elasticsearch/
 
 EXPOSE 5601
 EXPOSE 9200
