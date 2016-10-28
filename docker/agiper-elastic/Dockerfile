@@ -1,21 +1,17 @@
 FROM quay.io/agiper/java
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
-	echo "deb http://packages.elastic.co/kibana/4.6/debian stable main" | tee -a /etc/apt/sources.list  && \
-	echo "deb http://packages.elastic.co/logstash/2.4/debian stable main" | tee -a /etc/apt/sources.list && \
-	echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list && \
+RUN wget -qO - http://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - && \
+	echo "deb http://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list && \
 	apt-get update && \
-	apt-get install elasticsearch logstash kibana -y && \
+	apt-get install elasticsearch kibana -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN /usr/share/elasticsearch/bin/plugin install license && \ 
-	/usr/share/elasticsearch/bin/plugin install marvel-agent && \
-	/opt/kibana/bin/kibana plugin --install elastic/sense/latest && \
-	/opt/kibana/bin/kibana plugin --install elasticsearch/marvel/latest
-
-ADD kibana.yml /opt/kibana/config/
+RUN /usr/share/kibana/bin/kibana-plugin install x-pack && \
+	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack
+	
+ADD kibana.yml /etc/kibana/
 ADD elasticsearch.yml /etc/elasticsearch/
 
 EXPOSE 5601
