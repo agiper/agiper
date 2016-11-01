@@ -1,9 +1,7 @@
 fleetctl start redis redis-discovery
 fleetctl start rabbitmq rabbitmq-discovery
-fleetctl start logstash logstash-discovery
 fleetctl start elasticsearch elasticsearch-discovery
 
-#fleetctl start sse-host sse-host-discovery
 fleetctl start apihost@{1..2} apihost-discovery@{1..2}
 fleetctl start jobhost@{1..2} jobhost-discovery@{1..2}
 fleetctl start webhost@{1..2} webhost-discovery@{1..2}

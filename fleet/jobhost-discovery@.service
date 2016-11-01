@@ -1,10 +1,10 @@
 [Unit]
 Description=Job Host Service Discovery
 
-After=job-host@%i.service
-Requires=job-host@%i.service
+After=jobhost@%i.service
+Requires=jobhost@%i.service
 
-BindsTo=job-host@%i.service
+BindsTo=jobhost@%i.service
 
 [Service]
 Restart=always
@@ -22,4 +22,4 @@ ExecStart=/bin/bash -c "\
 ExecStop=-/usr/bin/etcdctl rm /agiper.com/host/job/${COREOS_PRIVATE_IPV4}
 
 [X-Fleet]
-MachineOf=job-host@%i.service
+MachineOf=jobhost@%i.service
