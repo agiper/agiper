@@ -14,6 +14,9 @@ RUN apt-get update && \
 	mkdir /var/lib/redis && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+RUN echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && \
+	echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
+
 ADD redis.conf /etc/redis/
 ADD sentinel.conf /etc/redis/
 ADD supervisord.conf /etc/supervisor/
