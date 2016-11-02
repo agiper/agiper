@@ -7,6 +7,7 @@ RUN apt-get install apt-transport-https && \
 	apt-get update && \
 	apt-get install elasticsearch kibana logstash -y && \
 	apt-get clean && \
+	mkdir /var/lib/elasticsearch && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack && \
