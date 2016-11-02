@@ -12,8 +12,8 @@ RUN apt-get install apt-transport-https && \
 RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack && \
 	/usr/share/kibana/bin/kibana-plugin install x-pack
 	
-ADD jvm.options /usr/share/elasticsearch/config/
 ADD elasticsearch.yml /etc/elasticsearch/
+ADD jvm.options /etc/elasticsearch/
 ADD kibana.yml /etc/kibana/
 
 EXPOSE 5601
