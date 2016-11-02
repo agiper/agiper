@@ -13,7 +13,7 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/cache/oracle-jdk8-installer /var/tmp/* /tmp/*
 
-ADD supervisord.conf /etc/supervisor/conf.d/
+COPY supervisord.conf /etc/supervisor/conf.d/
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity

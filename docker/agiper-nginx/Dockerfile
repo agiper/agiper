@@ -7,11 +7,11 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* && \
 	rm -v /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default
 
-ADD nginx.conf /etc/nginx/
-ADD nginx.toml /etc/confd/conf.d/
-ADD nginx.tmpl /etc/confd/templates/
-ADD supervisord.conf /etc/supervisor/
-
-CMD /usr/bin/supervisord
+COPY nginx.conf /etc/nginx/
+COPY nginx.toml /etc/confd/conf.d/
+COPY nginx.tmpl /etc/confd/templates/
+COPY supervisord.conf /etc/supervisor/
 
 EXPOSE 80
+
+CMD /usr/bin/supervisord
