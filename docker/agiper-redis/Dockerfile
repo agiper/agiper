@@ -11,6 +11,7 @@ RUN apt-get update && \
 	apt-get purge build-essential tcl -y && \
 	apt-get autoremove -y && \
 	apt-get clean && \
+	mkdir /var/lib/redis && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 ADD redis.conf /etc/redis/

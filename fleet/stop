@@ -1,5 +1,6 @@
 fleetctl stop redis redis-discovery
 fleetctl stop rabbitmq rabbitmq-discovery
+fleetctl stop logstash logstash-discovery
 fleetctl stop elasticsearch elasticsearch-discovery
 
 fleetctl stop apihost@{1..2} apihost-discovery@{1..2}
