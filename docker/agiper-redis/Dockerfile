@@ -14,10 +14,10 @@ RUN apt-get update && \
 	mkdir /var/lib/redis && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-ADD redis.conf /etc/redis/
-ADD sentinel.conf /etc/redis/
-ADD supervisord.conf /etc/supervisor/
+COPY redis.conf /etc/redis/
+COPY sentinel.conf /etc/redis/
+COPY supervisord.conf /etc/supervisor/
+
+EXPOSE 6379
 
 CMD /usr/bin/supervisord
-
-EXPOSE 6379	
