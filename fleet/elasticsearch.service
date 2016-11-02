@@ -11,8 +11,8 @@ Restart=always
 TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f elasticsearch
-ExecStartPre=/usr/bin/docker pull quay.io/agiper/elasticsearch
-ExecStart=/usr/bin/docker run -p 5601:5601 -p 9200:9200 --name elasticsearch quay.io/agiper/elasticsearch
+ExecStartPre=/usr/bin/docker pull quay.io/agiper/elastic
+ExecStart=/usr/bin/docker run -p 5601:5601 -p 9200:9200 --name elasticsearch quay.io/agiper/elastic
 ExecStop=/usr/bin/docker stop elasticsearch
 
 [X-Fleet]
