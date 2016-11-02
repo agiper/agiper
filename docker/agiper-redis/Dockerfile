@@ -15,7 +15,8 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && \
-	echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
+	echo "net.core.somaxconn=65535" >> /etc/sysctl.conf && \
+	echo "echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
 
 ADD redis.conf /etc/redis/
 ADD sentinel.conf /etc/redis/
