@@ -2,7 +2,7 @@ FROM quay.io/agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN apt-get update && \
-	apt-get install build-essential tcl -y && \
+	apt-get install build-essential tcl nodejs npm -y && \
 	wget http://download.redis.io/redis-stable.tar.gz && \
 	tar xvzf redis-stable.tar.gz && \
 	cd redis-stable && \
