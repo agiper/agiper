@@ -3,6 +3,7 @@ MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" && \
 	apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
+	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
 	apt-get update && \
 	apt-get install npm dotnet-dev-1.0.0-preview2.1-003155 -y --no-install-recommends && \
 	npm install -g bower && \
