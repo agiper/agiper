@@ -1,9 +1,9 @@
 [Unit]
 Description=Redis Service
 
-Requires=redis-discovery.service
-Before=redis-discovery.service
 After=docker.service
+Before=redis-discovery.service
+Requires=redis-discovery.service
 
 [Service]
 KillMode=none
