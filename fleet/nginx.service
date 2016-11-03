@@ -1,12 +1,10 @@
 [Unit]
 Description=Nginx Service
 
-After=api@.service
 After=redis.service
 After=docker.service
+After=elastic.service
 After=rabbitmq.service
-After=logstash.service
-After=elasticsearch.service
 
 [Service]
 KillMode=none

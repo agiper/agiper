@@ -4,8 +4,8 @@ Description=Api Host Service
 After=nginx.service
 After=redis.service
 After=docker.service
+After=elastic.service
 After=rabbitmq.service
-After=elasticsearch.service
 Before=apihost-discovery@%i.service
 Requires=apihost-discovery@%i.service
 

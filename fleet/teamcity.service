@@ -1,9 +1,9 @@
 [Unit]
 Description=TeamCity Service
 
-Requires=teamcity-discovery.service
-Before=teamcity-discovery.service
 After=docker.service
+Before=teamcity-discovery.service
+Requires=teamcity-discovery.service
 
 [Service]
 KillMode=none

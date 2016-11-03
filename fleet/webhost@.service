@@ -3,8 +3,8 @@ Description=Web Host Service
 
 After=redis.service
 After=docker.service
+After=elastic.service
 After=rabbitmq.service
-After=elasticsearch.service
 Before=webhost-discovery@%i.service
 Requires=webhost-discovery@%i.service
 

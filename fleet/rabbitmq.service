@@ -1,9 +1,9 @@
 [Unit]
 Description=RabbitMQ Service
 
-Requires=rabbitmq-discovery.service
-Before=rabbitmq-discovery.service
 After=docker.service
+Before=rabbitmq-discovery.service
+Requires=rabbitmq-discovery.service
 
 [Service]
 KillMode=none

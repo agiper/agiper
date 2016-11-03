@@ -1,11 +1,9 @@
 [Unit]
 Description=MariaDB Service
 
-Requires=mariadb-discovery.service
-
-After=redis.service
 After=docker.service
 Before=mariadb-discovery.service
+Requires=mariadb-discovery.service
 
 [Service]
 KillMode=none
