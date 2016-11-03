@@ -2,13 +2,13 @@ FROM quay.io/agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN apt-get update && \
-	apt-get install build-essential tcl nodejs npm -y --no-install-recommends && \
+	apt-get install npm tcl build-essential -y --no-install-recommends && \
 	wget http://download.redis.io/redis-stable.tar.gz && \
 	tar xvzf redis-stable.tar.gz && \
 	cd redis-stable && \
 	make && \
 	make install && \
-	apt-get purge build-essential tcl -y && \
+	apt-get purge tcl build-essential -y && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	mkdir /var/lib/redis && \
