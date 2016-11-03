@@ -12,7 +12,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f mariadb
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/mariadb
-ExecStart=/usr/bin/docker run -p 3306:3306 -v /home/core/volume/mariadb:/var/lib/mysql --name mariadb --memory=1g quay.io/agiper/mariadb
+ExecStart=/usr/bin/docker run -m 1G -p 3306:3306 -v /home/core/volume/mariadb:/var/lib/mysql --name mariadb quay.io/agiper/mariadb
 ExecStop=/usr/bin/docker stop mariadb
 
 [X-Fleet]
