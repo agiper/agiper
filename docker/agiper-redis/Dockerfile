@@ -8,7 +8,6 @@ RUN apt-get update && \
 	cd redis-stable && \
 	make && \
 	make install && \
-	rm redis-stable.tar.gz && \
 	apt-get purge build-essential tcl -y && \
 	apt-get autoremove -y && \
 	apt-get clean && \
