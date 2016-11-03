@@ -12,7 +12,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f rabbitmq
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/rabbitmq
-ExecStart=/usr/bin/docker run -p 5672:5672 -p 15672:15672 --name rabbitmq --memory=1g quay.io/agiper/rabbitmq
+ExecStart=/usr/bin/docker run -m 1G -p 5672:5672 -p 15672:15672 --name rabbitmq quay.io/agiper/rabbitmq
 ExecStop=/usr/bin/docker stop rabbitmq
 
 [X-Fleet]
