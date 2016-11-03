@@ -16,7 +16,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f apihost
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/dotnetapp
-ExecStart=/usr/bin/docker run -p 81:81 -p 8081:8081 -v /home/core/volume/host/api:/var/lib/host -e EXEC='Rolene.Server.Host.Api.dll' --name apihost -h apihost-%i quay.io/agiper/dotnetapp
+ExecStart=/usr/bin/docker run -p 81:81 -p 8081:8081 -v /home/core/volume/host/api:/var/lib/host -e EXEC='Rolene.Server.Host.Api.dll' -h apihost-%i --name apihost --memory=1g quay.io/agiper/dotnetapp
 ExecStop=/usr/bin/docker stop apihost
 
 [X-Fleet]
