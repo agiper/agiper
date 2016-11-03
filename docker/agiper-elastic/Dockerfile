@@ -12,6 +12,7 @@ RUN /usr/share/kibana/bin/kibana-plugin install x-pack && \
 	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack
 	
 COPY kibana.yml /etc/kibana/
+COPY jvm.options /etc/elasticsearch/
 COPY supervisord.conf /etc/supervisor/
 COPY elasticsearch.yml /etc/elasticsearch/
 
