@@ -15,7 +15,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f jobhost
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/dotnetapp
-ExecStart=/usr/bin/docker run -p 83:83 -p 8083:8083 -v /home/core/volume/host/job:/var/lib/host -e EXEC='Rolene.Server.Host.Job.dll' -h jobhost-%i --name jobhost --memory=1g quay.io/agiper/dotnetapp
+ExecStart=/usr/bin/docker run -m 512M -p 83:83 -p 8083:8083 -v /home/core/volume/host/job:/var/lib/host -e EXEC='Rolene.Server.Host.Job.dll' -h jobhost-%i --name jobhost quay.io/agiper/dotnetapp
 ExecStop=/usr/bin/docker stop jobhost
 
 [X-Fleet]
