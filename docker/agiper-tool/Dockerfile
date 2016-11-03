@@ -2,7 +2,7 @@ FROM quay.io/agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN apt-get update && \
-	apt-get install apache2-utils siege gcc make -y && \
+	apt-get install apache2-utils siege gcc make -y --no-install-recommends && \
 	wget http://acme.com/software/http_load/http_load-14aug2014.tar.gz && \
 	tar xvzf http_load-14aug2014.tar.gz && \
 	cd http_load-14aug2014 && \ 
