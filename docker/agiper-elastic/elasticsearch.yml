@@ -14,7 +14,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: agiper
+cluster.name: ${ENVNAME}
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -52,7 +52,7 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-network.host: "_en0_"
+network.host: "_eth0_"
 #
 # Set a custom port for HTTP:
 #
