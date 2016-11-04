@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: ${ENVNAME}
+cluster.name: agiper
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: ${HOSTNAME}
+node.name: agiper
 #
 # Add custom attributes to the node:
 #
