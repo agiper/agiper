@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: elasticsearch
+cluster.name: agiper
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-#node.name: node-1
+node.name: ${HOSTNAME}
 #
 # Add custom attributes to the node:
 #
@@ -30,11 +30,11 @@ cluster.name: elasticsearch
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-path.data: /var/lib/elasticsearch
+path.data: /var/data/elasticsearch
 #
 # Path to log files:
 #
-path.logs: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -66,11 +66,11 @@ network.host: "0.0.0.0"
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-#discovery.zen.ping.unicast.hosts: ["host1", "host2"]
+discovery.zen.ping.unicast.hosts: ["0.0.0.0"]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
 #
-#discovery.zen.minimum_master_nodes: 3
+discovery.zen.minimum_master_nodes: 1
 #
 # For more information, see the documentation at:
 # <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery.html>
