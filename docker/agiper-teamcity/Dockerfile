@@ -1,12 +1,11 @@
 FROM quay.io/agiper/java
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-	apt-get install nodejs npm -y --no-install-recommends && \
-	add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" && \
+RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" && \
 	apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
 	apt-get update && \
-	apt-get install dotnet-dev-1.0.0-preview2.1-003155 -y --no-install-recommends && \
+	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+	apt-get install nodejs dotnet-dev-1.0.0-preview2.1-003155 -y --no-install-recommends && \
 	npm install -g bower && \
 	ln -s /usr/bin/nodejs /usr/bin/node && \
 	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.2.tar.gz | tar -xzC /opt && \
