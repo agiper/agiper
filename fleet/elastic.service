@@ -12,7 +12,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f elastic
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/elastic
-ExecStart=/usr/bin/docker run -m 1G -p 5601:5601 -p 9200:9200 --name elastic quay.io/agiper/elastic
+ExecStart=/usr/bin/docker run -m 1G -p 5601:5601 -p 9200:9200 -p 9300:9300 --name elastic quay.io/agiper/elastic
 ExecStop=/usr/bin/docker stop elastic
 
 [X-Fleet]
