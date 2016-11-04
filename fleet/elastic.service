@@ -12,7 +12,7 @@ TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f elastic
 ExecStartPre=/usr/bin/docker pull quay.io/agiper/elastic
-ExecStart=/usr/bin/docker run -m 1G -p 5601:5601 -p 9200:9200 -e ES_JAVA_OPTS="-Xms512m -Xmx512m" --name elastic quay.io/agiper/elastic
+ExecStart=/usr/bin/docker run -m 1.5G -p 5601:5601 -p 9200:9200 -e ENVNAME=${ENV} -e ES_JAVA_OPTS="-Xms1g -Xmx1g" --name elastic quay.io/agiper/elastic
 ExecStop=/usr/bin/docker stop elastic
 
 [X-Fleet]
