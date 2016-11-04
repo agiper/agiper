@@ -2,8 +2,9 @@ FROM quay.io/agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+	apt-get install nodejs npm -y --no-install-recommends && \
 	apt-get update && \
-	apt-get install npm tcl build-essential -y --no-install-recommends && \
+	apt-get install tcl build-essential -y --no-install-recommends && \
 	wget http://download.redis.io/redis-stable.tar.gz && \
 	tar xvzf redis-stable.tar.gz && \
 	cd redis-stable && \
