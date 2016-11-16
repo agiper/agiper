@@ -7,7 +7,7 @@ RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
 	apt-get install nodejs dotnet-dev-1.0.0-preview2-003131 dotnet-dev-1.0.0-preview2.1-003155 -y --no-install-recommends && \
 	npm install -g bower && \
-	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.2.tar.gz | tar -xzC /opt && \
+	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.3.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties && \
 	apt-get clean && \
