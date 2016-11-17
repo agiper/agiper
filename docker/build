@@ -6,6 +6,7 @@ docker build -t quay.io/agiper/java agiper-java/
 docker build -t quay.io/agiper/tool agiper-tool/
 docker build -t quay.io/agiper/nginx agiper-nginx/
 docker build -t quay.io/agiper/redis agiper-redis/
+docker build -t quay.io/agiper/mssql agiper-mssql/
 docker build -t quay.io/agiper/dotnet agiper-dotnet/
 docker build -t quay.io/agiper/mariadb agiper-mariadb/
 docker build -t quay.io/agiper/elastic agiper-elastic/

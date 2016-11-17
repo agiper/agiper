@@ -1,4 +1,5 @@
 fleetctl start redis redis-discovery
+fleetctl start mssql mssql-discovery
 fleetctl start elastic elastic-discovery
 fleetctl start rabbitmq rabbitmq-discovery
 fleetctl start apihost@{1..2} apihost-discovery@{1..2}
