@@ -1,0 +1,19 @@
+[Unit]
+Description=SQL Server Service
+
+After=docker.service
+Before=mssql-discovery.service
+Requires=mssql-discovery.service
+
+[Service]
+KillMode=none
+Restart=always
+TimeoutStartSec=0
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker rm -f mssql
+ExecStartPre=/usr/bin/docker pull quay.io/agiper/mssql
+ExecStart=/usr/bin/docker run -m 1G -p 1433:1433 -v /home/core/volume/mssql:/var/lib/mssql --name mssql quay.io/agiper/mssql
+ExecStop=/usr/bin/docker stop mssql
+
+[X-Fleet]
+Conflicts=mssql.service
