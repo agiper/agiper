@@ -12,3 +12,4 @@ docker build -t quay.io/agiper/elastic agiper-elastic/
 docker build -t quay.io/agiper/rabbitmq agiper-rabbitmq/
 docker build -t quay.io/agiper/teamcity agiper-teamcity/
 docker build -t quay.io/agiper/dotnetapp agiper-dotnetapp/
+docker build -t quay.io/agiper/sqlserver agiper-sqlserver/

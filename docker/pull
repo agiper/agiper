@@ -10,3 +10,4 @@ docker pull quay.io/agiper/elastic
 docker pull quay.io/agiper/rabbitmq
 docker pull quay.io/agiper/teamcity
 docker pull quay.io/agiper/dotnetapp
+docker pull quay.io/agiper/sqlserver
