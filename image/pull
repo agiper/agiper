@@ -1,13 +1,12 @@
 set -e
-docker pull quay.io/agiper/base
-docker pull quay.io/agiper/java
-docker pull quay.io/agiper/tool
-docker pull quay.io/agiper/nginx
-docker pull quay.io/agiper/redis
-docker pull quay.io/agiper/mssql
-docker pull quay.io/agiper/dotnet
-docker pull quay.io/agiper/mariadb
-docker pull quay.io/agiper/elastic
-docker pull quay.io/agiper/rabbitmq
-docker pull quay.io/agiper/teamcity
-docker pull quay.io/agiper/dotnetapp
+docker pull agiper/base
+docker pull agiper/java
+docker pull agiper/core
+docker pull agiper/tool
+docker pull agiper/nginx
+docker pull agiper/redis
+docker pull agiper/mssql
+docker pull agiper/elastic
+docker pull agiper/coreapp
+docker pull agiper/rabbitmq
+docker pull agiper/teamcity

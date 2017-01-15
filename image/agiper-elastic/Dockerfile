@@ -1,4 +1,4 @@
-FROM quay.io/agiper/java
+FROM agiper/java
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \

@@ -1,4 +1,4 @@
-FROM quay.io/agiper/dotnet
+FROM agiper/core
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 COPY supervisord.conf /etc/supervisor/

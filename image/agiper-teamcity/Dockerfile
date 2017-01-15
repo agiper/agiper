@@ -1,4 +1,4 @@
-FROM quay.io/agiper/java
+FROM agiper/java
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" && \

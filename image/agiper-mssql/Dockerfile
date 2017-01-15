@@ -1,4 +1,4 @@
-FROM quay.io/agiper/base
+FROM agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \

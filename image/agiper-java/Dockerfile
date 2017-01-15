@@ -1,4 +1,4 @@
-FROM quay.io/agiper/base
+FROM agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN add-apt-repository ppa:webupd8team/java && \	
