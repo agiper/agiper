@@ -1,5 +1,5 @@
-#Docker
-| Container            | Status                                                                          |
+#quay.io
+| Image                | Status                                                                          |
 |:---------------------|:-------------------------------------------------------------------------------:|
 | agiper-base          | ![agiper-base](https://quay.io/repository/agiper/base/status)                   |
 | agiper-java          | ![agiper-java](https://quay.io/repository/agiper/java/status)                   |
