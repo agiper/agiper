@@ -12,8 +12,8 @@ Restart=always
 TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f nginx
-ExecStartPre=/usr/bin/docker pull quay.io/agiper/nginx
-ExecStart=/usr/bin/docker run -m 1G -p 8080:80 --name nginx quay.io/agiper/nginx
+ExecStartPre=/usr/bin/docker pull agiper/nginx
+ExecStart=/usr/bin/docker run -m 1G -p 8080:80 --name nginx agiper/nginx
 ExecStop=/usr/bin/docker stop nginx
 
 [X-Fleet]

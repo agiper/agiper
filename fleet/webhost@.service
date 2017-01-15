@@ -14,8 +14,8 @@ Restart=always
 TimeoutStartSec=0
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker rm -f webhost
-ExecStartPre=/usr/bin/docker pull quay.io/agiper/dotnetapp
-ExecStart=/usr/bin/docker run -m 512M -p 80:80 -p 8080:8080 -v /home/core/volume/host/web:/var/lib/host -e EXEC='Rolene.Server.Host.Web.dll' -h webhost-%i --name webhost quay.io/agiper/dotnetapp
+ExecStartPre=/usr/bin/docker pull agiper/coreapp
+ExecStart=/usr/bin/docker run -m 512M -p 80:80 -p 8080:8080 -v /home/core/volume/host/web:/var/lib/host -e EXEC='Rolene.Server.Host.Web.dll' -h webhost-%i --name webhost agiper/coreapp
 ExecStop=/usr/bin/docker stop webhost
 
 [X-Fleet]

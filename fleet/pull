@@ -1,8 +1,8 @@
 set -e
-docker pull quay.io/agiper/host
-docker pull quay.io/agiper/nginx
-docker pull quay.io/agiper/redis
-docker pull quay.io/agiper/elastic
-docker pull quay.io/agiper/mariadb
-docker pull quay.io/agiper/rabbitmq
-docker pull quay.io/agiper/sqlserver
+docker pull agiper/host
+docker pull agiper/nginx
+docker pull agiper/redis
+docker pull agiper/elastic
+docker pull agiper/mariadb
+docker pull agiper/rabbitmq
+docker pull agiper/sqlserver
