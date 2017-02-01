@@ -1,0 +1,67 @@
+version: "3"
+networks:
+    agiper-development:
+services:
+  # REDIS
+  redis:
+    ports:
+      - 6379
+    image: agiper/redis
+    networks:
+      - agiper-development
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+  # RABBITMQ
+  rabbitmq:
+    ports:
+      - 5672
+    image: agiper/rabbitmq
+    networks:
+      - agiper-development
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+  # ELASTIC
+  elastic:
+    ports:
+      - 5672
+    image: agiper/elastic
+    networks:
+      - agiper-development
+    deploy:
+      replicas: 2
+      mode: replicated
+  #COREAPP
+  coreapp:
+  ports:
+      - 80
+    image: agiper/coreapp
+    networks:
+      - agiper-development
+    depends_on:
+      - redis
+      - elastic
+      - rabbitmq
+    deploy:
+    replicas: 2
+      mode: replicated
+      labels: [app=api]
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+      restart_policy:
+        delay: 5s
+        window: 120s
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
