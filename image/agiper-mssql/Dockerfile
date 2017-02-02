@@ -1,4 +1,4 @@
-FROM agiper/base
+ 	FROM agiper/base
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list > /etc/apt/sources.list.d/mssql-server.list && \
@@ -7,9 +7,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN export ACCEPT_EULA=Y && \
-	export SA_PASSWORD= && \
-	/opt/mssql/bin/sqlservr-setup
+#RUN /opt/mssql/bin/sqlservr-setup
 
 EXPOSE 1433
 
