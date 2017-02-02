@@ -4,6 +4,7 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
 	echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-5.x.list && \
 	apt-get update && \
+	export ES_SKIP_SET_KERNEL_PARAMETERS=true && \
 	echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
 	apt-get install oracle-java8-installer elasticsearch kibana logstash -y --no-install-recommends && \
 	/usr/share/kibana/bin/kibana-plugin install x-pack && \

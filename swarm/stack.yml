@@ -1,52 +1,92 @@
 version: "3"
+
 networks:
     net:
+
 services:
   # REDIS
   redis:
+    networks:
+      - net
     ports:
       - 6379
-    image: agiper/redis
-    networks:
-      - net
+    resources:
+      reservations:
+        cpus: '0.25'
+        memory: 1024M
+    image: agiper/redis        
     deploy:
       placement:
         constraints: [node.role == manager]
+  
+
+# MSSQL
+  mssql:
+    networks:
+      - net
+    ports:
+      - 1433
+    resources:
+      reservations:
+        cpus: '0.25'
+        memory: 1024M
+    image: agiper/mssql        
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  
   # RABBITMQ
   rabbitmq:
-    ports:
-      - 5672
-    image: agiper/rabbitmq
     networks:
       - net
+    ports:
+      - 5672
+      - 15672
+    resources:
+      reservations:
+        cpus: '0.25'
+        memory: 1024M
+    image: agiper/rabbitmq
     deploy:
       placement:
         constraints: [node.role == manager]
+
+  
   # ELASTIC
   elastic:
-    ports:
-      - 5672
-    image: agiper/elastic
-    networks:
+  networks:
       - net
+    ports:
+      - 5601
+      - 9200
+      - 9300
+    resources:
+      limits:
+        cpus: '0.75'
+        memory: 2048M
+      reservations:
+        cpus: '0.25'
+        memory: 1024M
     deploy:
       replicas: 2
       mode: replicated
-  #COREAPP
-  coreapp:
-    ports:
-      - 80
-    image: agiper/coreapp
+    image: agiper/elastic
+
+
+  #DOTNET
+  dotnet:
     networks:
       - net
+    ports:
+      - 80
+    image: agiper/dotnet
     depends_on:
       - redis
       - elastic
       - rabbitmq
     deploy:
-      replicas: 2
-      mode: replicated
-      labels: [app=api]
+      mode: global
       resources:
         limits:
           cpus: '0.25'
