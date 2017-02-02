@@ -1,9 +1,9 @@
 FROM agiper/base
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
 	apt-get install tcl nodejs build-essential -y --no-install-recommends && \
+	cd /tmp && \
 	wget http://download.redis.io/redis-stable.tar.gz && \
 	tar xvzf redis-stable.tar.gz && \
 	cd redis-stable && \
@@ -17,8 +17,7 @@ RUN apt-get update && \
 
 COPY redis.conf /etc/redis/
 COPY sentinel.conf /etc/redis/
-COPY supervisord.conf /etc/supervisor/
 
 EXPOSE 6379
 
-CMD /usr/bin/supervisord
+ENTRYPOINT ["redis-server", "/etc/redis/redis.conf"]

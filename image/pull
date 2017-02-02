@@ -1,12 +1,9 @@
-set -e
 docker pull agiper/base
-docker pull agiper/java
-docker pull agiper/core
 docker pull agiper/tool
 docker pull agiper/nginx
 docker pull agiper/redis
 docker pull agiper/mssql
+docker pull agiper/dotnet
 docker pull agiper/elastic
-docker pull agiper/coreapp
 docker pull agiper/rabbitmq
 docker pull agiper/teamcity

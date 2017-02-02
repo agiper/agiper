@@ -1,21 +1,24 @@
-FROM agiper/java
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
+FROM agiper/base
 
-RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
+RUN add-apt-repository ppa:webupd8team/java && \	
+	wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
 	echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-5.x.list && \
 	apt-get update && \
-	apt-get install elasticsearch kibana logstash -y --no-install-recommends && \
+	echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+	apt-get install oracle-java8-installer elasticsearch kibana logstash -y --no-install-recommends && \
+	/usr/share/kibana/bin/kibana-plugin install x-pack && \
+	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack && \
+	echo "networkaddress.cache.ttl=60" >> /usr/lib/jvm/java-8-oracle/jre/lib/security/java.security && \
 	apt-get clean && \
+	rm -rf /var/cache/oracle-jdk8-installer && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
-
-RUN /usr/share/kibana/bin/kibana-plugin install x-pack && \
-	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack
 	
 COPY kibana.yml /etc/kibana/
 COPY jvm.options /etc/elasticsearch/
-COPY supervisord.conf /etc/supervisor/
 COPY elasticsearch.yml /etc/elasticsearch/
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 EXPOSE 5601 9200
 
-CMD /usr/bin/supervisord
+ENTRYPOINT ["service elasticsearch start"]

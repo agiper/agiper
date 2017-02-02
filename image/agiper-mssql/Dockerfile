@@ -1,5 +1,4 @@
 FROM agiper/base
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list > /etc/apt/sources.list.d/mssql-server.list && \
@@ -12,4 +11,4 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 
 EXPOSE 1433
 
-CMD /usr/bin/supervisord
+ENTRYPOINT ["service mssql-server start"]

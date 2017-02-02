@@ -1,5 +1,4 @@
 FROM agiper/base
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN apt-get update && \
 	apt-get install nginx -y --no-install-recommends && \
@@ -14,4 +13,4 @@ COPY supervisord.conf /etc/supervisor/
 
 EXPOSE 80
 
-CMD /usr/bin/supervisord
+ENTRYPOINT ["supervisord"]

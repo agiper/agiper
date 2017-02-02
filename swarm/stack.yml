@@ -1,6 +1,6 @@
 version: "3"
 networks:
-    agiper-development:
+    net:
 services:
   # REDIS
   redis:
@@ -8,7 +8,7 @@ services:
       - 6379
     image: agiper/redis
     networks:
-      - agiper-development
+      - net
     deploy:
       placement:
         constraints: [node.role == manager]
@@ -18,7 +18,7 @@ services:
       - 5672
     image: agiper/rabbitmq
     networks:
-      - agiper-development
+      - net
     deploy:
       placement:
         constraints: [node.role == manager]
@@ -28,23 +28,23 @@ services:
       - 5672
     image: agiper/elastic
     networks:
-      - agiper-development
+      - net
     deploy:
       replicas: 2
       mode: replicated
   #COREAPP
   coreapp:
-  ports:
+    ports:
       - 80
     image: agiper/coreapp
     networks:
-      - agiper-development
+      - net
     depends_on:
       - redis
       - elastic
       - rabbitmq
     deploy:
-    replicas: 2
+      replicas: 2
       mode: replicated
       labels: [app=api]
       resources:
