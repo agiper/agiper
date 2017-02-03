@@ -63,14 +63,15 @@ services:
       placement:
         constraints: [node.role == manager]
   
-  # ELASTICSEARCH
-  elasticsearch:
-    image: agiper/elasticsearch
+  # ELASTIC
+    :
+    image: agiper/elastic
     environment:
       - cluster.name=agiper
+      - node.name=development
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms4G -Xmx4G"
-    entrypoint: /usr/share/elasticsearch/elasticsearch
+      - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
+    entrypoint: /usr/local/bin/elastic.sh
     networks:
       - agiper
     ports:
@@ -101,7 +102,7 @@ services:
       - mssql
       - redis
       - rabbitmq
-      - elasticsearch
+      - elastic
     deploy:
       mode: global
       resources:
@@ -130,7 +131,7 @@ services:
       - mssql
       - redis
       - rabbitmq
-      - elasticsearch
+      - elastic
     deploy:
       mode: global
       resources:
@@ -159,7 +160,7 @@ services:
       - mssql
       - redis
       - rabbitmq
-      - elasticsearch
+      - elastic
     deploy:
       mode: global
       resources:
