@@ -8,7 +8,7 @@ services:
   nginx:
     image: agiper/nginx
     volumes:
-      - ~/volume/nginx:/var/lib/nginx
+      - ~/volume/nginx:/etc/nginx
     entrypoint: service nginx start && bash
     networks:
       - agiper
