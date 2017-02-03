@@ -8,8 +8,7 @@ services:
   nginx:
     image: agiper/nginx
     volumes:
-      - ~/volume/nginx:/etc/nginx
-    entrypoint: nginx -g 'daemon off;'
+      - ~/volume/nginx:/var/lib/nginx
     networks:
       - agiper
     ports:
@@ -48,7 +47,6 @@ services:
     image: agiper/teamcity
     volumes:
       - ~/volume/teamcity:/var/lib/teamcity
-    entrypoint: /opt/teamcity/bin/teamcity-server.sh run
     networks:
       - agiper
     ports:

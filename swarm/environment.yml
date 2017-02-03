@@ -67,7 +67,6 @@ services:
       - node.name=development
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
-    command: /usr/local/bin/elastic.sh
     networks:
       - agiper
     ports:
