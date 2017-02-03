@@ -8,8 +8,10 @@ services:
   mssql:
     image: agiper/mssql
     volumes:
-      - ~/volume/mssql:/var/lib/mssql
-    entrypoint: service mssql start && bash
+      - ~/volume/mssql:/var/opt/mssql
+    environment:
+      - SA_PASSWORD=sa
+    entrypoint: /opt/mssql/bin/sqlservr-setup --accept-eula --set-sa-password --start-service
     networks:
       - agiper
     ports:
@@ -18,7 +20,9 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 1024M    
+          memory: 1024M
+      restart_policy:
+        condition: none
       placement:
         constraints: [node.role == manager]
 
@@ -35,6 +39,8 @@ services:
         reservations:
           cpus: '0.25'
           memory: 1024M
+      restart_policy:
+        condition: none          
       placement:
         constraints: [node.role == manager]
 
@@ -51,14 +57,20 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 1024M    
+          memory: 1024M
+      restart_policy:
+        condition: none
       placement:
         constraints: [node.role == manager]
   
   # ELASTICSEARCH
   elasticsearch:
-    image: agiper/elasticsearch    
-    entrypoint: service elasticsearch start && bash
+    image: agiper/elasticsearch
+    environment:
+      - cluster.name=agiper
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    entrypoint: service elasticsearch start && sleep infinity
     networks:
       - agiper
     ports:
@@ -66,17 +78,17 @@ services:
       - "9200"
       - "9300"
     deploy:
-      mode: global
       resources:
-        limits:
-          cpus: '0.75'
-          memory: 2048M
         reservations:
           cpus: '0.25'
           memory: 1024M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
 
-  #WEB
-  web:
+  #WEBHOST
+  webhost:
     image: agiper/dotnet
     volumes:
       - ~/volume/dotnet/web:/var/lib/dotnet
@@ -99,8 +111,13 @@ services:
         reservations:
           cpus: '0.25'
           memory: 256M
-  #API
-  api:
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == worker]
+
+  #APIHOST
+  apihost:
     image: agiper/dotnet
     volumes:
       - ~/volume/dotnet/api:/var/lib/dotnet
@@ -123,9 +140,13 @@ services:
         reservations:
           cpus: '0.25'
           memory: 256M
-
-  #JOB
-  job:
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == worker]
+  
+  #JOBHOST
+  jobhost:
     image: agiper/dotnet
     volumes:
       - ~/volume/dotnet/job:/var/lib/dotnet
@@ -148,3 +169,7 @@ services:
         reservations:
           cpus: '0.25'
           memory: 256M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == worker]

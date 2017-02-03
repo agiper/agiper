@@ -9,7 +9,7 @@ services:
     image: agiper/nginx
     volumes:
       - ~/volume/nginx:/etc/nginx
-    entrypoint: service nginx start && bash
+    entrypoint: nginx -g 'daemon off;'
     networks:
       - agiper
     ports:
@@ -19,6 +19,8 @@ services:
         reservations:
           cpus: '0.25'
           memory: 1024M
+      restart_policy:
+        condition: none
       placement:
         constraints: [node.role == manager]
 
@@ -36,6 +38,8 @@ services:
         reservations:
           cpus: '0.25'
           memory: 1024M
+      restart_policy:
+        condition: none          
       placement:
         constraints: [node.role == manager]              
 
@@ -54,5 +58,7 @@ services:
         reservations:
           cpus: '0.25'
           memory: 1024M
+      restart_policy:
+        condition: none          
       placement:
         constraints: [node.role == manager]
