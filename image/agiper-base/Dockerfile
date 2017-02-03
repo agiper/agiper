@@ -9,8 +9,6 @@ RUN apt-get update && \
 		htop \
 		curl \
 		nmap \
-		haveged \
-		supervisor \
 		iputils-ping \
 		software-properties-common && \
 	apt-get clean && \
