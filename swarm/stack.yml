@@ -4,27 +4,9 @@ networks:
   agiper:
 
 services:
-  # NGINX
-  nginx:
-    image: agiper/nginx
-    volumes:
-      - ~/volume/nginx:/var/lib/nginx
-    entrypoint: service nginx start && bash
-    networks:
-      - agiper
-    ports:
-      - "80:80"
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
-      placement:
-        constraints: [node.role == manager]
-
   # MSSQL
   mssql:
-    image: agiper/mssql
+    image: agiper/mssql:latest
     volumes:
       - ~/volume/mssql:/var/lib/mssql
     entrypoint: service mssql start && bash
@@ -42,7 +24,7 @@ services:
 
   # REDIS
   redis:
-    image: agiper/redis
+    image: agiper/redis:latest
     volumes:
       - ~/volume/redis:/var/lib/redis
     entrypoint: redis-server /etc/redis/redis.conf
@@ -60,7 +42,7 @@ services:
 
   # RABBITMQ
   rabbitmq:
-    image: agiper/rabbitmq
+    image: agiper/rabbitmq:latest
     volumes:
       - ~/volume/rabbitmq:/var/lib/rabbitmq
     entrypoint: rabbitmq-server
@@ -79,7 +61,7 @@ services:
   
   # ELASTIC
   elastic:
-    image: agiper/elastic
+    image: agiper/elastic:latest
     volumes:
       - ~/volume/elastic:/var/lib/elastic
     entrypoint: service elasticsearch start && bash
@@ -101,7 +83,7 @@ services:
 
   #DOTNET
   dotnet:
-    image: agiper/dotnet
+    image: agiper/dotnet:latest
     volumes:
       - ~/volume/dotnet:/var/lib/dotnet
     entrypoint: dotnet $EXECUTABLE && bash

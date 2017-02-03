@@ -4,15 +4,33 @@ networks:
   agiper:
 
 services:
-# GHOST
+  # NGINX
+  nginx:
+    image: agiper/nginx:latest
+    volumes:
+      - ~/volume/nginx:/var/lib/nginx
+    entrypoint: service nginx start && bash
+    networks:
+      - agiper
+    ports:
+      - "80:80"
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+      placement:
+        constraints: [node.role == manager]
+
+  # GHOST
   ghost:
-    image: ghost
+    image: ghost:latest
     volumes:
       - ~/volume/ghost:/var/lib/ghost
     networks:
       - agiper
     ports:
-      - "80:2368"
+      - "2368:2368"
     deploy:
       resources:
         reservations:
@@ -23,7 +41,7 @@ services:
 
   # TEAMCITY
   teamcity:
-    image: agiper/teamcity
+    image: agiper/teamcity:latest
     volumes:
       - ~/volume/teamcity:/var/lib/teamcity
     entrypoint: /opt/teamcity/bin/teamcity-server.sh run
