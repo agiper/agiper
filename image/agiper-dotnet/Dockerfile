@@ -6,5 +6,3 @@ RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos
 	apt-get install dotnet-dev-1.0.0-preview2.1-003177 -y --no-install-recommends && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
-
-ENTRYPOINT dotnet $EXEC

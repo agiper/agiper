@@ -21,5 +21,3 @@ ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
 
 EXPOSE 8111
-
-ENTRYPOINT /opt/teamcity/bin/runAll.sh start

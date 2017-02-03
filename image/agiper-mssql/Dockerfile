@@ -10,5 +10,3 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 #RUN /opt/mssql/bin/sqlservr-setup
 
 EXPOSE 1433
-
-ENTRYPOINT service mssql-server start && bash

@@ -9,5 +9,3 @@ RUN apt-get update && \
 COPY nginx.conf /etc/nginx/
 
 EXPOSE 80
-
-ENTRYPOINT service nginx start && bash

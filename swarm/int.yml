@@ -1,0 +1,40 @@
+version: "3"
+
+networks:
+  agiper:
+
+services:
+# GHOST
+  ghost:
+    image: ghost
+    volumes:
+      - ~/volume/ghost:/var/lib/ghost
+    networks:
+      - agiper
+    ports:
+      - "80:2368"
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+      placement:
+        constraints: [node.role == manager]              
+
+  # TEAMCITY
+  teamcity:
+    image: agiper/teamcity
+    volumes:
+      - ~/volume/teamcity:/var/lib/teamcity
+    entrypoint: /opt/teamcity/bin/teamcity-server.sh run
+    networks:
+      - agiper
+    ports:
+      - "8111:8111"
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+      placement:
+        constraints: [node.role == manager]
