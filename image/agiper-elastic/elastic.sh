@@ -3,7 +3,6 @@
 # /usr/local/bin/start.sh
 # Start Elasticsearch, Logstash and Kibana services
 #
-# spujadas 2015-10-09; added initial pidfile removal and graceful termination
 
 # WARNING - This script assumes that the ELK services are not running, and is
 #   only expected to be run once, when the container is started.

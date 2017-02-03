@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:0.9.19
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN apt-get update && \
@@ -14,3 +14,5 @@ RUN apt-get update && \
 		software-properties-common && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+
+CMD ["/sbin/my_init"]
