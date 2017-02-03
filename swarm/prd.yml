@@ -6,7 +6,7 @@ networks:
 services:
   # NGINX
   nginx:
-    image: agiper/nginx:latest
+    image: agiper/nginx
     volumes:
       - ~/volume/nginx:/var/lib/nginx
     entrypoint: service nginx start && bash
@@ -24,7 +24,7 @@ services:
 
   # GHOST
   ghost:
-    image: ghost:latest
+    image: ghost
     volumes:
       - ~/volume/ghost:/var/lib/ghost
     networks:
@@ -41,7 +41,7 @@ services:
 
   # TEAMCITY
   teamcity:
-    image: agiper/teamcity:latest
+    image: agiper/teamcity
     volumes:
       - ~/volume/teamcity:/var/lib/teamcity
     entrypoint: /opt/teamcity/bin/teamcity-server.sh run
