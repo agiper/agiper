@@ -75,16 +75,16 @@ services:
           cpus: '0.25'
           memory: 1024M
 
-  #DOTNET
-  dotnet:
+  #WEB
+  web:
     image: agiper/dotnet
     volumes:
-      - ~/volume/dotnet:/var/lib/dotnet
-    entrypoint: dotnet $EXECUTABLE && bash
+      - ~/volume/dotnet/web:/var/lib/dotnet
+    entrypoint: dotnet /var/lib/dotnet/Rolene.Server.Host.Web.dll
     networks:
       - agiper
     ports:
-      - "80"
+      - "8080"
     depends_on:
       - mssql
       - redis
@@ -99,14 +99,52 @@ services:
         reservations:
           cpus: '0.25'
           memory: 256M
-      restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 3
-        condition: on-failure
-      update_config:
-        delay: 10s
-        monitor: 60s
-        parallelism: 1
-        max_failure_ratio: 0.3
-        failure_action: continue
+  #API
+  api:
+    image: agiper/dotnet
+    volumes:
+      - ~/volume/dotnet/api:/var/lib/dotnet
+    entrypoint: dotnet /var/lib/dotnet/Rolene.Server.Host.Api.dll
+    networks:
+      - agiper
+    ports:
+      - "8081"
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - elasticsearch
+    deploy:
+      mode: global
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  #JOB
+  job:
+    image: agiper/dotnet
+    volumes:
+      - ~/volume/dotnet/job:/var/lib/dotnet
+    entrypoint: dotnet /var/lib/dotnet/Rolene.Server.Host.Job.dll
+    networks:
+      - agiper
+    ports:
+      - "8082"
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - elasticsearch
+    deploy:
+      mode: global
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
