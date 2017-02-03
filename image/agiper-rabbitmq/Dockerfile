@@ -9,4 +9,6 @@ RUN add-apt-repository "deb http://www.rabbitmq.com/debian testing main" && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+COPY run /etc/service/rabbitmq/run
+
 EXPOSE 5672 15672

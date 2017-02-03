@@ -15,4 +15,6 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-CMD ["/sbin/my_init"]
+RUN mv /sbin/my_init /sbin/run
+
+CMD ["/sbin/run"]

@@ -29,7 +29,6 @@ services:
   # REDIS
   redis:
     image: agiper/redis
-    entrypoint: redis-server /etc/redis/redis.conf
     networks:
       - agiper
     ports:
@@ -47,7 +46,6 @@ services:
   # RABBITMQ
   rabbitmq:
     image: agiper/rabbitmq
-    entrypoint: rabbitmq-server
     networks:
       - agiper
     ports:
@@ -64,7 +62,6 @@ services:
         constraints: [node.role == manager]
   
   # ELASTIC
-    :
     image: agiper/elastic
     environment:
       - cluster.name=agiper
@@ -101,8 +98,8 @@ services:
     depends_on:
       - mssql
       - redis
-      - rabbitmq
       - elastic
+      - rabbitmq
     deploy:
       mode: global
       resources:
@@ -130,8 +127,8 @@ services:
     depends_on:
       - mssql
       - redis
-      - rabbitmq
       - elastic
+      - rabbitmq
     deploy:
       mode: global
       resources:
@@ -159,8 +156,8 @@ services:
     depends_on:
       - mssql
       - redis
-      - rabbitmq
       - elastic
+      - rabbitmq
     deploy:
       mode: global
       resources:

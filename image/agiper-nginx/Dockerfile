@@ -7,5 +7,6 @@ RUN apt-get update && \
 	rm -v /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default
 
 COPY nginx.conf /etc/nginx/
+COPY run /etc/service/nginx/run
 
 EXPOSE 80
