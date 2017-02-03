@@ -20,6 +20,6 @@ COPY elasticsearch.yml /etc/elasticsearch/
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-EXPOSE 5601 9200
+EXPOSE 5601 9200 9300
 
-ENTRYPOINT ["service elasticsearch start"]
+ENTRYPOINT service elasticsearch start && bash

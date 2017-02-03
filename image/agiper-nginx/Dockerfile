@@ -7,10 +7,7 @@ RUN apt-get update && \
 	rm -v /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default
 
 COPY nginx.conf /etc/nginx/
-COPY nginx.toml /etc/confd/conf.d/
-COPY nginx.tmpl /etc/confd/templates/
-COPY supervisord.conf /etc/supervisor/
 
 EXPOSE 80
 
-ENTRYPOINT ["supervisord"]
+ENTRYPOINT service nginx start && bash

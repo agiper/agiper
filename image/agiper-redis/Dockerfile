@@ -20,4 +20,4 @@ COPY sentinel.conf /etc/redis/
 
 EXPOSE 6379
 
-ENTRYPOINT ["redis-server", "/etc/redis/redis.conf"]
+ENTRYPOINT redis-server /etc/redis/redis.conf

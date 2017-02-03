@@ -11,4 +11,4 @@ RUN add-apt-repository "deb http://www.rabbitmq.com/debian testing main" && \
 
 EXPOSE 5672 15672
 
-ENTRYPOINT ["rabbitmq-server"]
+ENTRYPOINT rabbitmq-server
