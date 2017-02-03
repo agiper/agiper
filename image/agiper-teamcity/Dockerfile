@@ -16,6 +16,8 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	rm -rf /var/cache/oracle-jdk8-installer && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
+COPY run /etc/service/teamcity/run
+
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom

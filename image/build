@@ -5,6 +5,6 @@ docker build -t agiper/nginx agiper-nginx/
 docker build -t agiper/redis agiper-redis/
 docker build -t agiper/mssql agiper-mssql/
 docker build -t agiper/dotnet agiper-dotnet/
+docker build -t agiper/elastic agiper-elastic/
 docker build -t agiper/rabbitmq agiper-rabbitmq/
 docker build -t agiper/teamcity agiper-teamcity/
-docker build -t agiper/elasticsearch agiper-elasticsearch/

@@ -11,7 +11,6 @@ services:
       - ~/volume/mssql:/var/opt/mssql
     environment:
       - SA_PASSWORD=sa
-    entrypoint: /opt/mssql/bin/sqlservr-setup --accept-eula --set-sa-password --start-service
     networks:
       - agiper
     ports:
@@ -68,7 +67,7 @@ services:
       - node.name=development
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
-    entrypoint: /usr/local/bin/elastic.sh
+    command: /usr/local/bin/elastic.sh
     networks:
       - agiper
     ports:
@@ -90,7 +89,8 @@ services:
     image: agiper/dotnet
     volumes:
       - ~/volume/dotnet/web:/var/lib/dotnet
-    entrypoint: dotnet /var/lib/dotnet/Rolene.Server.Host.Web.dll
+    environment:
+      - EXECUTABLE=/var/lib/dotnet/Rolene.Server.Host.Web.dll
     networks:
       - agiper
     ports:
@@ -119,7 +119,8 @@ services:
     image: agiper/dotnet
     volumes:
       - ~/volume/dotnet/api:/var/lib/dotnet
-    entrypoint: dotnet /var/lib/dotnet/Rolene.Server.Host.Api.dll
+    environment:
+      - EXECUTABLE=/var/lib/dotnet/Rolene.Server.Host.Api.dll
     networks:
       - agiper
     ports:
@@ -148,7 +149,8 @@ services:
     image: agiper/dotnet
     volumes:
       - ~/volume/dotnet/job:/var/lib/dotnet
-    entrypoint: dotnet /var/lib/dotnet/Rolene.Server.Host.Job.dll
+    environment:
+      - EXECUTABLE=/var/lib/dotnet/Rolene.Server.Host.Job.dll
     networks:
       - agiper
     ports:

@@ -7,3 +7,5 @@ RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos
 	mkdir -p /var/lib/dotnet && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+
+COPY run /etc/service/teamcity/run
