@@ -69,8 +69,8 @@ services:
     environment:
       - cluster.name=agiper
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    entrypoint: service elasticsearch start && sleep infinity
+      - "ES_JAVA_OPTS=-Xms4G -Xmx4G"
+    entrypoint: /usr/share/elasticsearch/elasticsearch
     networks:
       - agiper
     ports:

@@ -8,7 +8,8 @@ RUN apt-get update && \
 		nano \
 		htop \
 		curl \
-		nmap \
+		telnet \
+		net-tools \
 		iputils-ping \
 		software-properties-common && \
 	apt-get clean && \
