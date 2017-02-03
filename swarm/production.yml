@@ -30,7 +30,7 @@ services:
     networks:
       - agiper
     ports:
-      - "2368:2368"
+      - "2368"
     deploy:
       resources:
         reservations:
@@ -48,7 +48,7 @@ services:
     networks:
       - agiper
     ports:
-      - "8111:8111"
+      - "8111"
     deploy:
       resources:
         reservations:

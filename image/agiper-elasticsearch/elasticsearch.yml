@@ -14,7 +14,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: Agiper
+cluster.name: agiper
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -30,11 +30,11 @@ node.name: ${HOSTNAME}
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-path.data: /var/lib/elastic
+path.data: /var/lib/elasticsearch
 #
 # Path to log files:
 #
-path.logs: /var/log/elastic
+path.logs: /var/log/elasticsearch
 #
 # ----------------------------------- Memory -----------------------------------
 #

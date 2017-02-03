@@ -13,7 +13,7 @@ services:
     networks:
       - agiper
     ports:
-      - "1433:1433"
+      - "1433"
     deploy:
       resources:
         reservations:
@@ -31,7 +31,7 @@ services:
     networks:
       - agiper
     ports:
-      - "6379:6379"
+      - "6379"
     deploy:
       resources:
         reservations:
@@ -49,8 +49,8 @@ services:
     networks:
       - agiper
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "5672"
+      - "15672"
     deploy:
       resources:
         reservations:
@@ -59,18 +59,16 @@ services:
       placement:
         constraints: [node.role == manager]
   
-  # ELASTIC
-  elastic:
-    image: agiper/elastic
-    volumes:
-      - ~/volume/elastic:/var/lib/elastic
+  # ELASTICSEARCH
+  elasticsearch:
+    image: agiper/elasticsearch    
     entrypoint: service elasticsearch start && bash
     networks:
       - agiper
     ports:
-      - "5601:5601"
-      - "9200:9200"
-      - "9300:9300"
+      - "5601"
+      - "9200"
+      - "9300"
     deploy:
       mode: global
       resources:
@@ -90,17 +88,12 @@ services:
     networks:
       - agiper
     ports:
-      - "81:81"
-    links:
-      - mssql
-      - redis
-      - elastic
-      - rabbitmq
+      - "80"
     depends_on:
       - mssql
       - redis
-      - elastic
       - rabbitmq
+      - elasticsearch
     deploy:
       mode: global
       resources:

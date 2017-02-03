@@ -7,8 +7,8 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	export ES_SKIP_SET_KERNEL_PARAMETERS=true && \
 	echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
 	apt-get install oracle-java8-installer elasticsearch kibana logstash -y --no-install-recommends && \
-	mkdir -p /var/lib/elastic && \
-	mkdir -p /var/log/elastic && \
+	mkdir -p /var/lib/elasticsearch && \
+	mkdir -p /var/log/elasticsearch && \
 	/usr/share/kibana/bin/kibana-plugin install x-pack && \
 	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack && \
 	echo "networkaddress.cache.ttl=60" >> /usr/lib/jvm/java-8-oracle/jre/lib/security/java.security && \
