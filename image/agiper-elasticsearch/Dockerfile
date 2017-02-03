@@ -20,6 +20,7 @@ COPY kibana.yml /etc/kibana/
 COPY jvm.options /etc/elasticsearch/
 COPY elasticsearch.yml /etc/elasticsearch/
 
+ENV ES_SKIP_SET_KERNEL_PARAMETERS true
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 EXPOSE 5601 9200 9300

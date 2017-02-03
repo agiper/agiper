@@ -44,7 +44,7 @@ services:
     image: agiper/teamcity
     volumes:
       - ~/volume/teamcity:/var/lib/teamcity
-    command: /bin/bash -C '/opt/teamcity/bin/runAll.sh start'
+    entrypoint: /opt/teamcity/bin/teamcity-server.sh run
     networks:
       - agiper
     ports:
