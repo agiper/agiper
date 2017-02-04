@@ -1,3 +1,2 @@
 #!/bin/bash
-
-exec dotnet $EXECUTABLE
+exec dotnet $APPLICATION

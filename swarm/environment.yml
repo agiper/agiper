@@ -61,6 +61,7 @@ services:
         constraints: [node.role == manager]
   
   # ELASTIC
+  elastic:
     image: agiper/elastic
     environment:
       - cluster.name=agiper
@@ -89,7 +90,7 @@ services:
     volumes:
       - ~/volume/dotnet/web:/var/lib/dotnet
     environment:
-      - EXECUTABLE=/var/lib/dotnet/Rolene.Server.Host.Web.dll
+      - APPLICATION=/var/lib/dotnet/Rolene.Server.Host.Web.dll
     networks:
       - agiper
     ports:
@@ -119,7 +120,7 @@ services:
     volumes:
       - ~/volume/dotnet/api:/var/lib/dotnet
     environment:
-      - EXECUTABLE=/var/lib/dotnet/Rolene.Server.Host.Api.dll
+      - APPLICATION=/var/lib/dotnet/Rolene.Server.Host.Api.dll
     networks:
       - agiper
     ports:
@@ -149,7 +150,7 @@ services:
     volumes:
       - ~/volume/dotnet/job:/var/lib/dotnet
     environment:
-      - EXECUTABLE=/var/lib/dotnet/Rolene.Server.Host.Job.dll
+      - APPLICATION=/var/lib/dotnet/Rolene.Server.Host.Job.dll
     networks:
       - agiper
     ports:
