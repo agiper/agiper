@@ -1,3 +1,4 @@
+#!/bin/bash
 docker pull agiper/base
 docker pull agiper/tool
 docker pull agiper/nginx

@@ -1,3 +1,4 @@
+#!/bin/bash
 docker system prune
 docker build -t agiper/base agiper-base/
 docker build -t agiper/tool agiper-tool/
