@@ -64,10 +64,12 @@ services:
   elastic:
     image: agiper/elastic
     environment:
+      - http.host=0.0.0.0
       - cluster.name=agiper
       - node.name=development
+      - transport.host=127.0.0.1
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     networks:
       - agiper
     ports:

@@ -18,6 +18,7 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	
 COPY run /etc/my_init.d/
 COPY kibana.yml /etc/kibana/
+COPY jvm.options /etc/elasticsearch/
 COPY elasticsearch.yml /etc/elasticsearch/
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
