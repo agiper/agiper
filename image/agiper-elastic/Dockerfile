@@ -11,8 +11,7 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	mkdir -p /var/log/elasticsearch && \
 	/usr/share/kibana/bin/kibana-plugin install x-pack && \
 	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack && \
-	echo "vm.max_map_count = 262144" >> /etc/sysctl.conf && \
-	echo "networkaddress.cache.ttl = 60" >> /usr/lib/jvm/java-8-oracle/jre/lib/security/java.security && \
+	echo "networkaddress.cache.ttl=60" >> /usr/lib/jvm/java-8-oracle/jre/lib/security/java.security && \
 	apt-get clean && \
 	rm -rf /var/cache/oracle-jdk8-installer && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
