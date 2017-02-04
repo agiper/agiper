@@ -1,3 +1,2 @@
 #!/bin/bash
-/opt/teamcity/buildAgent/bin/agent.sh start
-exec /opt/teamcity/bin/teamcity-server.sh start
+/opt/teamcity/bin/runAll.sh start

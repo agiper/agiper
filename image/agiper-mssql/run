@@ -1,3 +1,2 @@
 #!/bin/bash
-/opt/mssql/bin/sqlservr-setup --accept-eula
 exec /opt/mssql/bin/sqlservr

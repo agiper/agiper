@@ -16,8 +16,8 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	rm -rf /var/cache/oracle-jdk8-installer && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 	
+COPY run /etc/my_init.d/
 COPY kibana.yml /etc/kibana/
-COPY run /etc/service/elastic/run
 COPY jvm.options /etc/elasticsearch/
 COPY elasticsearch.yml /etc/elasticsearch/
 
