@@ -9,6 +9,7 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	apt-get install oracle-java8-installer elasticsearch kibana logstash -y --no-install-recommends && \
 	mkdir -p /var/lib/elasticsearch && \
 	mkdir -p /var/log/elasticsearch && \
+	echo "vm.max_map_count=262144" >> /etc/sysctl.conf && \
 	/usr/share/kibana/bin/kibana-plugin install x-pack && \
 	/usr/share/elasticsearch/bin/elasticsearch-plugin install x-pack && \
 	echo "networkaddress.cache.ttl=60" >> /usr/lib/jvm/java-8-oracle/jre/lib/security/java.security && \
@@ -18,7 +19,6 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	
 COPY run /etc/my_init.d/
 COPY kibana.yml /etc/kibana/
-COPY jvm.options /etc/elasticsearch/
 COPY elasticsearch.yml /etc/elasticsearch/
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
