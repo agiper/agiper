@@ -92,7 +92,7 @@ services:
     volumes:
       - ~/volume/dotnet/web:/var/lib/dotnet
     environment:
-      - APPLICATION=/var/lib/dotnet/Rolene.Server.Host.Web.dll
+      - APPLICATION=Rolene.Server.Host.Web.dll
     networks:
       - agiper
     ports:
@@ -122,7 +122,7 @@ services:
     volumes:
       - ~/volume/dotnet/api:/var/lib/dotnet
     environment:
-      - APPLICATION=/var/lib/dotnet/Rolene.Server.Host.Api.dll
+      - APPLICATION=Rolene.Server.Host.Api.dll
     networks:
       - agiper
     ports:
@@ -152,7 +152,7 @@ services:
     volumes:
       - ~/volume/dotnet/job:/var/lib/dotnet
     environment:
-      - APPLICATION=/var/lib/dotnet/Rolene.Server.Host.Job.dll
+      - APPLICATION=Rolene.Server.Host.Job.dll
     networks:
       - agiper
     ports:

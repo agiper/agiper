@@ -1,2 +1,2 @@
 #!/bin/bash
-exec dotnet $APPLICATION
+exec dotnet /var/lib/dotnet/$APPLICATION
