@@ -15,6 +15,6 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN mv /sbin/my_init /sbin/run
+RUN mv /sbin/my_init /entrypoint.sh
 
-CMD ["/sbin/run"]
+ENTRYPOINT ["/entrypoint.sh"]
