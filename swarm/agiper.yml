@@ -3,6 +3,8 @@ version: "3"
 networks:
   agiper:
    external: true
+  agiper_development:
+   external: true
 
 services:
   # NGINX
@@ -50,6 +52,7 @@ services:
       - ~/volume/teamcity:/var/lib/teamcity
     networks:
       - agiper
+      - agiper_development
     ports:
       - "8111"
     deploy:

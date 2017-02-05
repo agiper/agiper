@@ -104,7 +104,7 @@ services:
       - elastic
       - rabbitmq
     deploy:
-      mode: global
+      replicas: 3
       resources:
         limits:
           cpus: '0.25'
@@ -134,7 +134,7 @@ services:
       - elastic
       - rabbitmq
     deploy:
-      mode: global
+      replicas: 3
       resources:
         limits:
           cpus: '0.25'
@@ -164,7 +164,7 @@ services:
       - elastic
       - rabbitmq
     deploy:
-      mode: global
+      replicas: 3
       resources:
         limits:
           cpus: '0.25'
