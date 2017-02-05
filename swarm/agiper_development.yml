@@ -1,11 +1,8 @@
 version: "3"
 
 networks:
-  agiper:
-    ipam:
-      driver: default
-      config:
-      - subnet: 10.0.1.0/24
+  agiper_development:
+   external: true
 
 services:
   # MSSQL
@@ -16,7 +13,7 @@ services:
     environment:
       - SA_PASSWORD=sa
     networks:
-      - agiper
+      - agiper_development
     ports:
       - "1433"
     deploy:
@@ -33,7 +30,7 @@ services:
   redis:
     image: agiper/redis
     networks:
-      - agiper
+      - agiper_development
     ports:
       - "6379"
     deploy:
@@ -50,7 +47,7 @@ services:
   rabbitmq:
     image: agiper/rabbitmq
     networks:
-      - agiper
+      - agiper_development
     ports:
       - "5672"
       - "15672"
@@ -75,7 +72,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     networks:
-      - agiper
+      - agiper_development
     ports:
       - "5601"
       - "9200"
@@ -98,7 +95,7 @@ services:
     environment:
       - APPLICATION=Rolene.Server.Host.Web.dll
     networks:
-      - agiper
+      - agiper_development
     ports:
       - "8080"
     depends_on:
@@ -128,7 +125,7 @@ services:
     environment:
       - APPLICATION=Rolene.Server.Host.Api.dll
     networks:
-      - agiper
+      - agiper_development
     ports:
       - "8081"
     depends_on:
@@ -158,7 +155,7 @@ services:
     environment:
       - APPLICATION=Rolene.Server.Host.Job.dll
     networks:
-      - agiper
+      - agiper_development
     ports:
       - "8082"
     depends_on:

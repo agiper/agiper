@@ -2,10 +2,7 @@ version: "3"
 
 networks:
   agiper:
-   ipam:
-      driver: default
-      config:
-      - subnet: 10.0.0.0/24
+   external: true
 
 services:
   # NGINX

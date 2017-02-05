@@ -1,1 +1,5 @@
-docker stack down development
+#!/bin/bash
+docker stack down agiper
+docker network rm agiper
+docker stack down agiper_development
+docker network rm agiper_development

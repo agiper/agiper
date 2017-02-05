@@ -1,3 +1,7 @@
+!/bin/bash
 sudo sysctl vm.overcommit_memory=1
 sudo sysctl -w vm.max_map_count=262144
-docker stack deploy -c development.yml development
+docker network create --driver overlay --subnet 10.0.0.0/24 agiper
+docker stack deploy -c agiper.yml agiper
+docker network create --driver overlay --subnet 10.0.1.0/24 agiper_development
+docker stack deploy -c agiper_development.yml agiper_development
