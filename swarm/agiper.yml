@@ -35,28 +35,9 @@ services:
       - "2368"
     deploy:
       resources:
-        reservations:
+        limits:
           cpus: '0.25'
-          memory: 1024M
-      restart_policy:
-        condition: none
-      placement:
-        constraints: [node.role == manager]
-
-# DOCKER
-  docker:
-    image: bargenson/docker-swarm-visualizer
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - agiper
-    ports:
-      - "8080"
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
+          memory: 512M
       restart_policy:
         condition: none
       placement:
@@ -73,9 +54,45 @@ services:
       - "8111"
     deploy:
       resources:
-        reservations:
-          cpus: '0.25'
+        limits:
+          cpus: '0.5'
           memory: 1024M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
+
+  # REGISTRY
+  registry:
+    image: registry
+    networks:
+      - agiper
+    ports:
+      - "5000"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
+
+  # VISUALIZER
+  visualizer:
+    image: bargenson/docker-swarm-visualizer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - agiper
+    ports:
+      - "8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
       restart_policy:
         condition: none
       placement:
