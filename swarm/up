@@ -10,5 +10,7 @@ docker network create --attachable --driver overlay --subnet 10.0.0.0/24 agiper
 docker network create --attachable --driver overlay --subnet 10.0.1.0/24 agiper_development
 
 echo -e "\e[1;32m[3/3] Deploying stacks to swarm\e[0m"
+echo -e "\e[0;32m[2/3] Creating agiper stack\e[0m"
 docker stack deploy -c agiper.yml agiper
+echo -e "\e[0;32m[2/3] Creating agiper_development stack\e[0m"
 docker stack deploy -c agiper_development.yml agiper_development

@@ -9,4 +9,6 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*	
 
+COPY run /etc/service/mssql/	
+
 EXPOSE 1433
