@@ -15,7 +15,7 @@ services:
     ports:
       - "1433:1433"
     environment:
-      - SA_PASSWORD=sa_password
+      - SA_PASSWORD=$@_p@$$word
     volumes:
       - ~/volume/mssql:/var/opt/mssql
     deploy:
@@ -96,7 +96,7 @@ services:
     networks:
       - agiper_development
     ports:
-      - "8080"
+      - "80"
     environment:
       - APPLICATION=Rolene.Server.Host.Web.dll
     deploy:
@@ -119,7 +119,7 @@ services:
     networks:
       - agiper_development
     ports:
-      - "8081"
+      - "81"
     environment:
       - APPLICATION=Rolene.Server.Host.Api.dll
     deploy:
@@ -142,7 +142,7 @@ services:
     networks:
       - agiper_development
     ports:
-      - "8082"
+      - "82"
     environment:
       - APPLICATION=Rolene.Server.Host.Job.dll
     deploy:
