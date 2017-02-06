@@ -3,8 +3,6 @@ version: "3"
 networks:
   agiper:
    external: true
-  agiper_development:
-   external: true
 
 services:
   # NGINX
@@ -41,9 +39,28 @@ services:
           cpus: '0.25'
           memory: 1024M
       restart_policy:
-        condition: none          
+        condition: none
       placement:
-        constraints: [node.role == manager]              
+        constraints: [node.role == manager]
+
+# DOCKER
+  docker:
+    image: manomarks/visualizer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - agiper
+    ports:
+      - "8080"
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
 
   # TEAMCITY
   teamcity:
@@ -52,7 +69,6 @@ services:
       - ~/volume/teamcity:/var/lib/teamcity
     networks:
       - agiper
-      - agiper_development
     ports:
       - "8111"
     deploy:
@@ -61,6 +77,6 @@ services:
           cpus: '0.25'
           memory: 1024M
       restart_policy:
-        condition: none          
+        condition: none
       placement:
         constraints: [node.role == manager]

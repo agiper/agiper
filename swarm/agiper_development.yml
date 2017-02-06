@@ -1,6 +1,8 @@
 version: "3"
 
 networks:
+  agiper:
+   external: true
   agiper_development:
    external: true
 

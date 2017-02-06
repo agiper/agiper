@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo -e "\n\e[1;32m[1/2] Removing overlay networks\e[0m"
+echo -e "\e[1;32m[1/2] Removing overlay networks\e[0m"
 docker stack down agiper
 docker stack down agiper_development
 
-echo -e "\n\e[1;32m[2/2] Removing stack from swarm\e[0m"
+echo -e "\e[1;32m[2/2] Removing stack from swarm\e[0m"
 docker network rm agiper
 docker network rm agiper_development
