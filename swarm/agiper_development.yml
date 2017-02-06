@@ -80,6 +80,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     deploy:
+      replicas: 2
       resources:
         reservations:
           cpus: '0.25'
@@ -92,19 +93,12 @@ services:
   #WEBHOST
   webhost:
     image: agiper/dotnet
-    volumes:
-      - ~/volume/dotnet/web:/var/lib/dotnet
-    environment:
-      - APPLICATION=Rolene.Server.Host.Web.dll
     networks:
       - agiper_development
     ports:
       - "8080"
-    depends_on:
-      - mssql
-      - redis
-      - elastic
-      - rabbitmq
+    environment:
+      - APPLICATION=Rolene.Server.Host.Web.dll
     deploy:
       replicas: 2
       resources:
@@ -122,19 +116,12 @@ services:
   #APIHOST
   apihost:
     image: agiper/dotnet
-    volumes:
-      - ~/volume/dotnet/api:/var/lib/dotnet
-    environment:
-      - APPLICATION=Rolene.Server.Host.Api.dll
     networks:
       - agiper_development
     ports:
       - "8081"
-    depends_on:
-      - mssql
-      - redis
-      - elastic
-      - rabbitmq
+    environment:
+      - APPLICATION=Rolene.Server.Host.Api.dll
     deploy:
       replicas: 2
       resources:
@@ -152,19 +139,12 @@ services:
   #JOBHOST
   jobhost:
     image: agiper/dotnet
-    volumes:
-      - ~/volume/dotnet/job:/var/lib/dotnet
-    environment:
-      - APPLICATION=Rolene.Server.Host.Job.dll
     networks:
       - agiper_development
     ports:
       - "8082"
-    depends_on:
-      - mssql
-      - redis
-      - elastic
-      - rabbitmq
+    environment:
+      - APPLICATION=Rolene.Server.Host.Job.dll
     deploy:
       replicas: 2
       resources:

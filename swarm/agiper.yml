@@ -45,7 +45,7 @@ services:
 
 # DOCKER
   docker:
-    image: manomarks/visualizer
+    image: bargenson/docker-swarm-visualizer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
