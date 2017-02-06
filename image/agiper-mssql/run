@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /opt/mssql/bin/sqlservr
+exec /opt/mssql/bin/sqlservr-setup --set-sa-password && /opt/mssql/bin/sqlservr
