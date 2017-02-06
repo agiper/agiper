@@ -7,6 +7,9 @@ networks:
    external: true
 
 services:
+  
+  # ******************* MANAGER ********************
+
   # MSSQL
   mssql:
     image: agiper/mssql
@@ -15,9 +18,7 @@ services:
     ports:
       - "1433:1433"
     environment:
-      - SA_PASSWORD=$@_p@$$word
-    volumes:
-      - ~/volume/mssql:/var/opt/mssql
+      - SA_PASSWORD=s@_p@ssword
     deploy:
       resources:
         reservations:
@@ -63,6 +64,8 @@ services:
       placement:
         constraints: [node.role == manager]
   
+  # ******************* WORKER ********************
+
   # ELASTIC
   elastic:
     image: agiper/elastic
@@ -92,7 +95,7 @@ services:
 
   #WEBHOST
   webhost:
-    image: agiper/dotnet
+    image: agiper-on.azurecr.io/agiper/webhost
     networks:
       - agiper_development
     ports:
@@ -115,7 +118,7 @@ services:
 
   #APIHOST
   apihost:
-    image: agiper/dotnet
+    image: agiper-on.azurecr.io/agiper/apihost
     networks:
       - agiper_development
     ports:
@@ -138,7 +141,7 @@ services:
   
   #JOBHOST
   jobhost:
-    image: agiper/dotnet
+    image: agiper-on.azurecr.io/agiper/jobhost
     networks:
       - agiper_development
     ports:
