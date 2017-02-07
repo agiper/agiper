@@ -44,6 +44,8 @@ services:
         condition: none
       placement:
         constraints: [node.role == manager]
+    healthcheck:
+      test: curl -f http://localhost:80 || exit 1
 
   # GHOST
   ghost:
