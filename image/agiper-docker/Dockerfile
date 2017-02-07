@@ -1,4 +1,4 @@
 FROM registry
 
-COPY domain.crt /var/lib/registry/
-COPY domain.key /var/lib/registry/
+COPY domain.crt /var/lib/certs/
+COPY domain.key /var/lib/certs/
