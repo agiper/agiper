@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /usr/sbin/nginx -c /var/lib/nginx/nginx.conf -g 'daemon off;'
+exec /usr/sbin/nginx -g 'daemon off;'

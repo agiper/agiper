@@ -5,28 +5,7 @@ networks:
    external: true
 
 services:
-  # NGINX
-  nginx:
-    image: agiper/nginx
-    networks:
-      - agiper
-    ports:
-      - "80:80"
-    volumes:
-      - ~/volume/nginx:/var/lib/nginx
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
-      restart_policy:
-        condition: none
-      placement:
-        constraints: [node.role == manager]
-    healthcheck:
-      test: curl -f http://localhost:80 || exit 1
-
-  # SWARM
+ # SWARM
   swarm:
     image: agiper/swarm
     networks:
@@ -47,9 +26,28 @@ services:
     healthcheck:
       test: curl -f http://localhost:8080 || exit 1
 
+  # NGINX
+  nginx:
+    image: agiper/nginx
+    networks:
+      - agiper
+    ports:
+      - "80:80"
+    volumes:
+      - ~/volume/nginx:/etc/nginx
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
+
   # GHOST
   ghost:
-    image: ghost
+    image: agiper/ghost
     networks:
       - agiper
     ports:
@@ -66,10 +64,7 @@ services:
       placement:
         constraints: [node.role == manager]
     healthcheck:
-      retries: 3
-      timeout: 30s
-      interval: 5m
-      test: curl -f http://localhost:2368
+      test: curl -f http://localhost:2368 || exit 1
 
   # DOCKER
   docker:
@@ -89,8 +84,6 @@ services:
         condition: none
       placement:
         constraints: [node.role == manager]
-    healthcheck:
-      test: curl -f http://localhost:5000 || exit 1
 
   # TEAMCITY
   teamcity:
@@ -110,5 +103,3 @@ services:
         condition: none
       placement:
         constraints: [node.role == manager]
-    healthcheck:
-      test: curl -f http://localhost:8111 || exit 1

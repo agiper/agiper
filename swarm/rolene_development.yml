@@ -34,8 +34,6 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
-    healthcheck:
-      test: curl -f http://localhost:1433 || exit 1 
 
   # REDIS
   redis:
@@ -94,8 +92,6 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
-    healthcheck:
-      test: curl -f http://localhost:9200 || exit 1
 
   # RABBITMQ
   rabbitmq:
@@ -120,8 +116,6 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
-    healthcheck:
-      test: curl -f http://localhost:5672 || exit 1
   
   # ****************** SERVICES *******************
 
@@ -150,8 +144,6 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
-    healthcheck:
-      test: curl -f http://localhost:80 || exit 1
 
   #APIHOST
   apihost:
@@ -178,8 +170,6 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
-    healthcheck:
-      test: curl -f http://localhost:81 || exit 1
   
   #JOBHOST
   jobhost:
@@ -206,5 +196,3 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
-    healthcheck:
-      test: curl -f http://localhost:82 || exit 1

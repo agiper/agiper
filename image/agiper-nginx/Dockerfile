@@ -6,7 +6,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* && \
 	rm -v /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default
 
+COPY nginx.conf /etc/nginx/
 COPY run /etc/service/nginx/
-COPY nginx.conf /var/lib/nginx/
 
 EXPOSE 80
