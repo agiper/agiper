@@ -68,12 +68,12 @@ services:
     networks:
       - agiper
     ports:
-      - "5000"
+      - "5000:5000"
     volumes:
       - ~/volume/docker:/var/lib/registry
     environment:
-      - REGISTRY_HTTP_TLS_KEY=/var/lib/registry/domain.key
-      - REGISTRY_HTTP_TLS_CERTIFICATE=/var/lib/registry/domain.crt
+      - REGISTRY_HTTP_TLS_KEY=/var/lib/registry/docker.key
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/var/lib/registry/docker.crt
     deploy:
       resources:
         limits:
