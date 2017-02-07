@@ -12,7 +12,7 @@ RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
 		nodejs \
 		docker-engine \
 		oracle-java8-installer \
-		dotnet-dev-1.0.0-rc3-004530 && \
+		dotnet-dev-1.0.0-rc4-004771 && \
 	npm install -g bower && \
 	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.4.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
