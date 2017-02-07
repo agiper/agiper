@@ -57,8 +57,6 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
-    healthcheck:
-      test: curl -f http://localhost:6379 || exit 1
 
   # ELASTIC
   elastic:
