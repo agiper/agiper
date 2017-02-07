@@ -3,22 +3,22 @@ version: "3"
 networks:
   agiper:
    external: true
-  agiper_development:
+  rolene_development:
    external: true
 
 services:
   
-  # ******************* MANAGER ********************
+  # **************** INFRASTRUCTURE *****************
 
   # MSSQL
   mssql:
     image: agiper/mssql
     networks:
-      - agiper_development
+      - rolene_development
     ports:
       - "1433:1433"
     environment:
-      - SA_PASSWORD=s@_p@ssword
+      - SA_PASSWORD=rX2Ja!293F8@
     deploy:
       resources:
         reservations:
@@ -30,13 +30,15 @@ services:
       restart_policy:
         condition: none
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
 
   # REDIS
   redis:
     image: agiper/redis
     networks:
-      - agiper_development
+      - rolene_development
     ports:
       - "6379"
     deploy:
@@ -50,13 +52,47 @@ services:
       restart_policy:
         condition: none          
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
+
+  # ELASTIC
+  elastic:
+    image: agiper/elastic
+    networks:
+      - rolene_development
+    ports:
+      - "5601"
+      - "9200"
+      - "9300"
+    environment:
+      - http.host=0.0.0.0
+      - cluster.name=agiper
+      - node.name=development
+      - transport.host=127.0.0.1
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    deploy:
+      mode: global
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 2048M
+      restart_policy:
+        condition: none
+      placement:
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
 
   # RABBITMQ
   rabbitmq:
     image: agiper/rabbitmq
     networks:
-      - agiper_development
+      - rolene_development
     ports:
       - "5672"
       - "15672"
@@ -71,52 +107,24 @@ services:
       restart_policy:
         condition: none
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
   
-  # ******************* WORKER ********************
-
-  # ELASTIC
-  elastic:
-    image: agiper/elastic
-    networks:
-      - agiper_development
-    ports:
-      - "5601"
-      - "9200"
-      - "9300"
-    environment:
-      - http.host=0.0.0.0
-      - cluster.name=agiper
-      - node.name=development
-      - transport.host=127.0.0.1
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-    deploy:
-      replicas: 1
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
-        limits:
-          cpus: '0.75'
-          memory: 2048M
-      restart_policy:
-        condition: none
-      placement:
-        constraints: [node.role == worker]
+  # ****************** SERVICES *******************
 
   #WEBHOST
   webhost:
-    image: registry:5000/agiper/webhost
+    image: registry:5000/rolene/webhost
     networks:
       - agiper
-      - agiper_development
+      - rolene_development
     ports:
       - "80"
     environment:
       - APPLICATION=Rolene.Server.Host.Web.dll
     deploy:
-      replicas: 1
+      mode: global
       resources:
         reservations:
           cpus: '0.25'
@@ -127,20 +135,22 @@ services:
       restart_policy:
         condition: none
       placement:
-        constraints: [node.role == worker]
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
 
   #APIHOST
   apihost:
-    image: registry:5000/agiper/apihost
+    image: registry:5000/rolene/apihost
     networks:
       - agiper
-      - agiper_development
+      - rolene_development
     ports:
       - "81"
     environment:
       - APPLICATION=Rolene.Server.Host.Api.dll
     deploy:
-      replicas: 1
+      mode: global
       resources:
         reservations:
           cpus: '0.25'
@@ -151,20 +161,22 @@ services:
       restart_policy:
         condition: none
       placement:
-        constraints: [node.role == worker]
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
   
   #JOBHOST
   jobhost:
-    image: registry:5000/agiper/jobhost
+    image: registry:5000/rolene/jobhost
     networks:
       - agiper
-      - agiper_development
+      - rolene_development
     ports:
       - "82"
     environment:
       - APPLICATION=Rolene.Server.Host.Job.dll
     deploy:
-      replicas: 1
+      mode: global
       resources:
         reservations:
           cpus: '0.25'
@@ -175,4 +187,6 @@ services:
       restart_policy:
         condition: none
       placement:
-        constraints: [node.role == worker]
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02

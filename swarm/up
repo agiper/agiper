@@ -7,10 +7,10 @@ sudo sysctl -w vm.max_map_count=262144
 
 echo -e "\e[1;32m[2/3] Creating overlay networks\e[0m"
 docker network create --attachable --driver overlay --subnet 10.0.0.0/24 agiper
-docker network create --attachable --driver overlay --subnet 10.0.1.0/24 agiper_development
+docker network create --attachable --driver overlay --subnet 10.0.1.0/24 rolene_development
 
 echo -e "\e[1;32m[3/3] Deploying stacks to swarm\e[0m"
 echo -e "\e[0;32mCreating agiper stack\e[0m"
 docker stack deploy -c agiper.yml agiper
-echo -e "\e[0;32mCreating agiper_development stack\e[0m"
-docker stack deploy -c agiper_development.yml agiper_development
+echo -e "\e[0;32mCreating rolene_development stack\e[0m"
+docker stack deploy -c rolene_development.yml rolene_development

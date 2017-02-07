@@ -1,9 +1,11 @@
 #!/bin/bash
 docker pull agiper/base
 docker pull agiper/tool
+docker pull agiper/swarm
 docker pull agiper/nginx
 docker pull agiper/redis
 docker pull agiper/mssql
+docker pull agiper/docker
 docker pull agiper/dotnet
 docker pull agiper/elastic
 docker pull agiper/rabbitmq

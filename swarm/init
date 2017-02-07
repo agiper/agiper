@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker swarm init --advertise-addr 13.76.242.233
