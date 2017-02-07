@@ -1,12 +1,18 @@
 FROM agiper/base
 
-RUN add-apt-repository ppa:webupd8team/java && \
+RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
+	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+	add-apt-repository ppa:webupd8team/java && \
+	apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main' && \
 	add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" && \
-	apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
 	apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
 	echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-	apt-get install nodejs dotnet-dev-1.0.0-rc3-004530 oracle-java8-installer -y --no-install-recommends && \
+	apt-get install -y --no-install-recommends \
+		nodejs \
+		docker-engine \
+		oracle-java8-installer \
+		dotnet-dev-1.0.0-rc3-004530 && \
 	npm install -g bower && \
 	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.4.tar.gz | tar -xzC /opt && \
 	mv /opt/TeamCity /opt/teamcity && \
