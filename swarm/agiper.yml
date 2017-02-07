@@ -8,12 +8,12 @@ services:
   # NGINX
   nginx:
     image: agiper/nginx
-    volumes:
-      - ~/volume/nginx:/var/lib/nginx
     networks:
       - agiper
     ports:
       - "80:80"
+    volumes:
+      - ~/volume/nginx:/var/lib/nginx
     deploy:
       resources:
         reservations:
@@ -23,16 +23,18 @@ services:
         condition: none
       placement:
         constraints: [node.role == manager]
+    healthcheck:
+      test: curl -f http://localhost:80 || exit 1
 
-  # GHOST
-  ghost:
-    image: ghost
-    volumes:
-      - ~/volume/ghost:/var/lib/ghost
+  # SWARM
+  swarm:
+    image: agiper/swarm
     networks:
       - agiper
     ports:
-      - "2368"
+      - "8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     deploy:
       resources:
         limits:
@@ -42,16 +44,63 @@ services:
         condition: none
       placement:
         constraints: [node.role == manager]
+    healthcheck:
+      test: curl -f http://localhost:8080 || exit 1
+
+  # GHOST
+  ghost:
+    image: ghost
+    networks:
+      - agiper
+    ports:
+      - "2368"
+    volumes: 
+      - ~/volume/ghost:/var/lib/ghost
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
+    healthcheck:
+      retries: 3
+      timeout: 30s
+      interval: 5m
+      test: curl -f http://localhost:2368
+
+  # DOCKER
+  docker:
+    image: agiper/docker
+    networks:
+      - agiper
+    ports:
+      - "5000"
+    volumes:
+      - ~/volume/docker:/var/lib/registry
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
+    healthcheck:
+      test: curl -f http://localhost:5000 || exit 1
 
   # TEAMCITY
   teamcity:
     image: agiper/teamcity
-    volumes:
-      - ~/volume/teamcity:/var/lib/teamcity
     networks:
       - agiper
     ports:
       - "8111"
+    volumes:
+      - ~/volume/teamcity:/var/lib/teamcity
     deploy:
       resources:
         limits:
@@ -61,39 +110,5 @@ services:
         condition: none
       placement:
         constraints: [node.role == manager]
-
-  # REGISTRY
-  registry:
-    image: registry
-    networks:
-      - agiper
-    ports:
-      - "5000"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.25'
-          memory: 512M
-      restart_policy:
-        condition: none
-      placement:
-        constraints: [node.role == manager]
-
-  # VISUALIZER
-  visualizer:
-    image: bargenson/docker-swarm-visualizer
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - agiper
-    ports:
-      - "8080"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.25'
-          memory: 512M
-      restart_policy:
-        condition: none
-      placement:
-        constraints: [node.role == manager]
+    healthcheck:
+      test: curl -f http://localhost:8111 || exit 1

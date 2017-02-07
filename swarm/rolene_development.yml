@@ -14,9 +14,10 @@ services:
   mssql:
     image: agiper/mssql
     networks:
+      - agiper
       - rolene_development
     ports:
-      - "1433:1433"
+      - "1433"
     environment:
       - SA_PASSWORD=rX2Ja!293F8@
     deploy:
@@ -33,11 +34,14 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
+    healthcheck:
+      test: curl -f http://localhost:1433 || exit 1 
 
   # REDIS
   redis:
     image: agiper/redis
     networks:
+      - agiper
       - rolene_development
     ports:
       - "6379"
@@ -55,11 +59,14 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
+    healthcheck:
+      test: curl -f http://localhost:6379 || exit 1
 
   # ELASTIC
   elastic:
     image: agiper/elastic
     networks:
+      - agiper
       - rolene_development
     ports:
       - "5601"
@@ -87,11 +94,14 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
+    healthcheck:
+      test: curl -f http://localhost:9200 || exit 1
 
   # RABBITMQ
   rabbitmq:
     image: agiper/rabbitmq
     networks:
+      - agiper
       - rolene_development
     ports:
       - "5672"
@@ -110,12 +120,14 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
+    healthcheck:
+      test: curl -f http://localhost:5672 || exit 1
   
   # ****************** SERVICES *******************
 
   #WEBHOST
   webhost:
-    image: registry:5000/rolene/webhost
+    image: docker:5000/rolene/webhost
     networks:
       - agiper
       - rolene_development
@@ -138,10 +150,12 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
+    healthcheck:
+      test: curl -f http://localhost:80 || exit 1
 
   #APIHOST
   apihost:
-    image: registry:5000/rolene/apihost
+    image: docker:5000/rolene/apihost
     networks:
       - agiper
       - rolene_development
@@ -164,10 +178,12 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
+    healthcheck:
+      test: curl -f http://localhost:81 || exit 1
   
   #JOBHOST
   jobhost:
-    image: registry:5000/rolene/jobhost
+    image: docker:5000/rolene/jobhost
     networks:
       - agiper
       - rolene_development
@@ -190,3 +206,5 @@ services:
         constraints:
           - node.role == worker
           - node.hostname == agiper-node02
+    healthcheck:
+      test: curl -f http://localhost:82 || exit 1
