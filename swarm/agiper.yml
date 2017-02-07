@@ -71,6 +71,9 @@ services:
       - "5000"
     volumes:
       - ~/volume/docker:/var/lib/registry
+    environment:
+      - REGISTRY_HTTP_TLS_KEY=/var/lib/registry/domain.key
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/var/lib/registry/domain.crt
     deploy:
       resources:
         limits:
