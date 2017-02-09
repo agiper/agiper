@@ -6,9 +6,6 @@ networks:
   rolene_development:
    external: true
 
-environment:
-      - ENVIRONMENT=Development
-
 services:
   
   # **************** INFRASTRUCTURE *****************
@@ -128,6 +125,8 @@ services:
       - rolene_development
     ports:
       - "80"
+environment:
+      - ENVIRONMENT=Development
     deploy:
       mode: global
       resources:
@@ -152,6 +151,8 @@ services:
       - rolene_development
     ports:
       - "81"
+environment:
+      - ENVIRONMENT=Development
     deploy:
       mode: global
       resources:
@@ -176,6 +177,8 @@ services:
       - rolene_development
     ports:
       - "82"
+environment:
+      - ENVIRONMENT=Development
     deploy:
       mode: global
       resources:
