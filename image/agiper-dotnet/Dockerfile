@@ -9,3 +9,5 @@ RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 COPY run /etc/service/dotnet/
+
+ENTRYPOINT ["/usr/bin/dotnet"]
