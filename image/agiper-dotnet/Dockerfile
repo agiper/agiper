@@ -9,5 +9,3 @@ RUN add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos
 	dotnet run || true && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
-
-ENTRYPOINT ["/usr/bin/dotnet"]
