@@ -119,14 +119,12 @@ services:
 
   #WEBHOST
   webhost:
-    image: docker:5000/rolene/webhost
+    image: localhost:5000/rolene/webhost
     networks:
       - agiper
       - rolene_development
     ports:
       - "80"
-    environment:
-      - APPLICATION=Rolene.Server.Host.Web.dll
     deploy:
       mode: global
       resources:
@@ -145,14 +143,12 @@ services:
 
   #APIHOST
   apihost:
-    image: docker:5000/rolene/apihost
+    image: localhost:5000/rolene/apihost
     networks:
       - agiper
       - rolene_development
     ports:
       - "81"
-    environment:
-      - APPLICATION=Rolene.Server.Host.Api.dll
     deploy:
       mode: global
       resources:
@@ -171,14 +167,12 @@ services:
   
   #JOBHOST
   jobhost:
-    image: docker:5000/rolene/jobhost
+    image: localhost:5000/rolene/jobhost
     networks:
       - agiper
       - rolene_development
     ports:
       - "82"
-    environment:
-      - APPLICATION=Rolene.Server.Host.Job.dll
     deploy:
       mode: global
       resources:
