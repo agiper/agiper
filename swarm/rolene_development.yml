@@ -125,7 +125,7 @@ services:
       - rolene_development
     ports:
       - "80"
-environment:
+  environment:
       - ENVIRONMENT=Development
     deploy:
       mode: global
@@ -151,7 +151,7 @@ environment:
       - rolene_development
     ports:
       - "81"
-environment:
+  environment:
       - ENVIRONMENT=Development
     deploy:
       mode: global
@@ -177,7 +177,7 @@ environment:
       - rolene_development
     ports:
       - "82"
-environment:
+  environment:
       - ENVIRONMENT=Development
     deploy:
       mode: global
