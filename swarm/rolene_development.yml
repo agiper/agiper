@@ -1,8 +1,6 @@
 version: "3"
 
 networks:
-  agiper:
-   external: true
   rolene_development:
    external: true
 
@@ -14,7 +12,6 @@ services:
   mssql:
     image: agiper/mssql
     networks:
-      - agiper
       - rolene_development
     ports:
       - "1433"
@@ -39,7 +36,6 @@ services:
   redis:
     image: agiper/redis
     networks:
-      - agiper
       - rolene_development
     ports:
       - "6379"
@@ -62,7 +58,6 @@ services:
   elastic:
     image: agiper/elastic
     networks:
-      - agiper
       - rolene_development
     ports:
       - "5601"
@@ -95,7 +90,6 @@ services:
   rabbitmq:
     image: agiper/rabbitmq
     networks:
-      - agiper
       - rolene_development
     ports:
       - "5672"
@@ -121,7 +115,6 @@ services:
   webhost:
     image: localhost:5000/rolene/webhost
     networks:
-      - agiper
       - rolene_development
     ports:
       - "80"
@@ -147,7 +140,6 @@ services:
   apihost:
     image: localhost:5000/rolene/apihost
     networks:
-      - agiper
       - rolene_development
     ports:
       - "81"
@@ -173,7 +165,6 @@ services:
   jobhost:
     image: localhost:5000/rolene/jobhost
     networks:
-      - agiper
       - rolene_development
     ports:
       - "82"
