@@ -6,6 +6,9 @@ networks:
   rolene_development:
    external: true
 
+environment:
+      - ENVIRONMENT=Development
+
 services:
   
   # **************** INFRASTRUCTURE *****************
