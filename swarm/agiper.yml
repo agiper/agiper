@@ -20,7 +20,10 @@ services:
           cpus: '0.25'
           memory: 1024M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints: [node.role == manager]
 
@@ -39,7 +42,10 @@ services:
           cpus: '0.25'
           memory: 512M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints: [node.role == manager]
 
@@ -58,7 +64,7 @@ services:
           cpus: '0.25'
           memory: 512M
       restart_policy:
-        condition: none
+        condition: always
       placement:
         constraints: [node.role == manager]
 
@@ -80,7 +86,10 @@ services:
           cpus: '0.25'
           memory: 512M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints: [node.role == manager]
 
@@ -100,6 +109,9 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints: [node.role == manager]

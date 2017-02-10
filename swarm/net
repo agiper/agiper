@@ -1,6 +1,0 @@
-#!/bin/bash
-echo -e "\e[1;32m[1/1] Creating overlay networks\e[0m"
-docker network create --attachable --driver overlay --subnet 10.0.0.0/24 agiper
-docker network create --attachable --driver overlay --subnet 10.1.0.0/24 rolene_development
-docker network create --attachable --driver overlay --subnet 10.1.1.0/24 rolene_testing
-docker network create --attachable --driver overlay --subnet 10.1.2.0/24 rolene_production

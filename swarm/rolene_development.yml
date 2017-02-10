@@ -26,7 +26,10 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints:
           - node.role == worker
@@ -48,7 +51,10 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        condition: none          
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints:
           - node.role == worker
@@ -80,7 +86,10 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints:
           - node.role == worker
@@ -103,7 +112,10 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints:
           - node.role == worker
@@ -130,7 +142,16 @@ services:
           cpus: '0.75'
           memory: 1024M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
       placement:
         constraints:
           - node.role == worker
@@ -155,7 +176,16 @@ services:
           cpus: '0.75'
           memory: 1024M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
       placement:
         constraints:
           - node.role == worker
@@ -180,7 +210,16 @@ services:
           cpus: '0.75'
           memory: 1024M
       restart_policy:
-        condition: none
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
       placement:
         constraints:
           - node.role == worker

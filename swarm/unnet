@@ -1,6 +1,0 @@
-#!/bin/bash
-echo -e "\e[1;32m[1/1] Removing networks\e[0m"
-docker network rm agiper
-docker network rm rolene_development
-docker network rm rolene_testing
-docker network rm rolene_production
