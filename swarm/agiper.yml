@@ -2,7 +2,7 @@ version: "3"
 
 networks:
   agiper:
-   external: true
+    external: true
 
 services:
   # NGINX
