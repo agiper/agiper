@@ -1,11 +1,4 @@
 #!/bin/bash
 
-echo -e "\e[1;32m[1/2] Removing stacks\e[0m"
-docker stack down agiper
-docker stack down rolene_development
-
-echo -e "\e[1;32m[2/2] Removing networks\e[0m"
-docker network rm agiper
-docker network rm rolene_development
-docker network rm rolene_testing
-docker network rm rolene_production
+echo -e "\e[1;32m[1/1] Removing $1 stack\e[0m"
+docker stack down $1

@@ -1,0 +1,4 @@
+#!/bin/bash
+docker service update $1_apihost --image localhost:5000/rolene/apihost
+docker service update $1_jobhost --image localhost:5000/rolene/jobhost
+docker service update $1_webhost --image localhost:5000/rolene/webhost

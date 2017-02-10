@@ -30,7 +30,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.hostname == agiper-node02
 
   # REDIS
   redis:
@@ -52,7 +52,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.hostname == agiper-node02
 
   # ELASTIC
   elastic:
@@ -84,7 +84,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.hostname == agiper-node02
 
   # RABBITMQ
   rabbitmq:
@@ -107,38 +107,13 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.hostname == agiper-node02
   
   # ****************** SERVICES *******************
 
-  #WEBHOST
-  webhost:
-    image: localhost:5000/rolene/webhost
-    networks:
-      - rolene_development
-    ports:
-      - "8080"
-    environment:
-      - ENVIRONMENT=Development
-    deploy:
-      mode: global
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 256M
-        limits:
-          cpus: '0.75'
-          memory: 1024M
-      restart_policy:
-        condition: none
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-
   #APIHOST
   apihost:
-    image: localhost:5000/rolene/apihost
+    image: localhost:5000/rolene_development/apihost
     networks:
       - rolene_development
     ports:
@@ -159,11 +134,11 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.hostname == agiper-node02
   
   #JOBHOST
   jobhost:
-    image: localhost:5000/rolene/jobhost
+    image: localhost:5000/rolene_development/jobhost
     networks:
       - rolene_development
     ports:
@@ -184,4 +159,31 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.hostname == agiper-node02
+
+#WEBHOST
+  webhost:
+    image: localhost:5000/rolene_development/webhost
+    networks:
+      - rolene_development
+    ports:
+      - "8080"
+    environment:
+      - ENVIRONMENT=Development
+    deploy:
+      mode: global
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+        limits:
+          cpus: '0.75'
+          memory: 1024M
+      restart_policy:
+        condition: none
+      placement:
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
+
+  
