@@ -2,7 +2,9 @@ FROM agiper/base
 
 RUN apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-	apt-get install tcl build-essential -y --no-install-recommends && \
+	apt-get install -y --no-install-recommends \
+		tcl \
+		build-essential && \
 	cd /tmp && \
 	wget http://download.redis.io/redis-stable.tar.gz && \
 	tar xvzf redis-stable.tar.gz && \

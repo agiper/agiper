@@ -30,7 +30,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.hostname == agiper-node02
+          - node.labels.environment == development
 
   # REDIS
   redis:
@@ -52,7 +52,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.hostname == agiper-node02
+          - node.labels.environment == development
 
   # ELASTIC
   elastic:
@@ -84,7 +84,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.hostname == agiper-node02
+          - node.labels.environment == development
 
   # RABBITMQ
   rabbitmq:
@@ -107,7 +107,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.hostname == agiper-node02
+          - node.labels.environment == development
   
   # ****************** SERVICES *******************
 
@@ -117,7 +117,7 @@ services:
     networks:
       - rolene_development
     ports:
-      - "80"
+      - "8080"
     environment:
       - ENVIRONMENT=Development
     deploy:
@@ -134,7 +134,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.hostname == agiper-node02
+          - node.labels.environment == development
 
   #APIHOST
   apihost:
@@ -142,7 +142,7 @@ services:
     networks:
       - rolene_development
     ports:
-      - "81"
+      - "8081"
     environment:
       - ENVIRONMENT=Development
     deploy:
@@ -159,7 +159,7 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.hostname == agiper-node02
+          - node.labels.environment == development
   
   #JOBHOST
   jobhost:
@@ -167,7 +167,7 @@ services:
     networks:
       - rolene_development
     ports:
-      - "82"
+      - "8082"
     environment:
       - ENVIRONMENT=Development
     deploy:
@@ -184,4 +184,4 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.hostname == agiper-node02
+          - node.labels.environment == development

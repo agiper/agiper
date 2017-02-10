@@ -6,7 +6,11 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	apt-get update && \
 	export ES_SKIP_SET_KERNEL_PARAMETERS=true && \
 	echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-	apt-get install oracle-java8-installer elasticsearch kibana logstash -y --no-install-recommends && \
+	apt-get install -y --no-install-recommends \
+		kibana \
+		logstash \
+		elasticsearch \
+		oracle-java8-installer && \
 	mkdir -p /var/lib/elasticsearch && \
 	mkdir -p /var/log/elasticsearch && \
 	/usr/share/kibana/bin/kibana-plugin install x-pack && \
