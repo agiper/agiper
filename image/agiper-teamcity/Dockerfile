@@ -22,10 +22,10 @@ RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
 	rm -rf /var/cache/oracle-jdk8-installer && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-COPY run /etc/my_init.d/
-
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
+
+COPY init /etc/my_init.d/
 
 EXPOSE 8111

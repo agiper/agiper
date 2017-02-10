@@ -7,6 +7,7 @@ RUN apt-get update && \
 	rm -v /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default
 
 COPY nginx.conf /etc/nginx/
-COPY run /etc/service/nginx/
 
 EXPOSE 80
+
+CMD ["/start /usr/sbin/nginx -g 'daemon off;'"]

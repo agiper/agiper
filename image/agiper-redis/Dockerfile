@@ -18,7 +18,8 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 COPY redis.conf /etc/redis/
-COPY run /etc/service/redis/
 COPY sentinel.conf /etc/redis/
 
 EXPOSE 6379
+
+CMD ["/start /usr/local/bin/redis-server /etc/redis/redis.conf"]

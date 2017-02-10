@@ -1,4 +1,4 @@
 #!/bin/bash
-docker service update $1_apihost --force --image localhost:5000/$1/apihost:latest
-docker service update $1_jobhost --force --image localhost:5000/$1/jobhost:latest
-docker service update $1_webhost --force --image localhost:5000/$1/webhost:latest
+docker service update $1_apihost --force --image localhost:5000/$1/apihost
+docker service update $1_jobhost --force --image localhost:5000/$1/jobhost
+docker service update $1_webhost --force --image localhost:5000/$1/webhost

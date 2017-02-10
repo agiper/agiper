@@ -10,11 +10,9 @@ RUN apt-get update && \
 		curl \
 		telnet \
 		net-tools \
-		iputils-ping \
-		software-properties-common && \
+		iputils-ping &&\
 	apt-get clean && \
+	mv /sbin/my_init /start && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN mv /sbin/my_init /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/start"]

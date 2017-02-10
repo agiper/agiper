@@ -1,3 +1,0 @@
-#!/bin/bash
-/opt/mssql/bin/sqlservr-setup --accept-eula --set-sa-password
-exec /opt/mssql/bin/sqlservr

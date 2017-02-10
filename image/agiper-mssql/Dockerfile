@@ -6,8 +6,10 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	apt-get install -y --no-install-recommends mssql-server && \
 	sed -i -e 's/sudo -EH -u mssql //g' /opt/mssql/bin/sqlservr-setup && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*	
+	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-COPY run /etc/service/mssql/	
+COPY init /etc/my_init.d/
 
 EXPOSE 1433
+
+CMD ["/start /opt/mssql/bin/sqlservr"]
