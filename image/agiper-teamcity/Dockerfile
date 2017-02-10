@@ -26,6 +26,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
 
-COPY init /etc/my_init.d/
+COPY start /etc/my_init.d/
 
 EXPOSE 8111

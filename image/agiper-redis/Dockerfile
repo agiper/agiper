@@ -22,4 +22,4 @@ COPY sentinel.conf /etc/redis/
 
 EXPOSE 6379
 
-CMD ["/start /usr/local/bin/redis-server /etc/redis/redis.conf"]
+CMD ["redis-server", "/etc/redis/redis.conf"]

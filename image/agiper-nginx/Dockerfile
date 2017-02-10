@@ -3,11 +3,11 @@ FROM agiper/base
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends nginx && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* && \
-	rm -v /etc/nginx/nginx.conf /etc/nginx/sites-enabled/default
+	rm -v /etc/nginx/sites-enabled/default && \
+	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 COPY nginx.conf /etc/nginx/
 
 EXPOSE 80
 
-CMD ["/start /usr/sbin/nginx -g 'daemon off;'"]
+CMD ["nginx", "-g", "daemon off;"]

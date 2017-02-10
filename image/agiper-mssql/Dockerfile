@@ -8,8 +8,8 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-COPY init /etc/my_init.d/
+COPY start /etc/my_init.d/
 
 EXPOSE 1433
 
-CMD ["/start /opt/mssql/bin/sqlservr"]
+CMD ["/opt/mssql/bin/sqlservr"]

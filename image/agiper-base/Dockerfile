@@ -15,4 +15,4 @@ RUN apt-get update && \
 	mv /sbin/my_init /start && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-CMD ["/start"]
+ENTRYPOINT ["/start", "--"]
