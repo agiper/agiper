@@ -12,7 +12,7 @@ RUN apt-get update && \
 		net-tools \
 		iputils-ping &&\
 	apt-get clean && \
-	mv /sbin/my_init /start && \
+	mv /sbin/my_init /entrypoint.sh && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-ENTRYPOINT ["/start", "--"]
+ENTRYPOINT ["/entrypoint.sh", "--"]

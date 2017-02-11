@@ -64,7 +64,10 @@ services:
           cpus: '0.25'
           memory: 512M
       restart_policy:
-        condition: always
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
       placement:
         constraints: [node.role == manager]
 
