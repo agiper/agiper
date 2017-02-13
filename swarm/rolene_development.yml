@@ -123,11 +123,49 @@ services:
   
   # ****************** SERVICES *******************
 
+#WEBHOST
+  webhost:
+    image: localhost:5000/rolene_development/webhost
+    networks:
+      rolene_development:
+        aliases:
+          - rolene_development_webhost
+    ports:
+      - "8080"
+    environment:
+      - ENVIRONMENT=Development
+    deploy:
+      mode: global
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+        limits:
+          cpus: '0.75'
+          memory: 1024M
+      restart_policy:
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.hostname == agiper-node02
+
   #APIHOST
   apihost:
     image: localhost:5000/rolene_development/apihost
     networks:
-      - rolene_development
+      rolene_development:
+        aliases:
+          - rolene_development_apihost
     ports:
       - "8081"
     environment:
@@ -161,43 +199,11 @@ services:
   jobhost:
     image: localhost:5000/rolene_development/jobhost
     networks:
-      - rolene_development
+      rolene_development:
+        aliases:
+          - rolene_development_jobhost
     ports:
       - "8082"
-    environment:
-      - ENVIRONMENT=Development
-    deploy:
-      mode: global
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 256M
-        limits:
-          cpus: '0.75'
-          memory: 1024M
-      restart_policy:
-        delay: 5s
-        window: 60s
-        max_attempts: 3
-        condition: on-failure
-      update_config:
-        delay: 10s
-        monitor: 60s
-        parallelism: 1
-        max_failure_ratio: 0.3
-        failure_action: continue
-      placement:
-        constraints:
-          - node.role == worker
-          - node.hostname == agiper-node02
-
-#WEBHOST
-  webhost:
-    image: localhost:5000/rolene_development/webhost
-    networks:
-      - rolene_development
-    ports:
-      - "8080"
     environment:
       - ENVIRONMENT=Development
     deploy:

@@ -3,6 +3,8 @@ version: "3"
 networks:
   agiper:
     external: true
+  rolene_development:
+    external: true
 
 services:
   # NGINX
@@ -10,8 +12,10 @@ services:
     image: agiper/nginx
     networks:
       - agiper
+      - rolene_development
     ports:
       - "80:80"
+      - "81:81"
     volumes:
       - ~/volume/nginx:/etc/nginx
     deploy:
@@ -63,6 +67,33 @@ services:
         limits:
           cpus: '0.25'
           memory: 512M
+      restart_policy:
+        delay: 5s
+        window: 60s
+        max_attempts: 3
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+# MSSQL
+  mssql:
+    image: agiper/mssql
+    networks:
+      - agiper
+    ports:
+      - "1433:1433"
+    environment:
+      - SA_PASSWORD=rX2Ja!293F8@
+    volumes: 
+      - ~/volume/mssql:/var/opt/mssql
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+        limits:
+          cpus: '0.75'
+          memory: 2048M
       restart_policy:
         delay: 5s
         window: 60s
