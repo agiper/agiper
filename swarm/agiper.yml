@@ -5,14 +5,28 @@ networks:
     external: true
   rolene_development:
     external: true
+  rolene_testing:
+    external: true
+  rolene_staging:
+    external: true
+  rolene_production:
+    external: true
 
 services:
   # NGINX
   nginx:
+    depends_on:
+      - swarm
+      - ghost
+      - docker
+      - teamcity
     image: agiper/nginx
     networks:
       - agiper
       - rolene_development
+      - rolene_testing
+      - rolene_staging
+      - rolene_production
     ports:
       - "80:80"
       - "81:81"
@@ -26,10 +40,11 @@ services:
       restart_policy:
         delay: 5s
         window: 60s
-        max_attempts: 3
         condition: on-failure
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper
 
  # SWARM
   swarm:
@@ -48,10 +63,11 @@ services:
       restart_policy:
         delay: 5s
         window: 60s
-        max_attempts: 3
         condition: on-failure
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper
 
   # GHOST
   ghost:
@@ -65,15 +81,16 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.25'
-          memory: 512M
+          cpus: '0.75'
+          memory: 1024M
       restart_policy:
         delay: 5s
         window: 60s
-        max_attempts: 3
         condition: on-failure
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper
 
 # MSSQL
   mssql:
@@ -81,7 +98,7 @@ services:
     networks:
       - agiper
     ports:
-      - "1433:1433"
+      - "1433"
     environment:
       - SA_PASSWORD=rX2Ja!293F8@
     volumes: 
@@ -97,10 +114,11 @@ services:
       restart_policy:
         delay: 5s
         window: 60s
-        max_attempts: 3
         condition: on-failure
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper
 
   # DOCKER
   docker:
@@ -122,13 +140,16 @@ services:
       restart_policy:
         delay: 5s
         window: 60s
-        max_attempts: 3
         condition: on-failure
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper
 
   # TEAMCITY
   teamcity:
+    depends_on:
+      - mssql
     image: agiper/teamcity
     networks:
       - agiper
@@ -145,7 +166,8 @@ services:
       restart_policy:
         delay: 5s
         window: 60s
-        max_attempts: 3
         condition: on-failure
       placement:
-        constraints: [node.role == manager]
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper

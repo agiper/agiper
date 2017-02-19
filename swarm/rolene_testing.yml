@@ -1,13 +1,7 @@
 version: "3"
 
 networks:
-  rolene_development:
-    external: true
   rolene_testing:
-    external: true
-  rolene_staging:
-    external: true
-  rolene_production:
     external: true
 
 services:
@@ -18,7 +12,7 @@ services:
   mssql:
     image: agiper/mssql
     networks:
-      - rolene_development
+      - rolene_testing
     ports:
       - "1433"
     environment:
@@ -38,13 +32,13 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.labels.environment == testing
 
   # REDIS
   redis:
     image: agiper/redis
     networks:
-      - rolene_development
+      - rolene_testing
     ports:
       - "6379"
     deploy:
@@ -62,13 +56,13 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.labels.environment == testing
 
   # ELASTIC
   elastic:
     image: agiper/elastic
     networks:
-      - rolene_development
+      - rolene_testing
     ports:
       - "5601"
       - "9200"
@@ -96,13 +90,13 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.labels.environment == testing
 
   # RABBITMQ
   rabbitmq:
     image: agiper/rabbitmq
     networks:
-      - rolene_development
+      - rolene_testing
     ports:
       - "5672"
       - "15672"
@@ -121,17 +115,17 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.labels.environment == testing
   
   # ****************** SERVICES *******************
 
 #WEBHOST
   webhost:
-    image: localhost:5000/rolene_development/webhost
+    image: localhost:5000/rolene_testing/webhost
     networks:
-      rolene_development:
+      rolene_testing:
         aliases:
-          - rolene_development_webhost
+          - rolene_testing_webhost
     ports:
       - "8080"
     environment:
@@ -158,15 +152,15 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.labels.environment == testing
 
   #APIHOST
   apihost:
-    image: localhost:5000/rolene_development/apihost
+    image: localhost:5000/rolene_testing/apihost
     networks:
-      rolene_development:
+      rolene_testing:
         aliases:
-          - rolene_development_apihost
+          - rolene_testing_apihost
     ports:
       - "8081"
     environment:
@@ -193,15 +187,15 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.labels.environment == testing
   
   #JOBHOST
   jobhost:
-    image: localhost:5000/rolene_development/jobhost
+    image: localhost:5000/rolene_testing/jobhost
     networks:
-      rolene_development:
+      rolene_testing:
         aliases:
-          - rolene_development_jobhost
+          - rolene_testing_jobhost
     ports:
       - "8082"
     environment:
@@ -228,6 +222,6 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.environment == development
+          - node.labels.environment == testing
 
   

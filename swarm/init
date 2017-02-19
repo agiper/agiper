@@ -1,9 +1,10 @@
 #!/bin/bash
 echo -e "\e[1;32m[1/2] Initializing cluster\e[0m"
-docker swarm init --advertise-addr 13.76.242.233
+docker swarm init --advertise-addr 52.187.182.85
 
 echo -e "\e[1;32m[2/2] Creating overlay networks\e[0m"
 docker network create --attachable --driver overlay --subnet 10.0.0.0/24 agiper
-docker network create --attachable --driver overlay --subnet 10.1.0.0/24 rolene_development
-docker network create --attachable --driver overlay --subnet 10.1.1.0/24 rolene_testing
-docker network create --attachable --driver overlay --subnet 10.1.2.0/24 rolene_production
+docker network create --attachable --driver overlay --subnet 10.1.1.0/24 rolene_development
+docker network create --attachable --driver overlay --subnet 10.1.2.0/24 rolene_testing
+docker network create --attachable --driver overlay --subnet 10.1.3.0/24 rolene_staging
+docker network create --attachable --driver overlay --subnet 10.1.4.0/24 rolene_production
