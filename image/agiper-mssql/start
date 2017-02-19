@@ -1,2 +1,4 @@
 #!/bin/bash
-/opt/mssql/bin/mssql-conf setup
+/opt/mssql/lib/mssql-conf/checkinstall.sh
+/opt/mssql/lib/mssql-conf/checkrunninginstance.sh
+/opt/mssql/bin/mssql-conf set-sa-password
