@@ -23,6 +23,8 @@ services:
       - "1433"
     environment:
       - ENVIRONMENT=development
+    volumes: 
+      - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
         reservations:
@@ -50,6 +52,7 @@ services:
     deploy:
     environment:
       - ENVIRONMENT=development
+    deploy:
       resources:
         reservations:
           cpus: '0.25'

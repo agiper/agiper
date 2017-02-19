@@ -17,6 +17,8 @@ services:
       - "1433"
     environment:
       - ENVIRONMENT=testing
+    volumes: 
+      - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
         reservations:
