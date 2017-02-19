@@ -17,7 +17,6 @@ services:
       - "1433"
     environment:
       - ENVIRONMENT=testing
-      - SA_PASSWORD=rX2Ja!293F8@
     deploy:
       resources:
         reservations:

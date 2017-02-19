@@ -99,8 +99,6 @@ services:
       - agiper
     ports:
       - "1433"
-    environment:
-      - SA_PASSWORD=rX2Ja!293F8@
     volumes: 
       - ~/volume/mssql:/var/opt/mssql
     deploy:
