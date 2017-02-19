@@ -1,6 +1,8 @@
 FROM phusion/baseimage:0.9.19
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 		git \
