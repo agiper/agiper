@@ -46,29 +46,6 @@ services:
           - node.role == manager
           - node.hostname == agiper
 
- # SWARM
-  swarm:
-    image: agiper/swarm
-    networks:
-      - agiper
-    ports:
-      - "8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    deploy:
-      resources:
-        limits:
-          cpus: '0.25'
-          memory: 512M
-      restart_policy:
-        delay: 5s
-        window: 60s
-        condition: on-failure
-      placement:
-        constraints:
-          - node.role == manager
-          - node.hostname == agiper
-
   # GHOST
   ghost:
     image: agiper/ghost
@@ -161,6 +138,53 @@ services:
         limits:
           cpus: '0.75'
           memory: 4096M
+      restart_policy:
+        delay: 5s
+        window: 60s
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper
+
+# PORTAINER
+  portainer:
+    image: portainer/portainer
+    networks:
+      - agiper
+    ports:
+      - "9000"
+    volumes:
+      - ~/volume/portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+      restart_policy:
+        delay: 5s
+        window: 60s
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
+          - node.hostname == agiper
+
+# VISUALIZER
+  visualizer:
+    image: agiper/visualizer
+    networks:
+      - agiper
+    ports:
+      - "8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
       restart_policy:
         delay: 5s
         window: 60s

@@ -29,10 +29,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 512M
+          memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 2048M
+          memory: 4096M
       restart_policy:
         delay: 5s
         window: 60s
@@ -56,10 +56,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 512M
+          memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 2048M
+          memory: 4096M
       restart_policy:
         delay: 5s
         window: 60s
@@ -94,7 +94,7 @@ services:
           memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 2048M
+          memory: 8192M
       restart_policy:
         delay: 5s
         window: 60s
@@ -118,10 +118,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 512M
+          memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 2048M
+          memory: 4096M
       restart_policy:
         delay: 5s
         window: 60s
@@ -149,10 +149,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 256M
+          memory: 512M
         limits:
           cpus: '0.75'
-          memory: 1024M
+          memory: 2048M
       restart_policy:
         delay: 5s
         window: 60s
@@ -184,10 +184,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 256M
+          memory: 512M
         limits:
           cpus: '0.75'
-          memory: 1024M
+          memory: 2048M
       restart_policy:
         delay: 5s
         window: 60s
@@ -219,10 +219,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 256M
+          memory: 512M
         limits:
           cpus: '0.75'
-          memory: 1024M
+          memory: 2048M
       restart_policy:
         delay: 5s
         window: 60s
