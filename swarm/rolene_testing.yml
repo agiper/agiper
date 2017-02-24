@@ -11,6 +11,7 @@ services:
   # MSSQL
   mssql:
     image: agiper/mssql
+    autodestroy: always
     networks:
       - rolene_testing
     ports:
@@ -39,6 +40,7 @@ services:
   # REDIS
   redis:
     image: agiper/redis
+    autodestroy: always
     networks:
       - rolene_testing
     ports:
@@ -65,6 +67,7 @@ services:
   # ELASTIC
   elastic:
     image: agiper/elastic
+    autodestroy: always
     networks:
       - rolene_testing
     ports:
@@ -100,6 +103,7 @@ services:
   # RABBITMQ
   rabbitmq:
     image: agiper/rabbitmq
+    autodestroy: always
     networks:
       - rolene_testing
     ports:
@@ -129,6 +133,7 @@ services:
 #WEBHOST
   webhost:
     image: localhost:5000/rolene_testing/webhost
+    autodestroy: always
     networks:
       rolene_testing:
         aliases:
@@ -164,6 +169,7 @@ services:
   #APIHOST
   apihost:
     image: localhost:5000/rolene_testing/apihost
+    autodestroy: always
     networks:
       rolene_testing:
         aliases:
@@ -199,6 +205,7 @@ services:
   #JOBHOST
   jobhost:
     image: localhost:5000/rolene_testing/jobhost
+    autodestroy: always
     networks:
       rolene_testing:
         aliases:
