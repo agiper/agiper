@@ -34,8 +34,9 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 60s
-        window: 60s
+        delay: 5s
+        window: 120s
+        max_attempts: 3
         condition: on-failure
       placement:
         constraints:
@@ -61,8 +62,9 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 60s
-        window: 60s
+        delay: 5s
+        window: 120s
+        max_attempts: 3
         condition: on-failure
       placement:
         constraints:
@@ -88,8 +90,9 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 60s
-        window: 60s
+        delay: 5s
+        window: 120s
+        max_attempts: 3
         condition: on-failure
       placement:
         constraints:
@@ -120,8 +123,9 @@ services:
           cpus: '0.75'
           memory: 8192M
       restart_policy:
-        delay: 60s
-        window: 60s
+        delay: 5s
+        window: 120s
+        max_attempts: 3
         condition: on-failure
       placement:
         constraints:
@@ -132,6 +136,11 @@ services:
 
 #WEBHOST
   webhost:
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - elasticsearch
     image: localhost:5000/rolene_development/webhost
     networks:
       rolene_development:
@@ -151,8 +160,9 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 60s
-        window: 60s
+        delay: 5s
+        window: 120s
+        max_attempts: 3
         condition: on-failure
       update_config:
         delay: 10s
@@ -167,6 +177,11 @@ services:
 
   #APIHOST
   apihost:
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - elasticsearch
     image: localhost:5000/rolene_development/apihost
     networks:
       rolene_development:
@@ -186,8 +201,9 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 60s
-        window: 60s
+        delay: 5s
+        window: 120s
+        max_attempts: 3
         condition: on-failure
       update_config:
         delay: 10s
@@ -202,6 +218,11 @@ services:
   
   #JOBHOST
   jobhost:
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - elasticsearch
     image: localhost:5000/rolene_development/jobhost
     networks:
       rolene_development:
@@ -221,8 +242,9 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 60s
-        window: 60s
+        delay: 5s
+        window: 120s
+        max_attempts: 3
         condition: on-failure
       update_config:
         delay: 10s
