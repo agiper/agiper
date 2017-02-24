@@ -34,7 +34,7 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -61,39 +61,7 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5s
-        window: 60s
-        condition: on-failure
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-
-  # ELASTIC
-  elastic:
-    image: agiper/elastic
-    networks:
-      - rolene_development
-    ports:
-      - "5601"
-      - "9200"
-      - "9300"
-    environment:
-      - ENVIRONMENT=development
-      - "bootstrap.memory_lock=true"
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-      - "cluster.name=rolene_development"
-    deploy:
-      mode: global
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
-        limits:
-          cpus: '0.75'
-          memory: 8192M
-      restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -120,14 +88,46 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
         constraints:
           - node.role == worker
           - node.labels.environment == development
-  
+
+ # ELASTICSEARCH
+  elasticsearch:
+    image: agiper/elasticsearch
+    networks:
+      - rolene_development
+    ports:
+      - "5601"
+      - "9200"
+      - "9300"
+    environment:
+      - ENVIRONMENT=development
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - "cluster.name=rolene_development"
+    deploy:
+      mode: global
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 8192M
+      restart_policy:
+        delay: 60s
+        window: 60s
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
   # ****************** SERVICES *******************
 
 #WEBHOST
@@ -151,7 +151,7 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       update_config:
@@ -186,7 +186,7 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       update_config:
@@ -221,7 +221,7 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       update_config:
@@ -234,5 +234,3 @@ services:
         constraints:
           - node.role == worker
           - node.labels.environment == development
-
-  

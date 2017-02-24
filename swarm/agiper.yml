@@ -15,11 +15,6 @@ networks:
 services:
   # NGINX
   nginx:
-    depends_on:
-      - swarm
-      - ghost
-      - docker
-      - teamcity
     image: agiper/nginx
     networks:
       - agiper
@@ -38,7 +33,7 @@ services:
           cpus: '0.25'
           memory: 1024M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -61,7 +56,7 @@ services:
           cpus: '0.75'
           memory: 1024M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -87,7 +82,7 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -113,7 +108,7 @@ services:
           cpus: '0.25'
           memory: 512M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -139,7 +134,7 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -163,7 +158,7 @@ services:
           cpus: '0.25'
           memory: 512M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
@@ -186,7 +181,7 @@ services:
           cpus: '0.25'
           memory: 512M
       restart_policy:
-        delay: 5s
+        delay: 60s
         window: 60s
         condition: on-failure
       placement:
