@@ -42,7 +42,7 @@ services:
       restart_policy:
         delay: 5s
         window: 120s
-        max_attempts: 3
+        max_attempts: 10
         condition: on-failure
       placement:
         constraints:
@@ -66,7 +66,7 @@ services:
       restart_policy:
         delay: 5s
         window: 120s
-        max_attempts: 3
+        max_attempts: 10
         condition: on-failure
       placement:
         constraints:
@@ -93,7 +93,7 @@ services:
       restart_policy:
         delay: 5s
         window: 120s
-        max_attempts: 3
+        max_attempts: 10
         condition: on-failure
       placement:
         constraints:
@@ -108,10 +108,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ~/volume/docker:/var/lib/registry
-    environment:
-      - REGISTRY_HTTP_TLS_KEY=/var/lib/registry/docker.key
-      - REGISTRY_HTTP_TLS_CERTIFICATE=/var/lib/registry/docker.crt
+      - ~/volume/docker:/var/lib/registry    
     deploy:
       resources:
         limits:
@@ -120,7 +117,7 @@ services:
       restart_policy:
         delay: 5s
         window: 120s
-        max_attempts: 3
+        max_attempts: 10
         condition: on-failure
       placement:
         constraints:
@@ -147,7 +144,7 @@ services:
       restart_policy:
         delay: 5s
         window: 120s
-        max_attempts: 3
+        max_attempts: 10
         condition: on-failure
       placement:
         constraints:
@@ -172,7 +169,7 @@ services:
       restart_policy:
         delay: 5s
         window: 120s
-        max_attempts: 3
+        max_attempts: 10
         condition: on-failure
       placement:
         constraints:
@@ -196,7 +193,7 @@ services:
       restart_policy:
         delay: 5s
         window: 120s
-        max_attempts: 3
+        max_attempts: 10
         condition: on-failure
       placement:
         constraints:
