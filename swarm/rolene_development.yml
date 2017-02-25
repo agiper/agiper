@@ -34,9 +34,8 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 10
+        delay: 5m
+        window: 1m
         condition: on-failure
       placement:
         constraints:
@@ -62,9 +61,8 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 10
+        delay: 5m
+        window: 1m
         condition: on-failure
       placement:
         constraints:
@@ -90,9 +88,8 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 10
+        delay: 5m
+        window: 1m
         condition: on-failure
       placement:
         constraints:
@@ -123,9 +120,8 @@ services:
           cpus: '0.75'
           memory: 8192M
       restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 10
+        delay: 5m
+        window: 1m
         condition: on-failure
       placement:
         constraints:
@@ -160,9 +156,8 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 10
+        delay: 5m
+        window: 1m
         condition: on-failure
       update_config:
         delay: 10s
@@ -201,9 +196,8 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 10
+        delay: 5m
+        window: 1m
         condition: on-failure
       update_config:
         delay: 10s
@@ -242,9 +236,8 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5s
-        window: 120s
-        max_attempts: 10
+        delay: 5m
+        window: 1m
         condition: on-failure
       update_config:
         delay: 10s
