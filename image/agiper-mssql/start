@@ -1,4 +1,7 @@
 #!/bin/bash
-/opt/mssql/lib/mssql-conf/checkinstall.sh
-/opt/mssql/lib/mssql-conf/checkrunninginstance.sh
-/opt/mssql/bin/mssql-conf set-sa-password
+cd opt/mssql
+lib/mssql-conf/checkinstall.sh
+lib/mssql-conf/checkrunninginstance.sh
+if [ "$(ls -A /var/opt/mssql/data)" ]; then
+	bin/mssql-conf set-sa-password
+fi

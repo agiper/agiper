@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "\e[1;32m[1/2] Initializing cluster\e[0m"
-docker swarm init --advertise-addr 52.187.182.85
+docker swarm init --advertise-addr 52.187.186.27
 
 echo -e "\e[1;32m[2/2] Creating overlay networks\e[0m"
 docker network create --attachable --driver overlay --subnet 10.0.0.0/24 agiper
