@@ -15,7 +15,7 @@ RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN mkdir -p /opt/teamcity && \
-	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.4.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
+	curl -L https://download.jetbrains.com/teamcity/TeamCity-10.0.5.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
 
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
