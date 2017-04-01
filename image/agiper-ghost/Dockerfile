@@ -1,1 +1,1 @@
-FROM ghost
+FROM ghost:latest
