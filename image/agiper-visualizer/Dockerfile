@@ -1,1 +1,1 @@
-FROM bargenson/docker-swarm-visualizer
+FROM bargenson/docker-swarm-visualizer:latest
