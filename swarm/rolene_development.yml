@@ -28,7 +28,7 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       placement:
@@ -55,7 +55,7 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       placement:
@@ -82,7 +82,7 @@ services:
           cpus: '0.75'
           memory: 4096M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       placement:
@@ -114,7 +114,7 @@ services:
           cpus: '0.75'
           memory: 8192M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       placement:
@@ -150,7 +150,7 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       update_config:
@@ -190,7 +190,7 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       update_config:
@@ -230,7 +230,7 @@ services:
           cpus: '0.75'
           memory: 2048M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       update_config:
