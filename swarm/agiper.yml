@@ -42,7 +42,7 @@ services:
       restart_policy:
         delay: 5m
         window: 1m
-        condition: on-failure
+        condition: any
       placement:
         constraints:
           - node.role == manager
@@ -65,7 +65,7 @@ services:
       restart_policy:
         delay: 5m
         window: 1m
-        condition: on-failure
+        condition: any
       placement:
         constraints:
           - node.role == manager
@@ -91,7 +91,7 @@ services:
       restart_policy:
         delay: 5m
         window: 1m
-        condition: on-failure
+        condition: any
       placement:
         constraints:
           - node.role == manager
@@ -114,7 +114,7 @@ services:
       restart_policy:
         delay: 5m
         window: 1m
-        condition: on-failure
+        condition: any
       placement:
         constraints:
           - node.role == manager
@@ -140,7 +140,7 @@ services:
       restart_policy:
         delay: 5m
         window: 1m
-        condition: on-failure
+        condition: any
       placement:
         constraints:
           - node.role == manager
@@ -164,7 +164,7 @@ services:
       restart_policy:
         delay: 5m
         window: 1m
-        condition: on-failure
+        condition: any
       placement:
         constraints:
           - node.role == manager
@@ -187,7 +187,7 @@ services:
       restart_policy:
         delay: 5m
         window: 1m
-        condition: on-failure
+        condition: any
       placement:
         constraints:
           - node.role == manager
