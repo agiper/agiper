@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.20
+FROM phusion/baseimage:0.9.21
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 ENV DEBIAN_FRONTEND noninteractive
