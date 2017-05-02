@@ -9,7 +9,7 @@ RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893 && \
 	apt-get install -y --no-install-recommends \
 		nodejs \
 		docker-engine \
-		dotnet-dev-1.0.1 && \
+		dotnet-dev-1.0.3 && \
 	npm install -g bower && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
