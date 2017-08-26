@@ -1,15 +1,16 @@
 FROM agiper/java
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893 && \
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+	mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
 	apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-xenial main" && \
-	add-apt-repository "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" && \
+	add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" && \
 	apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
 	apt-get install -y --no-install-recommends \
 		nodejs \
 		docker-engine \
-		dotnet-dev-1.0.4 && \
+		dotnet-sdk-2.0.0 && \
 	npm install -g bower && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
