@@ -34,6 +34,7 @@ services:
       - "81:81"
     volumes:
       - ~/volume/nginx:/etc/nginx
+      - ~/volume/nginx/www:/etc/nginx/www
     deploy:
       resources:
         reservations:
