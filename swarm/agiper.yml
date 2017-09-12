@@ -49,29 +49,6 @@ services:
           - node.role == manager
           - node.hostname == agiper
 
-  # GHOST
-  ghost:
-    image: agiper/ghost
-    networks:
-      - agiper
-    ports:
-      - "2368"
-    volumes: 
-      - ~/volume/ghost:/var/lib/ghost
-    deploy:
-      resources:
-        limits:
-          cpus: '0.75'
-          memory: 1024M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
-          - node.hostname == agiper
-
 # MSSQL
   mssql:
     image: agiper/mssql
