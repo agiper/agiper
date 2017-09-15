@@ -22,9 +22,8 @@ services:
     entrypoint:
       - geth
       - --rpc
-      - --mine      
+      - --mine
       - --rpcaddr="0.0.0.0"
-      - --genesis=genesis.json
       - --etherbase="12890d2cce102216644c59dae5baed380d84830c"
     deploy:
       resources:
