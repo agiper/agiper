@@ -21,7 +21,9 @@ services:
       - ~/volume/geth:/var/lib/geth
     command:
       - geth
+      - --mine
       - --datadir="/var/lib/geth"
+      - --etherbase=12890d2cce102216644c59dae5baed380d84830c
     deploy:
       resources:
         reservations:

@@ -1,2 +1,2 @@
 #!/bin/bash
-geth --datadir /var/lib/geth init genesis.json
+geth --datadir /var/lib/geth init /var/lib/geth/genesis.json
