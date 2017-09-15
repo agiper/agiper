@@ -1,2 +1,4 @@
 #!/bin/bash
+rm -rf geth
+rm -rf keystone
 geth --datadir /var/lib/geth init /var/lib/geth/genesis.json

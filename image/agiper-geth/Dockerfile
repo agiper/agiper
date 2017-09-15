@@ -11,4 +11,4 @@ COPY start /etc/my_init.d/
 
 EXPOSE 8545
 
-CMD ["geth","--rpc", "--datadir", "/var/lib/geth"]
+CMD ["geth", "--datadir", "/var/lib/geth"]

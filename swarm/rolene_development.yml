@@ -21,10 +21,13 @@ services:
       - ~/volume/geth:/var/lib/geth
     command:
       - geth
-      - --ipc
+      - --rpc
       - --mine
-      - --datadir="/var/lib/geth"
+      - --rpcaddr=0.0.0.0
+      - --rpccorsdomain="*"
+      - --datadir=/var/lib/geth
       - --etherbase=12890d2cce102216644c59dae5baed380d84830c
+      - --rpcapi="admin,db,eth,debug,miner,net,shh,txpool,personal,web3"
     deploy:
       resources:
         reservations:
