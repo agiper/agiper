@@ -19,13 +19,9 @@ services:
       - ENVIRONMENT=development
     volumes: 
       - ~/volume/geth:/var/lib/geth
-    entrypoint:
+    command:
       - geth
-      - --rpc
-      - --mine
-      - --rpcaddr="0.0.0.0"
       - --datadir="/var/lib/geth"
-      - --etherbase="12890d2cce102216644c59dae5baed380d84830c"
     deploy:
       resources:
         reservations:
