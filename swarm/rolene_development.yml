@@ -18,12 +18,13 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes: 
-      - ~/volume/geth:~/.ethereum/geth
+      - ~/volume/geth:/var/lib/geth
     entrypoint:
       - geth
       - --rpc
       - --mine
       - --rpcaddr="0.0.0.0"
+      - --datadir="/var/lib/geth"
       - --etherbase="12890d2cce102216644c59dae5baed380d84830c"
     deploy:
       resources:
