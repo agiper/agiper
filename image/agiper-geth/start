@@ -1,2 +1,2 @@
 #!/bin/bash
-geth init ~/.ethereum/geth/genesis.json
+geth init /var/lib/geth/genesis.json
