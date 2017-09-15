@@ -14,7 +14,7 @@ services:
     networks:
       - rolene_development
     ports:
-      - "1433"
+      - "8545"
     environment:
       - ENVIRONMENT=development
     volumes: 
