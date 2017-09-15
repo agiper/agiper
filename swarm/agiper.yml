@@ -126,7 +126,7 @@ services:
 
 # PORTAINER
   portainer:
-    image: portainer/portainer
+    image: agiper/portainer
     networks:
       - agiper
     ports:
