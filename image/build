@@ -2,7 +2,7 @@
 docker build -t agiper/base agiper-base/
 docker build -t agiper/java agiper-java/
 docker build -t agiper/tool agiper-tool/
-docker build -t agiper/ghost agiper-ghost/
+docker build -t agiper/geth agiper-geth/
 docker build -t agiper/nginx agiper-nginx/
 docker build -t agiper/redis agiper-redis/
 docker build -t agiper/mssql agiper-mssql/

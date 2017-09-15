@@ -8,6 +8,34 @@ services:
   
   # **************** INFRASTRUCTURE *****************
 
+  # GETH
+  geth:
+    image: agiper/geth
+    networks:
+      - rolene_development
+    ports:
+      - "1433"
+    environment:
+      - ENVIRONMENT=development
+    volumes: 
+      - ~/volume/geth/:/root
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
   # MSSQL
   mssql:
     image: agiper/mssql
