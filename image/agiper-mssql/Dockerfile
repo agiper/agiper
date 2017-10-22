@@ -1,7 +1,7 @@
 FROM agiper/base
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
-	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list)" && \
+	curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list && \
 	apt-get update && \
 	export ACCEPT_EULA=Y && \
 	apt-get install -y --no-install-recommends \
