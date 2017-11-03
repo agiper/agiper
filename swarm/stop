@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo -e "\e[1;32m[1/1] Removing $1 stack\e[0m"
-docker stack down $1

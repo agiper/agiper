@@ -8,13 +8,13 @@ services:
   
   #WEBHOST
   webhost:
-    image: localhost:5000/rolene_development/webhost
+    image: localhost:5000/krypto_development/webhost
     networks:
       agiper_development:
         aliases:
-          - rolene_development_webhost
+          - krypto_development_webhost
     ports:
-      - "8080"
+      - "8180"
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -40,49 +40,15 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #APIHOST
-  apihost:
-    image: localhost:5000/rolene_development/apihost
-    networks:
-      agiper_development:
-        aliases:
-          - rolene_development_apihost
-    ports:
-      - "8081"
-    environment:
-      - ENVIRONMENT=development
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 512M
-        limits:
-          cpus: '0.75'
-          memory: 2048M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      update_config:
-        delay: 10s
-        monitor: 60s
-        parallelism: 1
-        max_failure_ratio: 0.3
-        failure_action: continue
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-  
   #JOBHOST
   jobhost:
-    image: localhost:5000/rolene_development/jobhost
+    image: localhost:5000/krypto_development/jobhost
     networks:
       agiper_development:
         aliases:
-          - rolene_development_jobhost
+          - krypto_development_jobhost
     ports:
-      - "8082"
+      - "8181"
     environment:
       - ENVIRONMENT=development
     deploy:

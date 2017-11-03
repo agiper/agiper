@@ -1,0 +1,157 @@
+version: "3"
+
+networks:
+  agiper_development:
+    external: true
+
+services:
+  
+  # GETH
+  geth:
+    image: agiper/geth
+    networks:
+      - agiper_development
+    ports:
+      - "8545"
+    environment:
+      - ENVIRONMENT=development
+    volumes: 
+      - ~/volume/geth:/var/lib/geth
+    command:
+      - geth
+      - --rpc
+      - --mine
+      - --rpcaddr=0.0.0.0
+      - --rpccorsdomain="*"
+      - --datadir=/var/lib/geth
+      - --etherbase=12890d2cce102216644c59dae5baed380d84830c
+      - --rpcapi="admin,db,eth,debug,miner,net,shh,txpool,personal,web3"
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+  # MSSQL
+  mssql:
+    image: agiper/mssql
+    networks:
+      - agiper_development
+    ports:
+      - "1433"
+    environment:
+      - ENVIRONMENT=development
+    volumes: 
+      - ~/volume/mssql/data:/var/opt/mssql/data
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+  # REDIS
+  redis:
+    image: agiper/redis
+    networks:
+      - agiper_development
+    ports:
+      - "6379"
+    deploy:
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+  # RABBITMQ
+  rabbitmq:
+    image: agiper/rabbitmq
+    networks:
+      - agiper_development
+    ports:
+      - "5672"
+      - "15672"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+ # ELASTICSEARCH
+  elasticsearch:
+    image: agiper/elasticsearch
+    networks:
+      - agiper_development
+    ports:
+      - "5601"
+      - "9200"
+      - "9300"
+    environment:
+      - ENVIRONMENT=development
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - "cluster.name=rolene_development"
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 8192M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development

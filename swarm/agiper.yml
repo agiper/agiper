@@ -3,13 +3,13 @@ version: "3"
 networks:
   agiper:
     external: true
-  rolene_development:
+  agiper_development:
     external: true
-  rolene_testing:
+  agiper_testing:
     external: true
-  rolene_staging:
+  agiper_staging:
     external: true
-  rolene_production:
+  agiper_production:
     external: true
 
 services:
@@ -25,10 +25,10 @@ services:
     image: agiper/nginx
     networks:
       - agiper
-      - rolene_testing
-      - rolene_staging
-      - rolene_production
-      - rolene_development
+      - agiper_testing
+      - agiper_staging
+      - agiper_production
+      - agiper_development
     ports:
       - "80:80"
       - "81:81"
@@ -41,7 +41,7 @@ services:
           cpus: '0.25'
           memory: 1024M
       restart_policy:
-        delay: 5m
+        delay: 1m
         window: 1m
         condition: any
       placement:
@@ -105,6 +105,10 @@ services:
     image: agiper/teamcity
     networks:
       - agiper
+      - agiper_testing
+      - agiper_staging
+      - agiper_production
+      - agiper_development
     ports:
       - "8111"
     volumes:
