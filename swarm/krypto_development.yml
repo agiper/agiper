@@ -6,15 +6,15 @@ networks:
 
 services:
   
-  #WEBHOST
-  webhost:
-    image: localhost:5000/krypto_development/webhost
+  #WEB
+  web:
+    image: localhost:5000/krypto_development/web
     networks:
       agiper_development:
         aliases:
-          - krypto_development_webhost
+          - krypto_development_web
     ports:
-      - "8180"
+      - "8080"
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -40,15 +40,15 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #JOBHOST
-  jobhost:
-    image: localhost:5000/krypto_development/jobhost
+  #JOB
+  job:
+    image: localhost:5000/krypto_development/job
     networks:
       agiper_development:
         aliases:
-          - krypto_development_jobhost
+          - krypto_development_job
     ports:
-      - "8181"
+      - "8082"
     environment:
       - ENVIRONMENT=development
     deploy:

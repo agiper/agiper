@@ -6,13 +6,13 @@ networks:
 
 services:
   
-  #WEBHOST
-  webhost:
-    image: localhost:5000/rolene_development/webhost
+  #WEB
+  web:
+    image: localhost:5000/rolene_development/web
     networks:
       agiper_development:
         aliases:
-          - rolene_development_webhost
+          - rolene_development_web
     ports:
       - "8080"
     environment:
@@ -40,13 +40,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #APIHOST
-  apihost:
-    image: localhost:5000/rolene_development/apihost
+  #API
+  api:
+    image: localhost:5000/rolene_development/api
     networks:
       agiper_development:
         aliases:
-          - rolene_development_apihost
+          - rolene_development_api
     ports:
       - "8081"
     environment:
@@ -74,13 +74,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
   
-  #JOBHOST
-  jobhost:
-    image: localhost:5000/rolene_development/jobhost
+  #JOB
+  job:
+    image: localhost:5000/rolene_development/job
     networks:
       agiper_development:
         aliases:
-          - rolene_development_jobhost
+          - rolene_development_job
     ports:
       - "8082"
     environment:
