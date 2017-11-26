@@ -6,15 +6,15 @@ networks:
 
 services:
   
-  #WEB
-  web:
-    image: localhost:5000/krypto_development/web
+  #JOB
+  job:
+    image: localhost:5000/krypto_development/job
     networks:
       agiper_development:
         aliases:
-          - krypto_development_web
+          - krypto_development_job
     ports:
-      - "8080"
+      - "8082"
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -40,15 +40,49 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #JOB
-  job:
-    image: localhost:5000/krypto_development/job
+  #BOT
+  bot:
+    image: localhost:5000/krypto_development/bot
     networks:
       agiper_development:
         aliases:
-          - krypto_development_job
+          - krypto_development_bot
     ports:
-      - "8082"
+      - "8083"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+  #WEB
+  web:
+    image: localhost:5000/krypto_development/web
+    networks:
+      agiper_development:
+        aliases:
+          - krypto_development_web
+    ports:
+      - "8080"
     environment:
       - ENVIRONMENT=development
     deploy:
