@@ -10,13 +10,13 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 	apt-get install -y --no-install-recommends \
 		nodejs \
 		docker-engine \
-		dotnet-sdk-2.0.0 && \
+		dotnet-sdk-2.1.3 && \
 	npm install -g bower && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN mkdir -p /opt/teamcity && \
-	curl -L https://download.jetbrains.com/teamcity/TeamCity-2017.1.5.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
+	curl -L https://download.jetbrains.com/teamcity/TeamCity-2017.2.1.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
 
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
