@@ -6,43 +6,6 @@ networks:
 
 services:
   
-  # GETH
-  geth:
-    image: agiper/geth
-    networks:
-      - agiper_development
-    ports:
-      - "8545"
-    environment:
-      - ENVIRONMENT=development
-    volumes: 
-      - ~/volume/geth:/var/lib/geth
-    command:
-      - geth
-      - --rpc
-      - --mine
-      - --rpcaddr=0.0.0.0
-      - --rpccorsdomain="*"
-      - --datadir=/var/lib/geth
-      - --etherbase=12890d2cce102216644c59dae5baed380d84830c
-      - --rpcapi="admin,db,eth,debug,miner,net,shh,txpool,personal,web3"
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
-        limits:
-          cpus: '0.75'
-          memory: 4096M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-
   # MSSQL
   mssql:
     image: agiper/mssql
