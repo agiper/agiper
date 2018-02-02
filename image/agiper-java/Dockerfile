@@ -9,4 +9,4 @@ RUN add-apt-repository ppa:webupd8team/java && \
 	rm -rf /var/cache/oracle-jdk8-installer && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle
