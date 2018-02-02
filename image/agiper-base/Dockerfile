@@ -1,7 +1,7 @@
 FROM phusion/baseimage:0.10.0
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
