@@ -19,8 +19,8 @@ RUN mkdir -p /opt/teamcity && \
 	curl -L https://download.jetbrains.com/teamcity/TeamCity-2017.2.2.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
 	sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
 
-ENV DotNetCLI_Path /usr/share/dotnet
-ENV TEAMCITY_DATA_PATH /var/lib/teamcity
+ENV DOTNET_HOME=/usr/share/dotnet
+ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
 
 COPY start /etc/my_init.d/
