@@ -13,10 +13,9 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - 
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 COPY start /etc/my_init.d/
-COPY mssql.conf /var/opt/mssql/
 
 ENV SA_PASSWORD=ZBEUqK7KxK
 
 EXPOSE 1433
 
-CMD ["/opt/mssql/bin/sqlservr"]
+CMD ["/opt/mssql/bin/sqlservr", "--accept-eula"]
