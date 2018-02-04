@@ -16,7 +16,6 @@ COPY start /etc/my_init.d/
 
 ENV ACCEPT_EULA=Y
 ENV MSSQL_PID=Developer
-ENV SA_PASSWORD=P@ssw0rd
 
 EXPOSE 1433
 
