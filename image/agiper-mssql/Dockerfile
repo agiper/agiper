@@ -15,7 +15,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - 
 COPY start /etc/my_init.d/
 
 ENV ACCEPT_EULA=Y
-ENV MSSQL_PID=Standard
+ENV MSSQL_PID=Enterprise
 
 EXPOSE 1433
 
