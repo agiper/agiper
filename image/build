@@ -7,6 +7,7 @@ docker build -t agiper/redis agiper-redis/
 docker build -t agiper/mssql agiper-mssql/
 docker build -t agiper/docker agiper-docker/
 docker build -t agiper/dotnet agiper-dotnet/
+docker build -t agiper/stellar agiper-stellar/
 docker build -t agiper/rabbitmq agiper-rabbitmq/
 docker build -t agiper/teamcity agiper-teamcity/
 docker build -t agiper/portainer agiper-portainer/
