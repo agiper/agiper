@@ -6,6 +6,74 @@ networks:
 
 services:
   
+  #WEB
+  web:
+    image: localhost:5000/krypto_development/web
+    networks:
+      agiper_development:
+        aliases:
+          - krypto_development_web
+    ports:
+      - "8080"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+        limits:
+          cpus: '0.75'
+          memory: 2048M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+  #API
+  api:
+    image: localhost:5000/krypto_development/api
+    networks:
+      agiper_development:
+        aliases:
+          - krypto_development_api
+    ports:
+      - "8081"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
   #JOB
   job:
     image: localhost:5000/krypto_development/job
@@ -40,13 +108,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #BOT
-  bot:
-    image: localhost:5000/krypto_development/bot
+  #WALLET
+  exchange:
+    image: localhost:5000/krypto_development/wallet
     networks:
       agiper_development:
         aliases:
-          - krypto_development_bot
+          - krypto_development_wallet
     ports:
       - "8083"
     environment:
@@ -74,25 +142,25 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #WEB
-  web:
-    image: localhost:5000/krypto_development/web
+  #EXCHANGE
+  exchange:
+    image: localhost:5000/krypto_development/exchange
     networks:
       agiper_development:
         aliases:
-          - krypto_development_web
+          - krypto_development_exchange
     ports:
-      - "8080"
+      - "8084"
     environment:
       - ENVIRONMENT=development
     deploy:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 512M
+          memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 2048M
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
