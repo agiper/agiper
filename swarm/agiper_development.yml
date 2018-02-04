@@ -61,6 +61,33 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
+# STELLAR
+  stellar:
+    image: agiper/stellar
+    networks:
+      - agiper_development
+    ports:
+      - "8000"
+    deploy:
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
   # RABBITMQ
   rabbitmq:
     image: agiper/rabbitmq
