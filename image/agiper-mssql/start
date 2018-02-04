@@ -1,3 +1,2 @@
 #!/bin/bash
-set -ex
-/opt/mssql/bin/mssql-conf set-sa-password
+#/opt/mssql/bin/mssql-conf set-sa-password
