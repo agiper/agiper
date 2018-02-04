@@ -1,12 +1,12 @@
 FROM agiper/base
 
-RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - & \
-	add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && \
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
+	curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/prod.list && \
+	curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list > /etc/apt/sources.list.d/mssql-server.list && \
 	apt-get update && \
 	export ACCEPT_EULA=Y && \
 	apt-get install -y --no-install-recommends \
 		mssql-tools \
-		unixodbc-dev \
 		mssql-server && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
