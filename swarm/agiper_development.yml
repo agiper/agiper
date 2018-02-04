@@ -41,7 +41,6 @@ services:
       - agiper_development
     ports:
       - "6379"
-    deploy:
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -64,11 +63,11 @@ services:
 # STELLAR
   stellar:
     image: agiper/stellar
+    command: --testnet
     networks:
       - agiper_development
     ports:
       - "8000"
-    deploy:
     environment:
       - ENVIRONMENT=development
     deploy:
