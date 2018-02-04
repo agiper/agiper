@@ -1,5 +1,4 @@
 #!/bin/bash
 if [ "$(ls -A /var/opt/mssql/data)" ]; then
-	export SA_PASSWORD=ZBEUqK7KxK
-	opt/mssql/bin/mssql-conf set-sa-password
+	/opt/mssql/bin/mssql-conf set-sa-password
 fi
