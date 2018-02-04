@@ -1,4 +1,4 @@
 #!/bin/bash
-if [ "$(ls -A /var/opt/mssql/data)" ]; then
+if ![ "$(ls -A /var/opt/mssql/data)" ]; then
 	/opt/mssql/bin/mssql-conf set-sa-password
 fi
