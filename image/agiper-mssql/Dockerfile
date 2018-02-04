@@ -1,8 +1,7 @@
 FROM agiper/base
 
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
-	sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)" && \
-	sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && \
+RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - & \
+	add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && \
 	apt-get update && \
 	export ACCEPT_EULA=Y && \
 	apt-get install -y --no-install-recommends \
@@ -16,6 +15,7 @@ COPY start /etc/my_init.d/
 
 ENV ACCEPT_EULA=Y
 ENV MSSQL_PID=Developer
+ENV SA_PASSWORD=ZBEUqK7KxK
 
 EXPOSE 1433
 
