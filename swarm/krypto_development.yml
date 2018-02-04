@@ -109,7 +109,7 @@ services:
           - node.labels.environment == development
 
   #WALLET
-  exchange:
+  wallet:
     image: localhost:5000/krypto_development/wallet
     networks:
       agiper_development:
@@ -123,10 +123,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 1024M
+          memory: 512M
         limits:
           cpus: '0.75'
-          memory: 4096M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -142,7 +142,7 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #EXCHANGE
+#EXCHANGE
   exchange:
     image: localhost:5000/krypto_development/exchange
     networks:
@@ -157,10 +157,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 1024M
+          memory: 512M
         limits:
           cpus: '0.75'
-          memory: 4096M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
