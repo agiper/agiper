@@ -71,7 +71,7 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes:
-      - ~/volume/stellar:/var/opt/stellar
+      - ~/volume/stellar:/opt/stellar
     deploy:
       resources:
         reservations:
