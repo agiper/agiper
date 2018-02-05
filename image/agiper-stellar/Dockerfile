@@ -1,1 +1,1 @@
-FROM zulucrypto/stellar-integration-test-network
+FROM zulucrypto/stellar-integration-test-network:latest
