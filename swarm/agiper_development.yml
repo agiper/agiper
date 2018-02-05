@@ -63,15 +63,12 @@ services:
 # STELLAR
   stellar:
     image: agiper/stellar
-    command: --testnet
     networks:
       - agiper_development
     ports:
       - "8000"
     environment:
       - ENVIRONMENT=development
-    volumes:
-      - ~/volume/stellar:/opt/stellar
     deploy:
       resources:
         reservations:
