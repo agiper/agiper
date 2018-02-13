@@ -108,13 +108,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #WALLET
-  wallet:
-    image: localhost:5000/krypto_development/wallet
+  #ASSET
+  asset:
+    image: localhost:5000/krypto_development/asset
     networks:
       agiper_development:
         aliases:
-          - krypto_development_wallet
+          - krypto_development_asset
     ports:
       - "8083"
     environment:
