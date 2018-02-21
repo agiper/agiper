@@ -6,9 +6,9 @@ RUN apt-get update && \
 		tcl \
 		build-essential && \
 	cd /tmp && \
-	wget http://download.redis.io/redis-stable.tar.gz && \
-	tar xvzf redis-stable.tar.gz && \
-	cd redis-stable && \
+	wget http://download.redis.io/releases/redis-4.0.8.tar.gz && \
+	tar xvzf redis-4.0.8.tar.gz && \
+	cd redis && \
 	make && \
 	make install && \
 	apt-get purge tcl build-essential -y && \
