@@ -1,6 +1,6 @@
 FROM agiper/java
 
-ENV DOTNETCORE_VERSION=2.1.4
+ENV DOTNET_VERSION=2.1.4
 ENV TEAMCITY_VERSION=2017.2.2
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
