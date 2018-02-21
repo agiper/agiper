@@ -13,7 +13,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 	apt-get install -y --no-install-recommends \
 		nodejs \
 		docker-engine \
-		dotnet-sdk-${DOTNETCORE_VERSION} && \
+		dotnet-sdk-${DOTNET_VERSION} && \
 	npm install -g bower && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
