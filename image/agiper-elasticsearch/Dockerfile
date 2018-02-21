@@ -1,9 +1,11 @@
 FROM agiper/java
 
+ENV ES_VERSION=6.2.2
+
 RUN mkdir -p /var/lib/elasticsearch && \
 	mkdir -p /var/log/elasticsearch && \
 	mkdir -p /usr/share/elasticsearch && \
-	curl -L https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.2.tar.gz | tar -xzC /usr/share/elasticsearch --strip-components=1
+	curl -L https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz | tar -xzC /usr/share/elasticsearch --strip-components=1
 
 COPY elasticsearch.yml /usr/share/elasticsearch/config/
 
