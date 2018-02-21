@@ -13,7 +13,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - 
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 ENV ACCEPT_EULA=Y
-ENV MSSQL_PID=Enterprise
+ENV MSSQL_PID=Standard
 ENV SA_PASSWORD=P@ssw0rd
 
 EXPOSE 1433
