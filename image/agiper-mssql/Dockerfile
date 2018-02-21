@@ -10,10 +10,10 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - 
 		unixodbc-dev \
 		mssql-server && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+	rm -rf  /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 ENV ACCEPT_EULA=Y
-ENV MSSQL_PID=Standard
+ENV MSSQL_PID=Enterprise
 ENV SA_PASSWORD=P@ssw0rd
 
 EXPOSE 1433
