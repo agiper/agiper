@@ -13,4 +13,4 @@ RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc |
 
 EXPOSE 5672 15672
 
-CMD ["rabbitmq-server"]
+CMD ["/sbin/setuser", "rabbitmq", "rabbitmq-server"]
