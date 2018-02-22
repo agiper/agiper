@@ -12,6 +12,12 @@ networks:
   agiper_production:
     external: true
 
+volumes:
+  agiper:
+    driver: cloudstor:azure
+    driver_opts:
+      share: agiper
+
 services:
   # NGINX
   nginx:
@@ -56,7 +62,8 @@ services:
       - agiper
     ports:
       - "1433"
-    volumes: 
+    volumes:
+      - agiper:/var/smb
       - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
