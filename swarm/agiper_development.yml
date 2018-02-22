@@ -20,7 +20,6 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes:
-      - agiper_development:/tmp
       - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
