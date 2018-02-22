@@ -6,7 +6,6 @@ RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
 	apt-get update && \
 	apt-get install nginx -y --no-install-recommends && \
 	apt-get clean && \
-	rm -v /etc/nginx/sites-enabled/default && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 COPY nginx.conf /etc/nginx/
