@@ -8,7 +8,7 @@ volumes:
   agiper_development:
     driver: cloudstor:azure
     driver_opts:
-      share: agiper_development
+      share: agiper-development
     
 services:
   
