@@ -16,11 +16,13 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes:
-       - type: volume
-         driver: cloudstor:azure
-         target: /var/opt/mssql/data
-         driver_opts:
+      - type: volume
+        driver: cloudstor:azure
+        target: /var/opt/mssql/data
+        driver_opts:
            share: agiper-development-mssql
+        volume:
+          nocopy: true    
     deploy:
       resources:
         reservations:
