@@ -3,12 +3,6 @@ version: "3"
 networks:
   agiper_development:
     external: true
-
-volumes:
-  agiper_development:
-    driver: cloudstor:azure
-    driver_opts:
-      share: agiper-development
     
 services:
   
@@ -22,7 +16,11 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes:
-       - agiper_development:/var/opt/mssql/data
+       - type: volume
+         driver: cloudstor:azure
+         target: /var/opt/mssql/data
+         driver_opts:
+           share: agiper-development-mssql
     deploy:
       resources:
         reservations:
