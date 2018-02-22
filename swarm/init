@@ -17,5 +17,5 @@ docker plugin install docker4x/cloudstor:17.06.0-ce-rc3-azure1 \
   AZURE_STORAGE_ACCOUNT="agiper" \
   AZURE_STORAGE_ENDPOINT="core.windows.net" \
   AZURE_STORAGE_ACCOUNT_KEY="3xpWfWxxyAo3MZW/WhPmv4Q/VWiutOU2u4SLKoLzltRA8KR+MyVthM1PmHCMAvdvSie3Dw41r137b0FTZoWS6Q=="
-docker volume create --driver=cloudstor:azure --label=agiper
+docker volume create agiper --driver=cloudstor:azure
 
