@@ -1,7 +1,8 @@
 FROM agiper/base
 
-RUN sudo curl http://nginx.org/keys/nginx_signing.key | apt-key add - && \
-	echo -e "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx\ndeb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx" > /etc/apt/sources.list.d/nginx.list && \
+RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
+	echo "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx" | sudo tee /etc/apt/sources.list.d/nginx.list && \
+	echo "deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx" | sudo tee /etc/apt/sources.list.d/nginx.list && \
 	apt-get update && \
 	apt-get install -y --no-install-recommends nginx && \
 	apt-get clean && \
