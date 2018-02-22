@@ -1,7 +1,6 @@
 FROM agiper/base
 
-RUN deb http://nginx.org/packages/ubuntu/ xenial nginx && \
-	deb-src http://nginx.org/packages/ubuntu/ xenial nginx && \
+RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
 	apt-get update && \
 	apt-get install -y --no-install-recommends nginx && \
 	apt-get clean && \
