@@ -1,6 +1,8 @@
 FROM agiper/base
 
-RUN apt-get update && \
+RUN deb http://nginx.org/packages/ubuntu/ xenial nginx && \
+	deb-src http://nginx.org/packages/ubuntu/ xenial nginx && \
+	apt-get update && \
 	apt-get install -y --no-install-recommends nginx && \
 	apt-get clean && \
 	rm -v /etc/nginx/sites-enabled/default && \
