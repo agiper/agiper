@@ -4,9 +4,9 @@ networks:
   agiper_development:
     external: true
 
-#volumes:
-#  agiper:
-#    external: true
+volumes:
+  agiper:
+    external: true
 
 services:
   
@@ -20,8 +20,8 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes:
-#      - agiper:/tmp
-      - ~/volume/mssql/data:/var/opt/mssql/data
+       - agiper:/var/opt/mssql/data
+#      - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
         reservations:
