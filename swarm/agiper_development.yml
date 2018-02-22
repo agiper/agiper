@@ -6,6 +6,7 @@ networks:
 
 volumes:
   agiper_development:
+    external: true
     driver: "cloudstor:azure"
 
 services:
