@@ -58,6 +58,7 @@ services:
       - "1433"
     volumes:
       - type: volume
+        source: agiper
         target: /var/cloudstor
         driver: cloudstor:azure
       - ~/volume/mssql/data:/var/opt/mssql/data
