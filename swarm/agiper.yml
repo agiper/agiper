@@ -15,6 +15,7 @@ networks:
 volumes:
   agiper_mssql:
     driver_opts:
+      uid: 1000
       perfmode: maxio
       share: agiper-mssql
     driver: cloudstor:azure
