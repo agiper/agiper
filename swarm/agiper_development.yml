@@ -50,6 +50,8 @@ services:
       - "6379"
     environment:
       - ENVIRONMENT=development
+    volumes:
+       - agiper:/agiper
     deploy:
       resources:
         reservations:
@@ -76,6 +78,8 @@ services:
       - "8000"
     environment:
       - ENVIRONMENT=development
+    volumes:
+       - agiper:/agiper    
     deploy:
       resources:
         reservations:
@@ -103,6 +107,8 @@ services:
       - "15672"
     environment:
       - ENVIRONMENT=development
+    volumes:
+       - agiper:/agiper
     deploy:
       resources:
         reservations:
@@ -134,6 +140,8 @@ services:
       - "bootstrap.memory_lock=true"
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - "cluster.name=rolene_development"
+    volumes:
+       - agiper:/agiper
     deploy:
       resources:
         reservations:
