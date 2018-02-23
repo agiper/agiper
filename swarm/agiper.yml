@@ -14,9 +14,9 @@ networks:
 
 volumes:
   agiper:
-    driver: cloudstor:azure
     driver_opts:
-      share: agiper
+      share: agiper  
+    driver: cloudstor:azure
 
 services:
   # NGINX
