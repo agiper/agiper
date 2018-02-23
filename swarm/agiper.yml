@@ -64,8 +64,8 @@ services:
     ports:
       - "1433"
     volumes:
-      - agiper_mssql:/var/opt/mssql/data
-#      - ~/volume/mssql/data:/var/opt/mssql/data
+#      - agiper_mssql:/var/opt/mssql/data
+      - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
         reservations:
