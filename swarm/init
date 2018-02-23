@@ -10,7 +10,7 @@ docker network create --driver overlay --subnet 10.3.3.0/24 agiper_staging
 docker network create --driver overlay --subnet 10.4.4.0/24 agiper_production
 
 echo -e "\e[1;32m[3/3] Mount Azure storage volume\e[0m"
-docker plugin install docker4x/cloudstor:17.06.0-ce-rc3-azure1 \
+docker plugin install docker4x/cloudstor:17.09.1-ce-azure1 \
   --alias cloudstor:azure \
   --grant-all-permissions \
   CLOUD_PLATFORM=AZURE \
