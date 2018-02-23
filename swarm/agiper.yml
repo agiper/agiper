@@ -13,9 +13,9 @@ networks:
     external: true
 
 volumes:
-  agiper:
+  backup:
     driver_opts:
-      share: agiper  
+      share: backup
     driver: cloudstor:azure
 
 services:
@@ -39,7 +39,6 @@ services:
       - "80:80"
       - "81:81"
     volumes:
-      - agiper:/var/agiper
       - ~/volume/nginx:/etc/nginx
       - ~/volume/nginx/www:/etc/nginx/www
     deploy:
@@ -64,7 +63,7 @@ services:
     ports:
       - "1433"
     volumes:
-      - agiper:/var/agiper
+      - backup:/var/backup
       - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
@@ -91,7 +90,6 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - agiper:/var/agiper
       - ~/volume/docker:/var/lib/registry    
     deploy:
       resources:
@@ -121,7 +119,6 @@ services:
     ports:
       - "8111"
     volumes:
-      - agiper:/var/agiper
       - ~/volume/teamcity:/var/lib/teamcity
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
@@ -146,7 +143,6 @@ services:
     ports:
       - "9000"
     volumes:
-      - agiper:/var/agiper
       - ~/volume/portainer:/data
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
@@ -171,7 +167,6 @@ services:
     ports:
       - "8080"
     volumes:
-      - agiper:/var/agiper
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
       resources:
