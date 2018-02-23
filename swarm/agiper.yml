@@ -63,7 +63,7 @@ services:
     ports:
       - "1433"
     volumes:
-      - agiper:/var/smb
+      - agiper:/agiper
       - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
@@ -90,6 +90,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
+      - agiper:/agiper
       - ~/volume/docker:/var/lib/registry    
     deploy:
       resources:
@@ -119,6 +120,7 @@ services:
     ports:
       - "8111"
     volumes:
+      - agiper:/agiper
       - ~/volume/teamcity:/var/lib/teamcity
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
@@ -143,6 +145,7 @@ services:
     ports:
       - "9000"
     volumes:
+      - agiper:/agiper
       - ~/volume/portainer:/data
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
@@ -167,6 +170,7 @@ services:
     ports:
       - "8080"
     volumes:
+      - agiper:/agiper
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
       resources:
