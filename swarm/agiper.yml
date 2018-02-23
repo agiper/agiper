@@ -58,7 +58,7 @@ services:
       - "1433"
     volumes:
       - type: volume
-        source: /
+        source: stor
         target: /stor
         driver_opts:
           share: stor
