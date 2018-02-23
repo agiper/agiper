@@ -57,12 +57,6 @@ services:
     ports:
       - "1433"
     volumes:
-      - type: volume
-        source: stor
-        target: /stor
-        driver_opts:
-          share: stor
-        driver: cloudstor:azure
       - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
