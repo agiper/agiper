@@ -39,6 +39,7 @@ services:
       - "80:80"
       - "81:81"
     volumes:
+      - agiper:/agiper
       - ~/volume/nginx:/etc/nginx
       - ~/volume/nginx/www:/etc/nginx/www
     deploy:
