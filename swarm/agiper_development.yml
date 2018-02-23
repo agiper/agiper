@@ -5,10 +5,10 @@ networks:
     external: true
 
 volumes:
-  agiper_development:
-    driver: cloudstor:azure
+  agiper:
     driver_opts:
-      share: agiper-development
+      share: agiper  
+    driver: cloudstor:azure
 
 services:
   
@@ -22,7 +22,7 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes:
-       - agiper_development:/var/smb
+       - agiper:/agiper
        - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
