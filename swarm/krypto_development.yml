@@ -153,8 +153,6 @@ services:
       - "8084"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper    
     deploy:
       resources:
         reservations:
