@@ -12,12 +12,6 @@ networks:
   agiper_production:
     external: true
 
-volumes:
-  stor:
-    driver_opts:
-      share: stor
-    driver: cloudstor:azure
-
 services:
   # NGINX
   nginx:
@@ -63,7 +57,11 @@ services:
     ports:
       - "1433"
     volumes:
-      - stor:/stor
+      - type: volume
+        target: /stor
+        driver_opts:
+          share: stor
+        driver: cloudstor:azure
       - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
@@ -119,7 +117,6 @@ services:
     ports:
       - "8111"
     volumes:
-      - stor:/stor
       - ~/volume/teamcity:/var/lib/teamcity
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
