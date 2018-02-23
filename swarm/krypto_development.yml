@@ -4,12 +4,6 @@ networks:
   agiper_development:
     external: true
 
-volumes:
-  agiper:
-    driver_opts:
-      share: agiper  
-    driver: cloudstor:azure
-
 services:
   
   #WEB
@@ -23,8 +17,6 @@ services:
       - "8080"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper      
     deploy:
       resources:
         reservations:
@@ -59,8 +51,6 @@ services:
       - "8081"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper
     deploy:
       resources:
         reservations:
@@ -95,8 +85,6 @@ services:
       - "8082"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper    
     deploy:
       resources:
         reservations:
@@ -131,8 +119,6 @@ services:
       - "8083"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper    
     deploy:
       resources:
         reservations:
