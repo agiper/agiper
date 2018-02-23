@@ -4,12 +4,6 @@ networks:
   agiper_development:
     external: true
 
-volumes:
-  agiper:
-    driver_opts:
-      share: agiper  
-    driver: cloudstor:azure
-
 services:
   
   # MSSQL
@@ -22,7 +16,6 @@ services:
     environment:
       - ENVIRONMENT=development
     volumes:
-       - agiper:/agiper
        - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
@@ -50,8 +43,6 @@ services:
       - "6379"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper
     deploy:
       resources:
         reservations:
@@ -78,8 +69,6 @@ services:
       - "8000"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper    
     deploy:
       resources:
         reservations:
@@ -107,8 +96,6 @@ services:
       - "15672"
     environment:
       - ENVIRONMENT=development
-    volumes:
-       - agiper:/agiper
     deploy:
       resources:
         reservations:
@@ -140,8 +127,6 @@ services:
       - "bootstrap.memory_lock=true"
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - "cluster.name=rolene_development"
-    volumes:
-       - agiper:/agiper
     deploy:
       resources:
         reservations:
