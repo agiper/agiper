@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV DOTNET_VERSION=2.1.4
+ENV DOTNET_VERSION=2.1.101
 
 WORKDIR /var/lib/dotnet
 
