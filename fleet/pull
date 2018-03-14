@@ -1,8 +1,0 @@
-set -e
-docker pull agiper/host
-docker pull agiper/nginx
-docker pull agiper/redis
-docker pull agiper/elastic
-docker pull agiper/mariadb
-docker pull agiper/rabbitmq
-docker pull agiper/sqlserver

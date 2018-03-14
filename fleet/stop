@@ -1,7 +1,0 @@
-fleetctl stop redis redis-discovery
-fleetctl stop mssql mssql-discovery
-fleetctl stop elastic elastic-discovery
-fleetctl stop rabbitmq rabbitmq-discovery
-fleetctl stop apihost@{1..2} apihost-discovery@{1..2}
-fleetctl stop jobhost@{1..2} jobhost-discovery@{1..2}
-fleetctl stop webhost@{1..2} webhost-discovery@1{..2}
