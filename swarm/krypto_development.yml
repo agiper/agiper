@@ -8,11 +8,11 @@ services:
   
   #WEB
   web:
-    image: localhost:5000/krypto_development/web
+    image: localhost:5000/quorum_development/web
     networks:
       agiper_development:
         aliases:
-          - krypto_development_web
+          - quorum_development_web
     ports:
       - "8080"
     environment:
@@ -42,11 +42,11 @@ services:
 
   #API
   api:
-    image: localhost:5000/krypto_development/api
+    image: localhost:5000/quorum_development/api
     networks:
       agiper_development:
         aliases:
-          - krypto_development_api
+          - quorum_development_api
     ports:
       - "8081"
     environment:
@@ -76,11 +76,11 @@ services:
 
   #JOB
   job:
-    image: localhost:5000/krypto_development/job
+    image: localhost:5000/quorum_development/job
     networks:
       agiper_development:
         aliases:
-          - krypto_development_job
+          - quorum_development_job
     ports:
       - "8082"
     environment:
@@ -110,11 +110,11 @@ services:
 
   #ASSET
   asset:
-    image: localhost:5000/krypto_development/asset
+    image: localhost:5000/quorum_development/asset
     networks:
       agiper_development:
         aliases:
-          - krypto_development_asset
+          - quorum_development_asset
     ports:
       - "8083"
     environment:
@@ -144,11 +144,11 @@ services:
 
 #EXCHANGE
   exchange:
-    image: localhost:5000/krypto_development/exchange
+    image: localhost:5000/quorum_development/exchange
     networks:
       agiper_development:
         aliases:
-          - krypto_development_exchange
+          - quorum_development_exchange
     ports:
       - "8084"
     environment:
