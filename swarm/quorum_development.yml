@@ -5,6 +5,40 @@ networks:
     external: true
 
 services:
+
+#API
+  api:
+    image: localhost:5000/quorum_development/api
+    networks:
+      agiper_development:
+        aliases:
+          - quorum_development_api
+    ports:
+      - "8081"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
   
   #WEB
   web:
@@ -40,47 +74,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #API
-  api:
-    image: localhost:5000/quorum_development/api
+  #WORKER
+  worker:
+    image: localhost:5000/quorum_development/worker
     networks:
       agiper_development:
         aliases:
-          - quorum_development_api
-    ports:
-      - "8081"
-    environment:
-      - ENVIRONMENT=development
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
-        limits:
-          cpus: '0.75'
-          memory: 4096M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      update_config:
-        delay: 10s
-        monitor: 60s
-        parallelism: 1
-        max_failure_ratio: 0.3
-        failure_action: continue
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-
-  #JOB
-  job:
-    image: localhost:5000/quorum_development/job
-    networks:
-      agiper_development:
-        aliases:
-          - quorum_development_job
+          - quorum_development_worker
     ports:
       - "8082"
     environment:
@@ -100,7 +100,7 @@ services:
       update_config:
         delay: 10s
         monitor: 60s
-        parallelism: 1
+        parallelism: 3
         max_failure_ratio: 0.3
         failure_action: continue
       placement:
