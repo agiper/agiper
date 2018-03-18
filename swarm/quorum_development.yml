@@ -6,6 +6,74 @@ networks:
 
 services:
 
+  #API
+  api:
+    image: localhost:5000/quorum_development/api
+    networks:
+      agiper_development:
+        aliases:
+          - quorum_development_api
+    ports:
+      - "8081"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 1024M
+        limits:
+          cpus: '1.0'
+          memory: 2048M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+  #JOB
+  job:
+    image: localhost:5000/quorum_development/job
+    networks:
+      agiper_development:
+        aliases:
+          - quorum_development_job
+    ports:
+      - "8082"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 1024M
+        limits:
+          cpus: '1.0'
+          memory: 2048M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
   #WEB
   web:
     image: localhost:5000/quorum_development/web
@@ -40,49 +108,15 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-#API
-  api:
-    image: localhost:5000/quorum_development/api
+  #PROCESSOR
+  processor:
+    image: localhost:5000/quorum_development/processor
     networks:
       agiper_development:
         aliases:
-          - quorum_development_api
+          - quorum_development_processor
     ports:
-      - "8081"
-    environment:
-      - ENVIRONMENT=development
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.5'
-          memory: 1024M
-        limits:
-          cpus: '1.0'
-          memory: 2048M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      update_config:
-        delay: 10s
-        monitor: 60s
-        parallelism: 1
-        max_failure_ratio: 0.3
-        failure_action: continue
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-
-  #WORKER
-  worker:
-    image: localhost:5000/quorum_development/worker
-    networks:
-      agiper_development:
-        aliases:
-          - quorum_development_worker
-    ports:
-      - "8082"
+      - "8083"
     environment:
       - ENVIRONMENT=development
     deploy:
