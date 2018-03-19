@@ -18,6 +18,8 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
+      replicas: 1
+      mode: replicated
       restart_policy:
         delay: 1m
         window: 1m
@@ -45,6 +47,8 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
+      replicas: 1
+      mode: replicated    
       restart_policy:
         delay: 1m
         window: 1m
@@ -72,8 +76,8 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
+      replicas: 2
       mode: replicated
-        replicas: 2    
       restart_policy:
         delay: 1m
         window: 1m
@@ -101,8 +105,8 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
+      replicas: 2
       mode: replicated
-        replicas: 3
       restart_policy:
         delay: 1m
         window: 1m
