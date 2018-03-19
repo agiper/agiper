@@ -39,6 +39,7 @@ services:
     ports:
       - "80:80"
       - "81:81"
+      - "82:82"
     volumes:
       - ~/volume/nginx:/etc/nginx
       - ~/volume/nginx/www:/etc/nginx/www
