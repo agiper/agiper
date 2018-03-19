@@ -72,6 +72,8 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
+      mode: replicated
+        replicas: 2    
       restart_policy:
         delay: 1m
         window: 1m
@@ -79,7 +81,7 @@ services:
       update_config:
         delay: 10s
         monitor: 60s
-        parallelism: 2
+        parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
       placement:
@@ -99,6 +101,8 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
+      mode: replicated
+        replicas: 3
       restart_policy:
         delay: 1m
         window: 1m
@@ -106,7 +110,7 @@ services:
       update_config:
         delay: 10s
         monitor: 60s
-        parallelism: 3
+        parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
       placement:
