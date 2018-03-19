@@ -14,7 +14,7 @@ services:
         aliases:
           - quorum_development_web
     ports:
-      - "80:80"
+      - "80"
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -48,7 +48,7 @@ services:
         aliases:
           - quorum_development_api
     ports:
-      - "81:81"
+      - "81"
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -82,7 +82,7 @@ services:
         aliases:
           - quorum_development_job
     ports:
-      - "82:82"
+      - "82"
     environment:
       - ENVIRONMENT=development
     deploy:
