@@ -64,19 +64,19 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #JOB
-  job:
-    image: localhost:5000/quorum_development/job
+  #PAYMENT
+  payment:
+    image: localhost:5000/quorum_development/payment
     networks:
       agiper_development:
         aliases:
-          - quorum_development_job
+          - quorum_development_payment
     ports:
-      - "82"
+      - "90"
     environment:
       - ENVIRONMENT=development
     deploy:
-      replicas: 3
+      replicas: 2
       mode: replicated
       restart_policy:
         delay: 1m
@@ -93,19 +93,19 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #PROCESSOR
-  processor:
-    image: localhost:5000/quorum_development/processor
+  #EXCHANGE
+  exchange:
+    image: localhost:5000/quorum_development/exchange
     networks:
       agiper_development:
         aliases:
-          - quorum_development_processor
+          - quorum_development_exchange
     ports:
-      - "90"
+      - "91"
     environment:
       - ENVIRONMENT=development
     deploy:
-      replicas: 4
+      replicas: 2
       mode: replicated
       restart_policy:
         delay: 1m
