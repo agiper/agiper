@@ -6,6 +6,7 @@ RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc |
 	wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | sudo apt-key add - && \
 	echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list && \
 	echo "deb http://binaries.erlang-solutions.com/debian xenial contrib" | sudo tee /etc/apt/sources.list.d/erlang-solutions.list && \
+	apt-get clean && \
 	apt-get update && \
 	apt-get install rabbitmq-server=${RABBITMQ_VERSION} -y --no-install-recommends && \
 	rabbitmq-plugins enable rabbitmq_management && \
