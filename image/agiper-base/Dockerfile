@@ -5,14 +5,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
-		git \
 		wget\
 		sudo \
 		nano \
-		htop \
 		curl \
-		telnet \
-		net-tools \
 		iputils-ping &&\
 	apt-get clean && \
 	/usr/sbin/enable_insecure_key && \
