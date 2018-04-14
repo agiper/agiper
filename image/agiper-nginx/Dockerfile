@@ -6,7 +6,7 @@ RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
 	echo "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list && \
 	echo "deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list && \
 	apt-get update && \
-	apt-get install nginx=${NGINX_VERSION} -y --no-install-recommends && \
+	apt-get install nginx -y --no-install-recommends && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
