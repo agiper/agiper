@@ -6,7 +6,7 @@ RUN wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.a
 	echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list && \
 	apt-get clean && \
 	apt-get update && \
-	apt-get install rabbitmq-server=${RABBITMQ_VERSION} -y --no-install-recommends && \
+	apt-get install rabbitmq-server -y --no-install-recommends && \
 	rabbitmq-plugins enable rabbitmq_management && \
 	echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config && \
 	apt-get clean && \
