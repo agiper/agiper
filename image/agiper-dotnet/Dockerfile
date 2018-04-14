@@ -9,7 +9,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 	add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" && \
 	apt-get clean && \
 	apt-get update && \
-	apt-get install jq dotnet-runtime-${DOTNET_VERSION} -y --no-install-recommends && \
+	apt-get install dotnet-runtime-${DOTNET_VERSION} -y --no-install-recommends && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
