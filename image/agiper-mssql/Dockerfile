@@ -8,7 +8,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - 
 	apt-get install -y --no-install-recommends \
 		mssql-tools \
 		unixodbc-dev \
-		mssql-server=14.0.3022.28-2 && \
+		mssql-server=14.0.3023.8-5 && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
