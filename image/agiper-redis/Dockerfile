@@ -2,7 +2,8 @@ FROM agiper/base
 
 ENV REDIS_VERSION=4.0.9
 
-RUN apt-get update && \
+RUN apt-get clean && \
+	apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
 	apt-get install -y --no-install-recommends \
 		tcl \
