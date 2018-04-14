@@ -8,6 +8,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
 	apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-xenial main" && \
 	add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" && \
+	apt-get clean && \
 	apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
 	apt-get install -y --no-install-recommends \
