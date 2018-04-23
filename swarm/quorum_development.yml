@@ -71,8 +71,6 @@ services:
       agiper_development:
         aliases:
           - quorum_development_worker
-    ports:
-      - "90"
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -100,8 +98,6 @@ services:
       agiper_development:
         aliases:
           - quorum_development_payment
-    ports:
-      - "91"
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -129,8 +125,6 @@ services:
       agiper_development:
         aliases:
           - quorum_development_exchange
-    ports:
-      - "92"
     environment:
       - ENVIRONMENT=development
     deploy:
