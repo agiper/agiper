@@ -3,11 +3,12 @@ FROM agiper/java
 ENV DOTNET_VERSION=2.1.105
 ENV TEAMCITY_VERSION=2017.2.3
 
-RUN wget -q packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && \
-	dpkg -i packages-microsoft-prod.deb && \
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+	mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
 	apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-xenial main" && \
-	apt-get install apt-transport-https && \
+	add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" && \
+	apt-get clean && \
 	apt-get update && \
 	apt-get install -y --no-install-recommends \
 		docker-engine \
@@ -25,5 +26,3 @@ ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
 
 COPY start /etc/my_init.d/
-
-EXPOSE 8111
