@@ -4,9 +4,9 @@ ENV DOTNET_VERSION=2.0.7
 
 WORKDIR /var/lib/dotnet
 
-RUN wget -q packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && \
-	dpkg -i packages-microsoft-prod.deb && \
-	apt-get install apt-transport-https && \
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+	mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
+	add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" && \
 	apt-get update && \
 	apt-get install dotnet-runtime-${DOTNET_VERSION} -y --no-install-recommends && \
 	apt-get clean && \
