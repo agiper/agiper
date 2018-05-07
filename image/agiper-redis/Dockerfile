@@ -22,6 +22,4 @@ RUN apt-get update && \
 COPY redis.conf /etc/redis/
 COPY sentinel.conf /etc/redis/
 
-EXPOSE 6379
-
 CMD ["redis-server", "/etc/redis/redis.conf"]
