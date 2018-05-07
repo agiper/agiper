@@ -18,6 +18,4 @@ ENV ACCEPT_EULA=Y
 ENV MSSQL_PID=Enterprise
 ENV SA_PASSWORD=P@ssw0rd
 
-EXPOSE 1433
-
 CMD ["/opt/mssql/bin/sqlservr"]
