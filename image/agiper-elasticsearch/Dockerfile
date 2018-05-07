@@ -13,6 +13,4 @@ RUN chown -R daemon:daemon /var/lib/elasticsearch && \
 	chown -R daemon:daemon /var/log/elasticsearch && \
 	chown -R daemon:daemon /usr/share/elasticsearch
 
-EXPOSE 9200
-
 CMD ["/sbin/setuser", "daemon", "/usr/share/elasticsearch/bin/elasticsearch"]
