@@ -1,6 +1,6 @@
 FROM agiper/java
 
-ENV DOTNET_VERSION=2.1.104
+ENV DOTNET_VERSION=2.1.105
 ENV TEAMCITY_VERSION=2017.2.3
 
 RUN wget -q packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && \
