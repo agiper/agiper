@@ -12,6 +12,4 @@ RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
 
 COPY nginx.conf /etc/nginx/
 
-EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
