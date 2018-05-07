@@ -16,6 +16,4 @@ RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc |
 RUN chown -R rabbitmq:rabbitmq /var/lib/rabbitmq && \
 	chown -R rabbitmq:rabbitmq /var/log/rabbitmq
 
-EXPOSE 5672 15672
-
 CMD ["rabbitmq-server"]
