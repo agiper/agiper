@@ -64,13 +64,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
- #WORKER
-  worker:
-    image: localhost:5000/quorum_development/worker
+ #FUND
+  fund:
+    image: localhost:5000/quorum_development/fund
     networks:
       agiper_development:
         aliases:
-          - quorum_development_worker
+          - quorum_development_fund
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -91,13 +91,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #PAYMENT
-  payment:
-    image: localhost:5000/quorum_development/payment
+  #TRADE
+  trade:
+    image: localhost:5000/quorum_development/trade
     networks:
       agiper_development:
         aliases:
-          - quorum_development_payment
+          - quorum_development_trade
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -118,13 +118,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  #EXCHANGE
-  exchange:
-    image: localhost:5000/quorum_development/exchange
+  #MARKET
+  market:
+    image: localhost:5000/quorum_development/market
     networks:
       agiper_development:
         aliases:
-          - quorum_development_exchange
+          - quorum_development_market
     environment:
       - ENVIRONMENT=development
     deploy:
