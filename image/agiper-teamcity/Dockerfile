@@ -1,7 +1,7 @@
 FROM agiper/java
 
-ENV DOTNET_VERSION=2.1.105
-ENV TEAMCITY_VERSION=2017.2.3
+ENV DOTNET_VERSION=2.1.200
+ENV TEAMCITY_VERSION=2017.2.4
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
 	mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
