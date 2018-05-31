@@ -8,7 +8,7 @@ services:
 
   #WEB
   web:
-    image: localhost:5000/quorum_development/web:development
+    image: localhost:5000/quorum_development/web
     networks:
       agiper_development:
         aliases:
@@ -37,7 +37,7 @@ services:
 
   #API
   api:
-    image: localhost:5000/quorum_development/api:development
+    image: localhost:5000/quorum_development/api
     networks:
       agiper_development:
         aliases:
@@ -66,7 +66,7 @@ services:
 
  #ASSET
   asset:
-    image: localhost:5000/quorum_development/asset:development
+    image: localhost:5000/quorum_development/asset
     networks:
       agiper_development:
         aliases:
@@ -93,7 +93,7 @@ services:
 
   #MARKET
   market:
-    image: localhost:5000/quorum_development/market:development
+    image: localhost:5000/quorum_development/market
     networks:
       agiper_development:
         aliases:
@@ -120,7 +120,7 @@ services:
 
 #EXCHANGE
   exchange:
-    image: localhost:5000/quorum_development/exchange:development
+    image: localhost:5000/quorum_development/exchange
     networks:
       agiper_development:
         aliases:
