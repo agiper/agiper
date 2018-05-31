@@ -4,9 +4,10 @@ ENV DOTNET_VERSION=2.1
 
 WORKDIR /var/lib/dotnet
 
-RUN wget -q packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && \
-	sudo dpkg -i packages-microsoft-prod.deb
-RUN apt-get update && \
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+	mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
+	add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" && \
+	apt-get update && \
 	apt-get install dotnet-hosting-${DOTNET_VERSION} -y --no-install-recommends && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
