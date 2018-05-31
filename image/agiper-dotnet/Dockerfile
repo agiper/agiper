@@ -6,6 +6,7 @@ WORKDIR /var/lib/dotnet
 
 RUN wget -q packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && \
 	dpkg -i packages-microsoft-prod.deb && \
+	apt-get install apt-transport-https && \
 	apt-get update && \
 	apt-get install dotnet-runtime-${DOTNET_RUNTIME_VERSION} -y --no-install-recommends && \
 	apt-get clean && \
