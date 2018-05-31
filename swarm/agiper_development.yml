@@ -8,7 +8,7 @@ services:
   
   # MSSQL
   mssql:
-    image: agiper/mssql
+    image: agiper/mssql:latest
     networks:
       - agiper_development
     ports:
@@ -36,7 +36,7 @@ services:
 
   # REDIS
   redis:
-    image: agiper/redis
+    image: agiper/redis:latest
     networks:
       - agiper_development
     ports:
@@ -62,7 +62,7 @@ services:
 
 # STELLAR
   stellar:
-    image: agiper/stellar
+    image: agiper/stellar:latest
     networks:
       - agiper_development
     ports:
@@ -88,7 +88,7 @@ services:
 
   # RABBITMQ
   rabbitmq:
-    image: agiper/rabbitmq
+    image: agiper/rabbitmq:latest
     networks:
       - agiper_development
     ports:
@@ -115,7 +115,7 @@ services:
 
  # ELASTICSEARCH
   elasticsearch:
-    image: agiper/elasticsearch
+    image: agiper/elasticsearch:latest
     networks:
       - agiper_development
     ports:
