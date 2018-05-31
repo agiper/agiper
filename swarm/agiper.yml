@@ -29,7 +29,7 @@ services:
       - teamcity
       - portainer
       - visualizer
-    image: agiper/nginx
+    image: agiper/nginx:latest
     networks:
       - agiper
       - agiper_testing
@@ -58,7 +58,7 @@ services:
 
 # MSSQL
   mssql:
-    image: agiper/mssql
+    image: agiper/mssql:latest
     networks:
       - agiper
     ports:
@@ -81,7 +81,7 @@ services:
 
   # DOCKER
   docker:
-    image: agiper/docker
+    image: agiper/docker:latest
     networks:
       - agiper
     ports:
@@ -102,7 +102,7 @@ services:
   teamcity:
     depends_on:
       - mssql
-    image: agiper/teamcity
+    image: agiper/teamcity:latest
     networks:
       - agiper
       - agiper_testing
@@ -133,7 +133,7 @@ services:
 
 # PORTAINER
   portainer:
-    image: agiper/portainer
+    image: agiper/portainer:latest
     networks:
       - agiper
     ports:
@@ -153,7 +153,7 @@ services:
 
 # VISUALIZER
   visualizer:
-    image: agiper/visualizer
+    image: agiper/visualizer:latest
     networks:
       - agiper
     ports:
