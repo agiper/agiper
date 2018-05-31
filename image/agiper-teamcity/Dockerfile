@@ -5,7 +5,7 @@ ENV TEAMCITY_VERSION=2017.2.4
 
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
 	apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-xenial main" && \
-	wget -q packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && \
+	wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && \
 	dpkg -i packages-microsoft-prod.deb && \
 	apt-get clean && \
 	apt-get update && \
