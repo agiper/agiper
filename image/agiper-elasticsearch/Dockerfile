@@ -1,6 +1,6 @@
 FROM agiper/java
 
-ENV ES_VERSION=6.2.4
+ENV ES_VERSION=6.3.0
 
 RUN mkdir -p /var/lib/elasticsearch && \
 	mkdir -p /var/log/elasticsearch && \
