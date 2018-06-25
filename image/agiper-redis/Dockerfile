@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV REDIS_VERSION=4.0.9
+ENV REDIS_VERSION=4.0.10
 
 RUN apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
