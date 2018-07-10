@@ -91,13 +91,13 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-#TRADE
-  trade:
-    image: localhost:5000/quorum_development/trade
+#ORDER
+  order:
+    image: localhost:5000/quorum_development/order
     networks:
       agiper_development:
         aliases:
-          - quorum_development_trade
+          - quorum_development_order
     environment:
       - ENVIRONMENT=development
     deploy:
