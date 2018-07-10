@@ -64,13 +64,40 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
- #ASSET
-  asset:
-    image: localhost:5000/quorum_development/asset
+ #FUND
+  fund:
+    image: localhost:5000/quorum_development/fund
     networks:
       agiper_development:
         aliases:
-          - quorum_development_asset
+          - quorum_development_fund
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      replicas: 2
+      mode: replicated
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+#TRADE
+  trade:
+    image: localhost:5000/quorum_development/trade
+    networks:
+      agiper_development:
+        aliases:
+          - quorum_development_trade
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -102,33 +129,6 @@ services:
       - ENVIRONMENT=development
     deploy:
       replicas: 1
-      mode: replicated
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      update_config:
-        delay: 10s
-        monitor: 60s
-        parallelism: 1
-        max_failure_ratio: 0.3
-        failure_action: continue
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-
-#EXCHANGE
-  exchange:
-    image: localhost:5000/quorum_development/exchange
-    networks:
-      agiper_development:
-        aliases:
-          - quorum_development_exchange
-    environment:
-      - ENVIRONMENT=development
-    deploy:
-      replicas: 2
       mode: replicated
       restart_policy:
         delay: 1m
