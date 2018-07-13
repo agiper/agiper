@@ -17,7 +17,7 @@ RUN echo "[start: dependencies]" \
 
 ENV STELLAR_CORE_VERSION 9.2.0-551-7561c1d5
 ENV HORIZON_VERSION 0.11.1
-ENV BRIDGE_VERSION 0.0.30
+ENV BRIDGE_VERSION 0.0.31
 
 RUN echo "[start: stellar install]" \
     && wget -O stellar-core.deb https://s3.amazonaws.com/stellar.org/releases/stellar-core/stellar-core-${STELLAR_CORE_VERSION}_amd64.deb \
@@ -37,13 +37,13 @@ RUN echo "[start: installing stellar bridge]" \
         | tar -xz -C /opt/stellar/bridge --strip-components=1 \
     && echo "[end: installing stellar bridge"
 
-ADD common          /opt/stellar-default/common
+# ADD common          /opt/stellar-default/common
 # Public network
-ADD pubnet          /opt/stellar-default/pubnet
+# ADD pubnet          /opt/stellar-default/pubnet
 # Test network
-ADD testnet         /opt/stellar-default/testnet
+# ADD testnet         /opt/stellar-default/testnet
 # Private integration testing network with a single node and fixtures
-ADD integrationnet  /opt/stellar-default/integrationnet
+# ADD integrationnet  /opt/stellar-default/integrationnet
 
 ADD start /
 
