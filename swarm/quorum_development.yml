@@ -128,7 +128,7 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
-      replicas: 1
+      replicas: 2
       mode: replicated
       restart_policy:
         delay: 1m
