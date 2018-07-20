@@ -8,7 +8,7 @@ services:
 
   #WEB
   web:
-    image: localhost:5000/agiper_development/quorum_web
+    image: localhost:5000/development/quorum_web
     networks:
       development:
         aliases:
@@ -37,7 +37,7 @@ services:
 
   #API
   api:
-    image: localhost:5000/agiper_development/quorum_api
+    image: localhost:5000/development/quorum_api
     networks:
       development:
         aliases:
@@ -66,7 +66,7 @@ services:
 
  #FUND
   fund:
-    image: localhost:5000/agiper_development/quorum_fund
+    image: localhost:5000/development/quorum_fund
     networks:
       - development
     environment:
@@ -91,7 +91,7 @@ services:
 
 #ORDER
   order:
-    image: localhost:5000/agiper_development/quorum_order
+    image: localhost:5000/development/quorum_order
     networks:
       - development
     environment:
@@ -116,7 +116,7 @@ services:
 
   #MARKET
   market:
-    image: localhost:5000/agiper_development/quorum_market
+    image: localhost:5000/development/quorum_market
     networks:
       - development
     environment:
