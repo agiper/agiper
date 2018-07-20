@@ -1,24 +1,17 @@
 version: "3.4"
 
 networks:
-  agiper:
+  testing:
     external: true
-  agiper_development:
+  staging:
     external: true
-  agiper_testing:
+  production:
     external: true
-  agiper_staging:
+  development:
     external: true
-  agiper_production:
+  infrastructure:
     external: true
-
-volumes:
-  agiper_mssql:
-    name: agiper_mssql
-    driver_opts:
-      share: agiper-mssql
-    driver: cloudstor:azure
-
+  
 services:
   # NGINX
   nginx:
@@ -31,11 +24,11 @@ services:
       - visualizer
     image: agiper/nginx:latest
     networks:
-      - agiper
-      - agiper_testing
-      - agiper_staging
-      - agiper_production
-      - agiper_development
+      - testing
+      - staging
+      - production
+      - development
+      - infrastructure
     ports:
       - "80:80"
       - "81:81"
@@ -60,11 +53,10 @@ services:
   mssql:
     image: agiper/mssql:latest
     networks:
-      - agiper
+      - infrastructure
     ports:
       - "1433"
     volumes:
-#      - agiper_mssql:/var/opt/mssql/data
       - ~/volume/mssql/data:/var/opt/mssql/data
     deploy:
       resources:
@@ -83,7 +75,7 @@ services:
   docker:
     image: agiper/docker:latest
     networks:
-      - agiper
+      - infrastructure
     ports:
       - "5000:5000"
     volumes:
@@ -104,11 +96,11 @@ services:
       - mssql
     image: agiper/teamcity:latest
     networks:
-      - agiper
-      - agiper_testing
-      - agiper_staging
-      - agiper_production
-      - agiper_development
+      - testing
+      - staging
+      - production
+      - development
+      - infrastructure
     ports:
       - "8111"
     volumes:
@@ -135,7 +127,7 @@ services:
   portainer:
     image: agiper/portainer:latest
     networks:
-      - agiper
+      - infrastructure
     ports:
       - "9000"
     volumes:
@@ -155,7 +147,7 @@ services:
   visualizer:
     image: agiper/visualizer:latest
     networks:
-      - agiper
+      - infrastructure
     ports:
       - "8080"
     volumes:
