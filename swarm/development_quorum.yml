@@ -68,9 +68,7 @@ services:
   fund:
     image: localhost:5000/development/quorum_fund
     networks:
-      development:
-        aliases:
-          - development_quorum_fund
+      development
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -95,9 +93,7 @@ services:
   order:
     image: localhost:5000/development/quorum_order
     networks:
-      development:
-        aliases:
-          - development_quorum_order
+      development
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -122,9 +118,7 @@ services:
   market:
     image: localhost:5000/development/quorum_market
     networks:
-      development:
-        aliases:
-          - development_quorum_market
+      development
     environment:
       - ENVIRONMENT=development
     deploy:
