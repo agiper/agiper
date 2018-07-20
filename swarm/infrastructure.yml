@@ -96,10 +96,6 @@ services:
       - mssql
     image: agiper/teamcity:latest
     networks:
-      - testing
-      - staging
-      - production
-      - development
       - infrastructure
     ports:
       - "8111"
