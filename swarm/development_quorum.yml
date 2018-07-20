@@ -7,10 +7,12 @@ networks:
 services:
 
   #WEB
-  development_quorum_web:
+  web:
     image: localhost:5000/development/quorum_web
     networks:
-      development
+      development:
+        aliases:
+          - development_quorum_web
     ports:
       - "80"
     environment:
@@ -34,10 +36,12 @@ services:
           - node.labels.environment == development
 
   #API
-  development_quorum_api:
+  api:
     image: localhost:5000/development/quorum_api
     networks:
-      development
+      development:
+        aliases:
+          - development_quorum_api
     ports:
       - "81"
     environment:
@@ -61,10 +65,12 @@ services:
           - node.labels.environment == development
 
  #FUND
-  development_quorum_fund:
+  fund:
     image: localhost:5000/development/quorum_fund
     networks:
-      development
+      development:
+        aliases:
+          - development_quorum_fund
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -86,10 +92,12 @@ services:
           - node.labels.environment == development
 
 #ORDER
-  development_quorum_order:
+  order:
     image: localhost:5000/development/quorum_order
     networks:
-      development
+      development:
+        aliases:
+          - development_quorum_order
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -111,10 +119,12 @@ services:
           - node.labels.environment == development
 
   #MARKET
-  development_quorum_market:
+  market:
     image: localhost:5000/development/quorum_market
     networks:
-      development
+      development:
+        aliases:
+          - development_quorum_market
     environment:
       - ENVIRONMENT=development
     deploy:
