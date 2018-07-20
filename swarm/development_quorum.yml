@@ -68,7 +68,7 @@ services:
   fund:
     image: localhost:5000/development/quorum_fund
     networks:
-      development
+      - development
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -93,7 +93,7 @@ services:
   order:
     image: localhost:5000/development/quorum_order
     networks:
-      development
+      - development
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -118,7 +118,7 @@ services:
   market:
     image: localhost:5000/development/quorum_market
     networks:
-      development
+      - development
     environment:
       - ENVIRONMENT=development
     deploy:
