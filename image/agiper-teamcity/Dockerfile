@@ -16,7 +16,8 @@ RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 581
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN mkdir -p /opt/teamcity && \
-	curl -L https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1
+	curl -L https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
+	sed -i -e 's/name=Default Agent/name=/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
 
 ENV DOTNET_HOME=/usr/share/dotnet
 ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
