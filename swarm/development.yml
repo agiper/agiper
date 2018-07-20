@@ -1,7 +1,7 @@
 version: "3.4"
 
 networks:
-  agiper_development:
+  development:
     external: true
 
 services:
@@ -10,7 +10,7 @@ services:
   mssql:
     image: agiper/mssql:latest
     networks:
-      - agiper_development
+      - development
     ports:
       - "1433"
     environment:
@@ -38,7 +38,7 @@ services:
   redis:
     image: agiper/redis:latest
     networks:
-      - agiper_development
+      - development
     ports:
       - "6379"
     environment:
@@ -64,7 +64,7 @@ services:
   stellar:
     image: agiper/stellar:latest
     networks:
-      - agiper_development
+      - development
     ports:
       - "8000"
     environment:
@@ -90,7 +90,7 @@ services:
   rabbitmq:
     image: agiper/rabbitmq:latest
     networks:
-      - agiper_development
+      - development
     ports:
       - "5672"
       - "15672"
@@ -117,7 +117,7 @@ services:
   elasticsearch:
     image: agiper/elasticsearch:latest
     networks:
-      - agiper_development
+      - development
     ports:
       - "5601"
       - "9200"
