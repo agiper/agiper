@@ -8,11 +8,11 @@ services:
 
   #WEB
   web:
-    image: localhost:5000/quorum_development/web
+    image: localhost:5000/agiper_development/quorum_web
     networks:
       agiper_development:
         aliases:
-          - quorum_development_web
+          - agiper_development_quorum_web
     ports:
       - "80"
     environment:
@@ -37,11 +37,11 @@ services:
 
   #API
   api:
-    image: localhost:5000/quorum_development/api
+    image: localhost:5000/agiper_development/quorum_api
     networks:
       agiper_development:
         aliases:
-          - quorum_development_api
+          - agiper_development_quorum_api
     ports:
       - "81"
     environment:
@@ -66,11 +66,11 @@ services:
 
  #FUND
   fund:
-    image: localhost:5000/quorum_development/fund
+    image: localhost:5000/agiper_development/quorum_fund
     networks:
       agiper_development:
         aliases:
-          - quorum_development_fund
+          - agiper_development_quorum_fund
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -93,11 +93,11 @@ services:
 
 #ORDER
   order:
-    image: localhost:5000/quorum_development/order
+    image: localhost:5000/agiper_development/quorum_order
     networks:
       agiper_development:
         aliases:
-          - quorum_development_order
+          - agiper_development_quorum_order
     environment:
       - ENVIRONMENT=development
     deploy:
@@ -120,11 +120,11 @@ services:
 
   #MARKET
   market:
-    image: localhost:5000/quorum_development/market
+    image: localhost:5000/agiper_development/quorum_market
     networks:
       agiper_development:
         aliases:
-          - quorum_development_market
+          - agiper_development_quorum_market
     environment:
       - ENVIRONMENT=development
     deploy:
