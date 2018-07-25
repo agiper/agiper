@@ -1,7 +1,7 @@
 FROM agiper/java
 
 ENV DOTNET_SDK_VERSION=2.1
-ENV TEAMCITY_VERSION=2018.1
+ENV TEAMCITY_VERSION=2018.1.1
 
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
 	apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-xenial main" && \
