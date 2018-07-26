@@ -8,7 +8,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsof
 	dpkg -i packages-microsoft-prod.deb && \
 	apt-get update && \
 	apt-get install dotnet-runtime-${DOTNET_RUNTIME_VERSION} -y --no-install-recommends && \
-	apt-get autoremove && \
+	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
