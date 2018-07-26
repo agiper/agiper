@@ -11,6 +11,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - 
 		mssql-tools \
 		unixodbc-dev \
 		mssql-server=${MSSQL_VERSION} && \
+	apt-get autoremove && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
