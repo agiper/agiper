@@ -10,7 +10,7 @@ RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc |
 	apt-get install rabbitmq-server=${RABBITMQ_VERSION} -y --no-install-recommends && \
 	rabbitmq-plugins enable rabbitmq_management && \
 	echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config && \
-	apt-get autoremove && \
+	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
