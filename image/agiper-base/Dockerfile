@@ -10,6 +10,7 @@ RUN apt-get update && \
 		nano \
 		curl \
 		iputils-ping &&\
+	apt-get autoremove -y && \
 	apt-get clean && \
 	/usr/sbin/enable_insecure_key && \
 	mv /sbin/my_init /entrypoint.sh && \
