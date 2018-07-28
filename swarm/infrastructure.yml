@@ -47,7 +47,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == agiper
 
 # MSSQL
   mssql:
@@ -65,7 +64,11 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 2048M
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -73,7 +76,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == agiper
 
   # DOCKER
   docker:
@@ -92,7 +94,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == agiper
 
   # TEAMCITY
   teamcity:
@@ -121,7 +122,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == agiper
 
 # PORTAINER
   portainer:
@@ -141,7 +141,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == agiper
 
 # VISUALIZER
   visualizer:
@@ -160,4 +159,3 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == agiper
