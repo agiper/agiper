@@ -42,9 +42,9 @@ services:
       - "9300"
     environment:
       - ENVIRONMENT=development
+      - "cluster.name=development"
       - "bootstrap.memory_lock=true"
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-      - "cluster.name=rolene_development"
     deploy:
       resources:
         reservations:
