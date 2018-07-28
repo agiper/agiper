@@ -62,7 +62,7 @@ services:
 
   # ELASTIC
   elastic:
-    image: agiper/elasticsearch:latest
+    image: agiper/elastic:latest
     networks:
       - development
     ports:
