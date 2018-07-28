@@ -53,6 +53,10 @@ services:
   mssql:
     image: agiper/mssql:latest
     networks:
+      - testing
+      - staging
+      - production
+      - development    
       - infrastructure
     ports:
       - "1433"
