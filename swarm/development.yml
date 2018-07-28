@@ -86,35 +86,8 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-  # RABBITMQ
-  rabbitmq:
-    image: agiper/rabbitmq:latest
-    networks:
-      - development
-    ports:
-      - "5672"
-      - "15672"
-    environment:
-      - ENVIRONMENT=development
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.25'
-          memory: 1024M
-        limits:
-          cpus: '0.75'
-          memory: 4096M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
-
- # ELASTICSEARCH
-  elasticsearch:
+ # ELASTIC
+  elastic:
     image: agiper/elasticsearch:latest
     networks:
       - development
@@ -135,6 +108,33 @@ services:
         limits:
           cpus: '0.75'
           memory: 8192M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
+  # RABBITMQ
+  rabbitmq:
+    image: agiper/rabbitmq:latest
+    networks:
+      - development
+    ports:
+      - "5672"
+      - "15672"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
+          memory: 1024M
+        limits:
+          cpus: '0.75'
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
