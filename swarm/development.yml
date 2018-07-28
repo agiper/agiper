@@ -7,7 +7,7 @@ networks:
 services:
   
   # MSSQL
-  mssql_:
+  mssql_local:
     image: agiper/mssql:latest
     networks:
       - development
