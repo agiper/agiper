@@ -12,7 +12,7 @@ RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 581
 	apt-get update && \
 	apt-get install -y --no-install-recommends \
 		docker-engine \
-		dotnet-sdk-${DOTNET_SDK_VERSION}=DOTNET_SDK_MINOR_VERSION && \
+		dotnet-sdk-${DOTNET_SDK_VERSION}={DOTNET_SDK_MINOR_VERSION} && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
