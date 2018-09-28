@@ -8,7 +8,7 @@ RUN apt-get update && \
 		tcl \
 		build-essential && \
 	cd /tmp && \
-	wget http://download.redis.io/releases/redis-${REDIS_VERSION}.tar.gz && \
+	wget https://github.com/antirez/redis/archive/${REDIS_VERSION}.tar.gz && \
 	tar xvzf redis-${REDIS_VERSION}.tar.gz && \
 	cd redis-${REDIS_VERSION} && \
 	make && \
