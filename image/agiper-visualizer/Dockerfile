@@ -1,1 +1,1 @@
-FROM bargenson/docker-swarm-visualizer:latest
+FROM mikesir87/swarm-viz:latest
