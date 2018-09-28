@@ -10,7 +10,7 @@ RUN apt-get update && \
 	cd /tmp && \
 	wget https://github.com/antirez/redis/archive/${REDIS_VERSION}.tar.gz && \
 	tar xvzf ${REDIS_VERSION}.tar.gz && \
-	cd ${REDIS_VERSION} && \
+	cd redis-${REDIS_VERSION} && \
 	make && \
 	make install && \
 	apt-get purge tcl build-essential -y && \
