@@ -1,1 +1,1 @@
-FROM portainer/portainer:1.19.1
+FROM portainer/portainer:1.19.2
