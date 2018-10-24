@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV REDIS_VERSION=5.0-rc5
+ENV REDIS_VERSION=5.0.0
 
 RUN apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
@@ -8,7 +8,7 @@ RUN apt-get update && \
 		tcl \
 		build-essential && \
 	cd /tmp && \
-	wget https://github.com/antirez/redis/archive/${REDIS_VERSION}.tar.gz && \
+	wget http://download.redis.io/releases/${REDIS_VERSION}.tar.gz && \
 	tar xvzf ${REDIS_VERSION}.tar.gz && \
 	cd redis-${REDIS_VERSION} && \
 	make && \
