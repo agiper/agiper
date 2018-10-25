@@ -8,8 +8,8 @@ RUN apt-get update && \
 		tcl \
 		build-essential && \
 	cd /tmp && \
-	wget http://download.redis.io/releases/${REDIS_VERSION}.tar.gz && \
-	tar xvzf ${REDIS_VERSION}.tar.gz && \
+	wget http://download.redis.io/releases/redis-${REDIS_VERSION}.tar.gz && \
+	tar xvzf redis-${REDIS_VERSION}.tar.gz && \
 	cd redis-${REDIS_VERSION} && \
 	make && \
 	make install && \
