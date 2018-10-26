@@ -3,11 +3,11 @@ FROM agiper/base
 ENV MSSQL_VERSION=14.0.3038.14-2
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
-	sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)" && \
-	sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && \
+	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)" && \
+	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && \
 	apt-get update && \
 	export ACCEPT_EULA=Y && \
-	apt-get install -y --no-install-recommends \
+	apt-get install -y \
 		mssql-tools \
 		unixodbc-dev \
 		mssql-server=${MSSQL_VERSION} && \
