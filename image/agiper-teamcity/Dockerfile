@@ -4,16 +4,15 @@ ENV TEAMCITY_VERSION=2018.1.3
 ENV DOTNET_SDK_VERSION=2.1
 ENV DOTNET_SDK_MINOR_VERSION=2.1.403-1
 
-RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
-	apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-xenial main" && \
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
+	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
 	wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb && \
 	dpkg -i packages-microsoft-prod.deb && \
 	apt-get clean && \
 	apt-get update && \
 	apt-get install -y \
-		docker-engine \
+		docker-ce \
 		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
-	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
