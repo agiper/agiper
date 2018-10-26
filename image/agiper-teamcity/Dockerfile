@@ -10,9 +10,9 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	dpkg -i packages-microsoft-prod.deb && \
 	apt-get clean && \
 	apt-get update && \
-	apt-get install -y \
+	apt-get install \
 		docker-ce \
-		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
+		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
