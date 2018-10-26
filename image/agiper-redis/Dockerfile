@@ -4,7 +4,7 @@ ENV REDIS_VERSION=5.0.0
 
 RUN apt-get update && \
 	curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-	apt-get install -y --no-install-recommends \
+	apt-get install -y \
 		tcl \
 		build-essential && \
 	cd /tmp && \
