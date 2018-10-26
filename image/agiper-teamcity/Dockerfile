@@ -8,12 +8,12 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
 	wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb && \
 	dpkg -i packages-microsoft-prod.deb && \
-	apt-get clean && \
 	apt-get update && \
 	apt-get install \
 		docker-ce \
 		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} -y && \
 	apt-get clean && \
+	rm /packages-microsoft-prod.deb && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN mkdir -p /opt/teamcity && \
