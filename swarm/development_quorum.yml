@@ -89,9 +89,9 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
-#ORDER
-  order:
-    image: localhost:5000/development/quorum_order
+#TRADE
+  trade:
+    image: localhost:5000/development/quorum_trade
     networks:
       - development
     environment:
