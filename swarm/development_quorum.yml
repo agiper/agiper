@@ -64,6 +64,31 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
+ #BANK
+  bank:
+    image: localhost:5000/development/quorum_bank
+    networks:
+      - development
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      replicas: 1
+      mode: replicated
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
  #FUND
   fund:
     image: localhost:5000/development/quorum_fund
