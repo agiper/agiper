@@ -64,6 +64,35 @@ services:
           - node.role == worker
           - node.labels.environment == development
 
+#SSE
+  sse:
+    image: localhost:5000/development/quorum_sse
+    networks:
+      development:
+        aliases:
+          - development_quorum_sse
+    ports:
+      - "82"
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      replicas: 2
+      mode: replicated    
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      update_config:
+        delay: 10s
+        monitor: 60s
+        parallelism: 1
+        max_failure_ratio: 0.3
+        failure_action: continue
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.environment == development
+
  #BANK
   bank:
     image: localhost:5000/development/quorum_bank
