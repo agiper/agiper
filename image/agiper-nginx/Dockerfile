@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV NGINX_VERSION=1.15.7-1~xenial
+ENV NGINX_VERSION=1.14.2-1~xenial
 
 RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
 	echo "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list && \
