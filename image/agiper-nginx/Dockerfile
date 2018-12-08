@@ -11,6 +11,4 @@ RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
-
 CMD ["nginx", "-g", "daemon off;"]
