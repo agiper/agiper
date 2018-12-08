@@ -13,6 +13,4 @@ RUN curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - && \
 
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-STOPSIGNAL SIGTERM
-
 CMD ["nginx", "-g", "daemon off;"]
