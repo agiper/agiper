@@ -16,7 +16,6 @@ services:
   # NGINX
   nginx:
     depends_on:
-      - ghost
       - mssql
       - docker
       - teamcity
