@@ -5,9 +5,7 @@ ENV RAVENDB_VERSION=4.1.3
 RUN apt-get update && \
 	apt-get install -y \
 		jq \
-		bzip2 \
 		libcurl3 \
-		libicu55 \
 		libunwind8 \
 		ca-certificates && \
 	apt-get autoremove -y && \
