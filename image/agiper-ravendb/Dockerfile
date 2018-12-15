@@ -1,4 +1,5 @@
-FROM agiper/dotnet
+#FROM agiper/dotnet
+FROM ravendb/ravendb:4.1.3-ubuntu.18.04-x64
 
 ENV RAVENDB_VERSION=4.1.3
 
@@ -13,7 +14,5 @@ RUN mkdir -p /opt/ravendb && \
 
 ENV RAVEN_IN_DOCKER=true
 ENV RAVEN_Setup_Mode=None
-ENV RAVEN_DataDir=RavenData
-ENV RAVEN_Security_UnsecuredAccessAllowed=PrivateNetwork
 
 COPY start /etc/my_init.d/
