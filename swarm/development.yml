@@ -37,7 +37,8 @@ services:
     networks:
       - development
     ports:
-      - "3888"
+      - "8080"
+      - "38888"
     environment:
       - ENVIRONMENT=development
     deploy:
