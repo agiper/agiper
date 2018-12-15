@@ -9,9 +9,11 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 RUN mkdir -p /opt/ravendb && \
-	curl -L https://daily-builds.s3.amazonaws.com/RavenDB-${RAVENDB_VERSION}-linux-x64.tar.bz2 | tar -xjC /opt/ravendb --strip-components=1
+	curl -L https://daily-builds.s3.amazonaws.com/RavenDB-${RAVENDB_VERSION}-linux-x64.tar.bz2 | tar -xjC /opt/RavenDB --strip-components=1
 
 ENV RAVEN_IN_DOCKER=true
 ENV RAVEN_Setup_Mode=None
 
-COPY start /etc/my_init.d/
+WORKDIR /opt/RavenDB/Server
+
+CMD ["dotnet", "Raven.Server.dll"]
