@@ -1,3 +1,2 @@
 #!/bin/bash
-#/opt/ravendb/run-raven.sh
-bash
+/opt/ravendb/run.sh
