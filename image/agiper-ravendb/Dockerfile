@@ -3,9 +3,7 @@ FROM agiper/base
 ENV RAVENDB_VERSION=4.1.3
 
 RUN apt-get update && \
-	apt-get install -y \
-		jq \
-		curl && \
+	apt-get install -y jq && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
