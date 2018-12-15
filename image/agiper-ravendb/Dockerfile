@@ -1,4 +1,4 @@
-FROM agiper/base
+FROM agiper/dotnet
 
 ENV RAVENDB_VERSION=4.1.3
 
