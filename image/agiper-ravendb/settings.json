@@ -1,4 +1,5 @@
 {
-    "Setup.Mode": "Unsecured",
+    "Setup.Mode": "None",
+    "DataDir": "RavenData",
     "Security.UnsecuredAccessAllowed": "PrivateNetwork"
 }
