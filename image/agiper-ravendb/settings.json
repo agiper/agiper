@@ -1,4 +1,4 @@
 {
-    "Setup.Mode": "None",
+    "Setup.Mode": "Unsecured",
     "Security.UnsecuredAccessAllowed": "PrivateNetwork"
 }
