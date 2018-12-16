@@ -1,4 +1,7 @@
 { 
   "Setup.Mode": "None",
-  "ServerUrl": "http://127.0.0.1:8080"
+  "DataDir": "RavenData",
+  "ServerUrl_Tcp: "38888",  
+  // "ServerUrl": "http://127.0.0.1:8080",
+  "Security.UnsecuredAccessAllowed": "PrivateNetwork"
 }
