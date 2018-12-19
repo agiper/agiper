@@ -7,7 +7,7 @@ networks:
 services:
 
   #WEB
-  web:
+  service_web:
     image: localhost:5000/development/quorum_service_web
     networks:
       development:
@@ -36,7 +36,7 @@ services:
           - node.labels.environment == development
 
   #API
-  api:
+  service_api:
     image: localhost:5000/development/quorum_service_api
     networks:
       development:
@@ -65,7 +65,7 @@ services:
           - node.labels.environment == development
 
 #SSE
-  sse:
+  service_sse:
     image: localhost:5000/development/quorum_service_sse
     networks:
       development:
@@ -94,7 +94,7 @@ services:
           - node.labels.environment == development
 
  #BANK
-  bank:
+  endpoint_bank:
     image: localhost:5000/development/quorum_endpoint_bank
     networks:
       development:
@@ -121,7 +121,7 @@ services:
           - node.labels.environment == development
 
  #FUND
-  fund:
+  endpoint_fund:
     image: localhost:5000/development/quorum_endpoint_fund
     networks:
       development:
@@ -148,7 +148,7 @@ services:
           - node.labels.environment == development
 
 #TRADE
-  trade:
+  endpoint_trade:
     image: localhost:5000/development/quorum_endpoint_trade
     networks:
       development:
@@ -175,7 +175,7 @@ services:
           - node.labels.environment == development
 
   #MARKET
-  market:
+  endpoint_market:
     image: localhost:5000/development/quorum_endpoint_market
     networks:
       development:
