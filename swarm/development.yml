@@ -26,10 +26,10 @@ services:
         delay: 1m
         window: 1m
         condition: any
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
 
   # RAVENDB
   ravendb:
@@ -53,10 +53,10 @@ services:
         delay: 1m
         window: 1m
         condition: any
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
 
   # ELASTIC
   elastic:
@@ -84,10 +84,10 @@ services:
         delay: 1m
         window: 1m
         condition: any
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
 
 
   # STELLAR
@@ -111,10 +111,10 @@ services:
         delay: 1m
         window: 1m
         condition: any
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
 
   # RABBITMQ
   rabbitmq:
@@ -138,7 +138,7 @@ services:
         delay: 1m
         window: 1m
         condition: any
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
