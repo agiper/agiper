@@ -38,7 +38,7 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 2048M
+          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
@@ -67,7 +67,7 @@ services:
           memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 4096M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -86,6 +86,9 @@ services:
     volumes:
       - ~/volume/docker:/var/lib/registry    
     deploy:
+      resources:
+        reservations:
+          memory: 128M    
       restart_policy:
         delay: 1m
         window: 1m
@@ -110,10 +113,10 @@ services:
       resources:
         reservations:
           cpus: '0.5'
-          memory: 4096M
+          memory: 2048M
         limits:
           cpus: '1.0'
-          memory: 8192M
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -133,6 +136,9 @@ services:
       - ~/volume/portainer:/data
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
+      resources:
+        reservations:
+          memory: 128M    
       restart_policy:
         delay: 1m
         window: 1m
@@ -151,6 +157,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
+      resources:
+        reservations:
+          memory: 128M    
       restart_policy:
         delay: 1m
         window: 1m
