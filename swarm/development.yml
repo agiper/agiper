@@ -73,7 +73,7 @@ services:
         reservations:
           memory: 1024M
         limits:
-          memory: 4096M
+          memory: 8192M
       restart_policy:
         delay: 1m
         window: 1m
