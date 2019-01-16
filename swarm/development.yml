@@ -21,7 +21,7 @@ services:
           memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 4096M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -48,7 +48,7 @@ services:
           memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 4096M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -79,7 +79,7 @@ services:
           memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 8192M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -103,10 +103,10 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-          memory: 1024M
+          memory: 512M
         limits:
           cpus: '0.75'
-          memory: 4096M
+          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
@@ -133,7 +133,7 @@ services:
           memory: 1024M
         limits:
           cpus: '0.75'
-          memory: 4096M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
