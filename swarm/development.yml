@@ -17,10 +17,8 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.25'
           memory: 512M
         limits:
-          cpus: '0.75'
           memory: 1024M
       restart_policy:
         delay: 1m
@@ -44,11 +42,9 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.25'
-          memory: 512M
+          memory: 256M
         limits:
-          cpus: '0.75'
-          memory: 1024M
+          memory: 512M
       restart_policy:
         delay: 1m
         window: 1m
@@ -75,10 +71,8 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.25'
           memory: 1024M
         limits:
-          cpus: '0.75'
           memory: 4096M
       restart_policy:
         delay: 1m
@@ -102,10 +96,8 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.25'
           memory: 512M
         limits:
-          cpus: '0.75'
           memory: 1024M
       restart_policy:
         delay: 1m
@@ -129,10 +121,8 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.25'
           memory: 512M
         limits:
-          cpus: '0.75'
           memory: 1024M
       restart_policy:
         delay: 1m
