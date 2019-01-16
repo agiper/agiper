@@ -199,10 +199,10 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-      placement:
-        constraints:
-          - node.role == worker
-          - node.labels.environment == development
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
 
   #MARKET
   endpoint_market:
