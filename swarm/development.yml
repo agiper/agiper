@@ -5,6 +5,32 @@ networks:
     external: true
 
 services:
+# MSSQL
+  mssql:
+    image: agiper/mssql:latest
+    networks:
+      - development
+    ports:
+      - "1433"
+    volumes:
+      - ~/volume/mssql/data:/var/opt/mssql/data
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      resources:
+        reservations:
+          memory: 1024M
+        limits:
+          memory: 8192M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
+
   # REDIS
   redis:
     image: agiper/redis:latest
