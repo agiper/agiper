@@ -13,7 +13,7 @@ services:
     ports:
       - "1433"
     volumes:
-      - ~/volume/mssql/development/data:/var/opt/mssql/data
+      - ~/volume/mssql/data/development:/var/opt/mssql/data
     environment:
       - ENVIRONMENT=development
     deploy:
