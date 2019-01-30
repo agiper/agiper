@@ -5,23 +5,23 @@ networks:
     external: true
 
 services:
-# MSSQL
+  # MSSQL
   mssql:
     image: agiper/mssql:latest
     networks:
       - development
     ports:
       - "1433"
-    volumes:
-      - ~/volume/mssql/data/development:/var/opt/mssql/data
     environment:
       - ENVIRONMENT=development
+    volumes:
+      - ~/volume/mssql/data/development:/var/opt/mssql/data
     deploy:
       resources:
         reservations:
-          memory: 2048M
+          memory: 1024M
         limits:
-          memory: 8192M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -43,9 +43,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 512M
         limits:
-          memory: 4096M
+          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
@@ -68,9 +68,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 256M
         limits:
-          memory: 4096M
+          memory: 512M
       restart_policy:
         delay: 1m
         window: 1m
@@ -122,9 +122,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 512M
         limits:
-          memory: 4096M
+          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
@@ -147,9 +147,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 512M
         limits:
-          memory: 4096M
+          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
