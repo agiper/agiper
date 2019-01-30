@@ -86,8 +86,6 @@ services:
 # NGINX
   nginx:
     depends_on:
-      - mssql
-      - docker
       - teamcity
       - portainer
       - visualizer
