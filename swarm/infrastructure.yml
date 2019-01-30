@@ -40,7 +40,7 @@ services:
         reservations:
           memory: 1024M
         limits:
-          memory: 4096M          
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -53,15 +53,11 @@ services:
   mssql:
     image: agiper/mssql:latest
     networks:
-      - testing
-      - staging
-      - production
-      - development    
       - infrastructure
     ports:
       - "1433"
     volumes:
-      - ~/volume/mssql/data:/var/opt/mssql/data
+      - ~/volume/mssql/infrastructure/data:/var/opt/mssql/data
     deploy:
       resources:
         reservations:
@@ -84,7 +80,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ~/volume/docker:/var/lib/registry    
+      - ~/volume/docker:/var/lib/registry
     deploy:
       resources:
         reservations:
