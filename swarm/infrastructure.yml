@@ -13,7 +13,64 @@ networks:
     external: true
 
 services:
-# DOCKER
+  # NGINX
+  nginx:
+    depends_on:
+      - teamcity
+      - portainer
+      - visualizer
+    image: agiper/nginx:latest
+    networks:
+      - testing
+      - staging
+      - production
+      - development
+      - infrastructure
+    ports:
+      - "80:80"
+      - "81:81"
+      - "82:82"
+    volumes:
+      - ~/volume/nginx:/etc/nginx
+      - ~/volume/nginx/www:/etc/nginx/www
+    deploy:
+      resources:
+        reservations:
+          memory: 1024M
+        limits:
+          memory: 2048M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+
+# MSSQL
+  mssql:
+    image: agiper/mssql:latest
+    networks:
+      - infrastructure
+    ports:
+      - "1433"
+    volumes:
+      - ~/volume/mssql/data/infrastructure:/var/opt/mssql/data
+    deploy:
+      resources:
+        reservations:
+          memory: 1024M
+        limits:
+          memory: 2048M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+
+  # DOCKER
   docker:
     image: agiper/docker:latest
     networks:
@@ -26,8 +83,32 @@ services:
       resources:
         reservations:
           memory: 128M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+
+  # TEAMCITY
+  teamcity:
+    depends_on:
+      - mssql
+    image: agiper/teamcity:latest
+    networks:
+      - infrastructure
+    ports:
+      - "8111"
+    volumes:
+      - ~/volume/teamcity:/var/lib/teamcity
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        reservations:
+          memory: 1024M
         limits:
-          memory: 512M
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -50,8 +131,6 @@ services:
       resources:
         reservations:
           memory: 128M
-        limits:
-          memory: 512M
       restart_policy:
         delay: 1m
         window: 1m
@@ -73,85 +152,6 @@ services:
       resources:
         reservations:
           memory: 128M
-        limits:
-          memory: 512M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
-
-# NGINX
-  nginx:
-    image: agiper/nginx:latest
-    networks:
-      - testing
-      - staging
-      - production
-      - development
-      - infrastructure
-    ports:
-      - "80:80"
-      - "81:81"
-      - "82:82"
-    volumes:
-      - ~/volume/nginx:/etc/nginx
-      - ~/volume/nginx/www:/etc/nginx/www
-    deploy:
-      resources:
-        reservations:
-          memory: 2048M
-        limits:
-          memory: 8192M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager  
-
-# MSSQL
-  mssql:
-    image: agiper/mssql:latest
-    networks:
-      - infrastructure
-    ports:
-      - "1433"
-    volumes:
-      - ~/volume/mssql/data/infrastructure:/var/opt/mssql/data
-    deploy:
-      resources:
-        reservations:
-          memory: 2048M
-        limits:
-          memory: 8192M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
-
-# TEAMCITY
-  teamcity:
-    image: agiper/teamcity:latest
-    networks:
-      - infrastructure
-    ports:
-      - "8111"
-    volumes:
-      - ~/volume/teamcity:/var/lib/teamcity
-      - /var/run/docker.sock:/var/run/docker.sock
-    deploy:
-      resources:
-        reservations:
-          memory: 2048M
-        limits:
-          memory: 8192M
       restart_policy:
         delay: 1m
         window: 1m
