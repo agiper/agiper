@@ -11,36 +11,70 @@ networks:
     external: true
   infrastructure:
     external: true
-  
+
 services:
-  # NGINX
-  nginx:
-    depends_on:
-      - mssql
-      - docker
-      - teamcity
-      - portainer
-      - visualizer
-    image: agiper/nginx:latest
+# DOCKER
+  docker:
+    image: agiper/docker:latest
     networks:
-      - testing
-      - staging
-      - production
-      - development
       - infrastructure
     ports:
-      - "80:80"
-      - "81:81"
-      - "82:82"
+      - "5000:5000"
     volumes:
-      - ~/volume/nginx:/etc/nginx
-      - ~/volume/nginx/www:/etc/nginx/www
+      - ~/volume/docker:/var/lib/registry
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 64M
         limits:
-          memory: 2048M
+          memory: 256M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+
+# PORTAINER
+  portainer:
+    image: agiper/portainer:latest
+    networks:
+      - infrastructure
+    ports:
+      - "9000"
+    volumes:
+      - ~/volume/portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        reservations:
+          memory: 64M
+        limits:
+          memory: 256M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+
+# VISUALIZER
+  visualizer:
+    image: agiper/visualizer:latest
+    networks:
+      - infrastructure
+    ports:
+      - "8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        reservations:
+          memory: 64M
+        limits:
+          memory: 256M
       restart_policy:
         delay: 1m
         window: 1m
@@ -64,27 +98,6 @@ services:
           memory: 1024M
         limits:
           memory: 4096M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
-
-  # DOCKER
-  docker:
-    image: agiper/docker:latest
-    networks:
-      - infrastructure
-    ports:
-      - "5000:5000"
-    volumes:
-      - ~/volume/docker:/var/lib/registry
-    deploy:
-      resources:
-        reservations:
-          memory: 128M
       restart_policy:
         delay: 1m
         window: 1m
@@ -119,41 +132,34 @@ services:
         constraints:
           - node.role == manager
 
-# PORTAINER
-  portainer:
-    image: agiper/portainer:latest
+# NGINX
+  nginx:
+    depends_on:
+      - mssql
+      - docker
+      - teamcity
+      - portainer
+      - visualizer
+    image: agiper/nginx:latest
     networks:
+      - testing
+      - staging
+      - production
+      - development
       - infrastructure
     ports:
-      - "9000"
+      - "80:80"
+      - "81:81"
+      - "82:82"
     volumes:
-      - ~/volume/portainer:/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/volume/nginx:/etc/nginx
+      - ~/volume/nginx/www:/etc/nginx/www
     deploy:
       resources:
         reservations:
-          memory: 128M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
-
-# VISUALIZER
-  visualizer:
-    image: agiper/visualizer:latest
-    networks:
-      - infrastructure
-    ports:
-      - "8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    deploy:
-      resources:
-        reservations:
-          memory: 128M
+          memory: 512M
+        limits:
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
