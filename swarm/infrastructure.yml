@@ -85,10 +85,6 @@ services:
 
 # NGINX
   nginx:
-    depends_on:
-      - teamcity
-      - portainer
-      - visualizer
     image: agiper/nginx:latest
     networks:
       - testing
@@ -106,9 +102,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 2048M
         limits:
-          memory: 4096M
+          memory: 8192M
       restart_policy:
         delay: 1m
         window: 1m
@@ -129,9 +125,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 2048M
         limits:
-          memory: 4096M
+          memory: 8192M
       restart_policy:
         delay: 1m
         window: 1m
@@ -142,8 +138,6 @@ services:
 
 # TEAMCITY
   teamcity:
-    depends_on:
-      - mssql
     image: agiper/teamcity:latest
     networks:
       - infrastructure
@@ -155,9 +149,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 1024M
+          memory: 2048M
         limits:
-          memory: 4096M
+          memory: 8192M
       restart_policy:
         delay: 1m
         window: 1m
