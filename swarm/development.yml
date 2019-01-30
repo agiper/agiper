@@ -43,7 +43,7 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 512M
+          memory: 1024M
         limits:
           memory: 4096M
       restart_policy:
@@ -68,9 +68,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 256M
+          memory: 1024M
         limits:
-          memory: 2048M
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -122,9 +122,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 512M
+          memory: 1024M
         limits:
-          memory: 2048M
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -147,9 +147,9 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 512M
+          memory: 1024M
         limits:
-          memory: 2048M
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
