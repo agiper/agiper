@@ -57,7 +57,7 @@ services:
     ports:
       - "1433"
     volumes:
-      - ~/volume/mssql/infrastructure/data:/var/opt/mssql/data
+      - ~/volume/mssql/data/infrastructure:/var/opt/mssql/data
     deploy:
       resources:
         reservations:
