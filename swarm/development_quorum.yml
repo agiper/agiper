@@ -58,7 +58,7 @@ services:
         reservations:
           memory: 256M
         limits:
-          memory: 1024M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -92,7 +92,7 @@ services:
         reservations:
           memory: 256M
         limits:
-          memory: 1024M
+          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -124,7 +124,7 @@ services:
         reservations:
           memory: 256M
         limits:
-          memory: 1024M      
+          memory: 2048M      
       restart_policy:
         delay: 1m
         window: 1m
@@ -156,7 +156,7 @@ services:
         reservations:
           memory: 256M
         limits:
-          memory: 1024M      
+          memory: 2048M      
       restart_policy:
         delay: 1m
         window: 1m
@@ -188,7 +188,7 @@ services:
         reservations:
           memory: 256M
         limits:
-          memory: 1024M      
+          memory: 2048M      
       restart_policy:
         delay: 1m
         window: 1m
@@ -220,7 +220,7 @@ services:
         reservations:
           memory: 256M
         limits:
-          memory: 1024M      
+          memory: 2048M      
       restart_policy:
         delay: 1m
         window: 1m
