@@ -83,55 +83,6 @@ services:
         constraints:
           - node.role == manager
 
-# MSSQL
-  mssql:
-    image: agiper/mssql:latest
-    networks:
-      - infrastructure
-    ports:
-      - "1433"
-    volumes:
-      - ~/volume/mssql/data/infrastructure:/var/opt/mssql/data
-    deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
-
-  # TEAMCITY
-  teamcity:
-    depends_on:
-      - mssql
-    image: agiper/teamcity:latest
-    networks:
-      - infrastructure
-    ports:
-      - "8111"
-    volumes:
-      - ~/volume/teamcity:/var/lib/teamcity
-      - /var/run/docker.sock:/var/run/docker.sock
-    deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-      placement:
-        constraints:
-          - node.role == manager
-
 # NGINX
   nginx:
     depends_on:
@@ -160,6 +111,55 @@ services:
           memory: 512M
         limits:
           memory: 2048M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager  
+
+# MSSQL
+  mssql:
+    image: agiper/mssql:latest
+    networks:
+      - infrastructure
+    ports:
+      - "1433"
+    volumes:
+      - ~/volume/mssql/data/infrastructure:/var/opt/mssql/data
+    deploy:
+      resources:
+        reservations:
+          memory: 1024M
+        limits:
+          memory: 4096M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+
+# TEAMCITY
+  teamcity:
+    depends_on:
+      - mssql
+    image: agiper/teamcity:latest
+    networks:
+      - infrastructure
+    ports:
+      - "8111"
+    volumes:
+      - ~/volume/teamcity:/var/lib/teamcity
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        reservations:
+          memory: 1024M
+        limits:
+          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
