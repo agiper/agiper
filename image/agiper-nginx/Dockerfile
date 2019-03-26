@@ -1,2 +1,2 @@
-FROM nginx:1.15.10
+FROM nginx:1.15.9
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
