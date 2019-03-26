@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV RABBITMQ_VERSION=3.7.10-1
+ENV RABBITMQ_VERSION=3.7.13-1
 
 RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add - && \
 	wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | sudo apt-key add - && \
