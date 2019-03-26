@@ -2,10 +2,9 @@ FROM agiper/base
 
 ENV RABBITMQ_VERSION=3.7.13-1
 
-RUN wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add - && \
-	wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | sudo apt-key add - && \
+RUN apt-key adv --keyserver "hkps.pool.sks-keyservers.net" --recv-keys "0x6B73A36E6026DFCA" &&\
 	echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list && \
-	echo "deb https://packages.erlang-solutions.com/ubuntu xenial contrib" | sudo tee /etc/apt/sources.list.d/erlang-solutions.list && \
+	echo "deb https://dl.bintray.com/rabbitmq-erlang/debian xenial erlang-20.x" | sudo tee /etc/apt/sources.list.d/bintray.erlang.list && \
 	apt-get update && \
 	apt-get install -y rabbitmq-server=${RABBITMQ_VERSION} && \
 	rabbitmq-plugins enable rabbitmq_management && \
