@@ -92,8 +92,9 @@ services:
     environment:
       - ENVIRONMENT=development
       - "cluster.name=development"
-      - "bootstrap.memory_lock=true"
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - "bootstrap.memory_lock=true"
+      - "enforce.bootstrap.checks=false"
     deploy:
       resources:
         reservations:
