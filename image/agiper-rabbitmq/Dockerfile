@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV RABBITMQ_VERSION=3.7.13-1
+ENV RABBITMQ_VERSION=3.7.14-1
 
 RUN apt-key adv --keyserver "hkps.pool.sks-keyservers.net" --recv-keys "0x6B73A36E6026DFCA" &&\
 	echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list && \
