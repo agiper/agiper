@@ -2,7 +2,7 @@ FROM agiper/java
 
 ENV TEAMCITY_VERSION=2019.1
 ENV DOTNET_SDK_VERSION=2.2
-ENV DOTNET_SDK_MINOR_VERSION=2.2.204-1
+ENV DOTNET_SDK_MINOR_VERSION=2.2.300-1
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
 	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
