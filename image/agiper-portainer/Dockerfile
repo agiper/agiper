@@ -1,2 +1,2 @@
-FROM portainer/portainer:1.20.2
+FROM portainer/portainer:1.21.0
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
