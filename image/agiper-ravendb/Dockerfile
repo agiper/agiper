@@ -1,6 +1,6 @@
 FROM agiper/dotnet
 
-ENV RAVENDB_VERSION=4.2.0
+ENV RAVENDB_VERSION=4.2.2
 
 RUN mkdir -p /opt/RavenDB && \
 	curl -L https://daily-builds.s3.amazonaws.com/RavenDB-${RAVENDB_VERSION}-linux-x64.tar.bz2 | tar -xjC /opt/RavenDB --strip-components=1
