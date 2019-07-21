@@ -12,6 +12,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	apt-get install -y \
 		docker-ce \
 		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
+	wget -q https://download.visualstudio.microsoft.com/download/pr/72ce4d40-9063-4a2e-a962-0bf2574f75d1/5463bb92cff4f9c76935838d1efbc757/dotnet-sdk-3.0.100-preview6-012264-linux-x64.tar.gz -O - | tar -xz -C /usr/share/dotnet && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm /packages-microsoft-prod.deb && \
