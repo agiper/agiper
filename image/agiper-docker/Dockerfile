@@ -1,2 +1,2 @@
-FROM registry:2.7.1
+FROM registry
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
