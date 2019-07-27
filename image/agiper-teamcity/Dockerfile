@@ -16,7 +16,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm /packages-microsoft-prod.deb && \
-	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+	rm -rf /tmp/* /var/tmp/* /var/cache/ /var/lib/apt/lists/*
 
 RUN mkdir -p /opt/teamcity && \
 	curl -L https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
