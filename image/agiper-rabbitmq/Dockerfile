@@ -11,7 +11,7 @@ RUN wget -O - "https://github.com/rabbitmq/signing-keys/releases/download/2.0/ra
 	echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+	rm -rf /tmp/* /var/tmp/* /var/cache/ /var/lib/apt/lists/*
 
 RUN chown -R rabbitmq:rabbitmq /var/lib/rabbitmq && \
 	chown -R rabbitmq:rabbitmq /var/log/rabbitmq
