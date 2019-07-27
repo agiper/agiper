@@ -7,5 +7,4 @@ RUN add-apt-repository ppa:linuxuprising/java && \
 	apt-get install -y oracle-java12-set-default && \	
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /var/cache/oracle-java12-installer && \
 	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
