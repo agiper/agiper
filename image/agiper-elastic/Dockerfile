@@ -1,4 +1,4 @@
-FROM openjdk:12-alpine
+FROM agiper/base
 
 ENV ES_VERSION=7.2.0
 RUN mkdir -p /var/lib/elasticsearch && \
