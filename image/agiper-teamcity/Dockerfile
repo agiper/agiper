@@ -4,7 +4,7 @@ ENV DOTNET_SDK_VERSION=2.2
 ENV TEAMCITY_VERSION=2019.1.1
 ENV DOTNET_SDK_MINOR_VERSION=2.2.300-1
 
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
 	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
 	wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb && \
 	dpkg -i packages-microsoft-prod.deb && \
