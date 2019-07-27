@@ -13,7 +13,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsof
 	curl https://download.visualstudio.microsoft.com/download/pr/02241c22-f7c1-4eb9-a599-02c3b27461f0/00725bf30e6deadc0facc9a1757d0eea/aspnetcore-runtime-3.0.0-preview7.19365.7-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /tmp/* /var/tmp/* /var/cache/ /var/lib/apt/lists/*
+	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 ENV NUGET_XMLDOC_MODE=skip
 ENV DOTNET_HOME=/usr/share/dotnet
