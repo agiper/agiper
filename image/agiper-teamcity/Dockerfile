@@ -1,4 +1,4 @@
-FROM openjdk:12-alpine
+FROM agiper/base
 
 ENV DOTNET_SDK_VERSION=2.2
 ENV TEAMCITY_VERSION=2019.1.1
