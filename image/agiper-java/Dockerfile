@@ -6,6 +6,7 @@ RUN add-apt-repository ppa:linuxuprising/java && \
 	apt-get install -y oracle-java12-installer && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /tmp/* /var/tmp/* /var/cache/ /var/lib/apt/lists/*
+	rm -rf /var/cache/oracle-jdk12-installer && \
+	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/usr/lib/jvm/java-12-oracle
