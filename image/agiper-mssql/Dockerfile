@@ -2,7 +2,7 @@ FROM agiper/base
 
 ENV MSSQL_VERSION=14.0.3162.1-1
 
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)" && \
 	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)" && \
 	apt-get update && \
