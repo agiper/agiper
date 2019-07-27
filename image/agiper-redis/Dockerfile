@@ -17,7 +17,7 @@ RUN apt-get update && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	mkdir -p /var/lib/redis && \
-	rm -rf /tmp/* /var/tmp/* /var/cache/ /var/lib/apt/lists/*
+	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 COPY redis.conf /etc/redis/
 COPY sentinel.conf /etc/redis/
