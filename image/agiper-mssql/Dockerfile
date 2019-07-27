@@ -13,7 +13,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - 
 		mssql-server=${MSSQL_VERSION} && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+	rm -rf /tmp/* /var/tmp/* /var/cache/ /var/lib/apt/lists/*
 
 ENV ACCEPT_EULA=Y
 ENV MSSQL_PID=Enterprise
