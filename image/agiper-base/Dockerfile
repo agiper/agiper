@@ -9,6 +9,6 @@ RUN apt-get update && \
 	apt-get clean && \
 	/usr/sbin/enable_insecure_key && \
 	mv /sbin/my_init /entrypoint.sh && \
-	rm -rf /tmp/* /var/tmp/* /var/cache/ /var/lib/apt/lists/*
+	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 ENTRYPOINT ["/entrypoint.sh", "--"]
