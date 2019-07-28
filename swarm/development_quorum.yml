@@ -29,7 +29,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/.docker/config.json:/root/.docker/config.json
 
-# SERVICE-WEB
+# SERVICE_WEB
   service_web:
     image: localhost:5000/development/quorum_service_web
     networks:
@@ -60,7 +60,7 @@ services:
         dockupdater.enable: "true"
           
 
-  # SERVICE-API
+  # SERVICE_API
   service_api:
     image: localhost:5000/development/quorum_service_api
     networks:
@@ -90,7 +90,7 @@ services:
       labels:
         dockupdater.enable: "true"
 
-#SSE
+# SERVICE_SSE
   service_sse:
     image: localhost:5000/development/quorum_service_sse
     networks:
@@ -120,7 +120,7 @@ services:
       labels:
         dockupdater.enable: "true"
 
- #BANK
+ # ENDPOINT_BANK
   endpoint_bank:
     image: localhost:5000/development/quorum_endpoint_bank
     networks:
@@ -148,7 +148,7 @@ services:
       labels:
         dockupdater.enable: "true"
 
- #FUND
+ # ENDPOINT_FUND
   endpoint_fund:
     image: localhost:5000/development/quorum_endpoint_fund
     networks:
@@ -176,7 +176,7 @@ services:
       labels:
         dockupdater.enable: "true"
 
-#TRADE
+# ENDPOINT_TRADE
   endpoint_trade:
     image: localhost:5000/development/quorum_endpoint_trade
     networks:
@@ -204,7 +204,7 @@ services:
       labels:
         dockupdater.enable: "true"
 
-  #MARKET
+  # ENDPOINT_MARKET
   endpoint_market:
     image: localhost:5000/development/quorum_endpoint_market
     networks:
