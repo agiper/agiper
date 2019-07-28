@@ -1,9 +1,9 @@
 FROM agiper/base
 
-RUN add-apt-repository ppa:linuxuprising/java && \
+RUN mkdir -p /var/cache/oracle-jdk11-installer-local && \
+	wget -P /var/cache/oracle-jdk11-installer-local http://download.macromedia.com/pub/coldfusion/java/java11/JDK1103/jdk-11.0.3_linux-x64_bin.tar.gz && \
+	add-apt-repository ppa:linuxuprising/java && \
 	apt-get update && \
-	mkdir -p /var/cache/oracle-jdk11-installer-local && \
-	wget -P /var/cache/oracle-jdk11-installer-local http://download.macromedia.com/pub/coldfusion/java/java11/JDK1103/jdk-11.0.3_linux-x64_bin.tar.gz
 	apt-get install -y oracle-java11-installer-local && \
 		apt-get install -y oracle-java11-set-default-local && \
 	apt-get autoremove -y && \
