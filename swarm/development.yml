@@ -23,10 +23,9 @@ services:
 #          - node.labels.environment == development
       labels:
         dockupdater.disable: "true"
-    command: --label --latest --cleanup --interval 30
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.docker/config.json:/root/.docker/config.json
+    command: --label --latest --cleanup --interval 30
 
   # MSSQL
   mssql:
