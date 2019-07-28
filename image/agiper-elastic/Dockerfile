@@ -1,6 +1,13 @@
-FROM agiper/java
+FROM agiper/base
 
 ENV ES_VERSION=7.2.0
+
+RUN apt-get update && \
+	apt-get install -y openjdk-12-jdk && \
+	apt-get autoremove -y && \
+	apt-get clean && \
+	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
+
 RUN mkdir -p /var/lib/elasticsearch && \
 	mkdir -p /var/log/elasticsearch && \
 	mkdir -p /usr/share/elasticsearch && \
