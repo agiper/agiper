@@ -1,4 +1,4 @@
-version: "3.4"
+version: "3.7"
 
 networks:
   development:
@@ -7,30 +7,28 @@ networks:
 services:
   # WATCHTOWER
   watchtower:
-    command: --interval 30
     image: containrrr/watchtower
     networks:
       - development
     environment:
       - ENVIRONMENT=development
+    command: --cleanup --label-enable --interval 30
     volumes:
       - ~/.docker/config.json:/config.json
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
-      resources:
-        reservations:
-          memory: 16M
-        limits:
-          memory: 32M
+      replicas: 1
+      mode: replicated
       restart_policy:
         delay: 1m
         window: 1m
         condition: any
-      placement:
-        constraints:
-          - node.role == manager
+#      placement:
+#        constraints:
+#          - node.role == worker
+#          - node.labels.environment == development
 
-  #WEB
+# SERVICE-WEB
   service_web:
     image: localhost:5000/development/quorum_service_web
     networks:
@@ -44,11 +42,6 @@ services:
     deploy:
       replicas: 1
       mode: replicated
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -64,7 +57,7 @@ services:
 #          - node.role == worker
 #          - node.labels.environment == development
 
-  #API
+  # SERVICE-API
   service_api:
     image: localhost:5000/development/quorum_service_api
     networks:
@@ -78,11 +71,6 @@ services:
     deploy:
       replicas: 1
       mode: replicated
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -112,11 +100,6 @@ services:
     deploy:
       replicas: 1
       mode: replicated
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -144,11 +127,6 @@ services:
     deploy:
       replicas: 1
       mode: replicated
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M      
       restart_policy:
         delay: 1m
         window: 1m
@@ -176,11 +154,6 @@ services:
     deploy:
       replicas: 1
       mode: replicated
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M      
       restart_policy:
         delay: 1m
         window: 1m
@@ -208,11 +181,6 @@ services:
     deploy:
       replicas: 1
       mode: replicated
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M      
       restart_policy:
         delay: 1m
         window: 1m
@@ -240,11 +208,6 @@ services:
     deploy:
       replicas: 1
       mode: replicated
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M      
       restart_policy:
         delay: 1m
         window: 1m
