@@ -1,13 +1,10 @@
 FROM agiper/base
 
-RUN mkdir -p /var/cache/oracle-jdk11-installer-local && \
-	wget -P /var/cache/oracle-jdk11-installer-local http://download.macromedia.com/pub/coldfusion/java/java11/JDK1103/jdk-11.0.3_linux-x64_bin.tar.gz && \
-	add-apt-repository ppa:linuxuprising/java && \
+RUN add-apt-repository ppa:linuxuprising/java && \
 	apt-get update && \
-	apt-get install -y oracle-java11-installer-local && \
-		apt-get install -y oracle-java11-set-default-local && \
+	echo oracle-java12-installer shared/accepted-oracle-license-v1-2 select true | debconf-set-selections && \
+	apt-get install -y oracle-java12-installer && \
+	apt-get install -y oracle-java12-set-default && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/* /var/cache/oracle-jdk11-installer-local
-
-# ENV JAVA_HOME=/usr/lib/jvm/java-12-oracle
+	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/* /var/cache/oracle-jdk12-installer
