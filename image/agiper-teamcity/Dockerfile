@@ -1,5 +1,6 @@
 FROM agiper/base
 
+ENV JAVA_SDK_VERSION=8
 ENV DOTNET_SDK_VERSION=2.2
 ENV TEAMCITY_VERSION=2019.1.1
 ENV DOTNET_SDK_MINOR_VERSION=2.2.300-1
@@ -11,7 +12,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
 	apt-get update && \
 	apt-get install -y \
 		docker-ce \
-		openjdk-8-jdk && \
+		openjdk-${JAVA_SDK_VERSION}-jdk && \
 		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
 	curl https://download.visualstudio.microsoft.com/download/pr/c624c5d6-0e9c-4dd9-9506-6b197ef44dc8/ad61b332f3abcc7dec3a49434e4766e1/dotnet-sdk-3.0.100-preview7-012821-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet && \
 	apt-get autoremove -y && \
@@ -27,5 +28,5 @@ COPY start /etc/my_init.d/
 
 ENV DOTNET_HOME=/usr/share/dotnet
 ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/bin
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
+ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_SDK_VERSION}-openjdk-amd64/bin
