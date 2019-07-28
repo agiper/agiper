@@ -5,28 +5,29 @@ networks:
     external: true
 
 services:
-  # WATCHTOWER
-  watchtower:
-    image: containrrr/watchtower
+  # DOCKUPDATER
+  dockupdater:
     networks:
       - development
     environment:
       - ENVIRONMENT=development
-    command: --cleanup --label-enable --interval 30
-    volumes:
-      - ~/.docker/config.json:/config.json
-      - /var/run/docker.sock:/var/run/docker.sock
     deploy:
       replicas: 1
-      mode: replicated
+      mode: replicated    
       restart_policy:
         delay: 1m
         window: 1m
         condition: any
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.disable: "true"
+      image: dockupdater/dockupdater
+    command: --label --latest --cleanup --interval 30
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.docker/config.json:/root/.docker/config.json
 
 # SERVICE-WEB
   service_web:
@@ -52,12 +53,12 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.enable: "true"
+          
 
   # SERVICE-API
   service_api:
@@ -83,12 +84,11 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.enable: "true"
 
 #SSE
   service_sse:
@@ -114,12 +114,11 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.enable: "true"
 
  #BANK
   endpoint_bank:
@@ -143,12 +142,11 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.enable: "true"
 
  #FUND
   endpoint_fund:
@@ -172,12 +170,11 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.enable: "true"
 
 #TRADE
   endpoint_trade:
@@ -201,12 +198,11 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.enable: "true"
 
   #MARKET
   endpoint_market:
@@ -230,9 +226,8 @@ services:
         parallelism: 1
         max_failure_ratio: 0.3
         failure_action: continue
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.enable: "true"
