@@ -56,6 +56,8 @@ services:
 #        constraints:
 #          - node.role == worker
 #          - node.labels.environment == development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   # SERVICE-API
   service_api:
@@ -85,6 +87,8 @@ services:
 #        constraints:
 #          - node.role == worker
 #          - node.labels.environment == development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
 #SSE
   service_sse:
@@ -114,6 +118,8 @@ services:
 #        constraints:
 #          - node.role == worker
 #          - node.labels.environment == development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
  #BANK
   endpoint_bank:
@@ -141,6 +147,8 @@ services:
 #        constraints:
 #          - node.role == worker
 #          - node.labels.environment == development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
  #FUND
   endpoint_fund:
@@ -168,6 +176,8 @@ services:
 #        constraints:
 #          - node.role == worker
 #          - node.labels.environment == development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
 #TRADE
   endpoint_trade:
@@ -195,6 +205,8 @@ services:
 #        constraints:
 #          - node.role == worker
 #          - node.labels.environment == development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   #MARKET
   endpoint_market:
@@ -222,3 +234,5 @@ services:
 #        constraints:
 #          - node.role == worker
 #          - node.labels.environment == development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
