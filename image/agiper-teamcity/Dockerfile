@@ -13,11 +13,13 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
 	apt-get install -y docker-ce \
 		openjdk-${JAVA_SDK_VERSION}-jdk \
 		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
-	curl https://download.visualstudio.microsoft.com/download/pr/c624c5d6-0e9c-4dd9-9506-6b197ef44dc8/ad61b332f3abcc7dec3a49434e4766e1/dotnet-sdk-3.0.100-preview7-012821-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm /packages-microsoft-prod.deb && \
 	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
+
+# remove this when .NET Core 3.0 is released
+RUN curl https://download.visualstudio.microsoft.com/download/pr/c624c5d6-0e9c-4dd9-9506-6b197ef44dc8/ad61b332f3abcc7dec3a49434e4766e1/dotnet-sdk-3.0.100-preview7-012821-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 RUN mkdir -p /opt/teamcity && \
 	curl -L https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
