@@ -13,8 +13,6 @@ services:
       - ENVIRONMENT=development
     image: dockupdater/dockupdater
     deploy:
-      replicas: 1
-      mode: replicated    
       restart_policy:
         delay: 1m
         window: 1m
