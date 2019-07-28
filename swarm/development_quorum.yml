@@ -5,7 +5,28 @@ networks:
     external: true
 
 services:
-# SERVICE_WEB
+  # DOCKUPDATER
+  dockupdater:
+    networks:
+      - development
+    image: agiper/dockupdater
+    environment:
+      - ENVIRONMENT=development
+    deploy:
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        dockupdater.disable: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --label --latest --cleanup --interval 30
+
+  # SERVICE_WEB
   service_web:
     image: localhost:5000/development/quorum_service_web
     networks:
