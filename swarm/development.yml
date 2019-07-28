@@ -5,28 +5,6 @@ networks:
     external: true
 
 services:
-  # DOCKUPDATER
-  dockupdater:
-    networks:
-      - development
-    image: agiper/dockupdater
-    environment:
-      - ENVIRONMENT=development
-    deploy:
-      restart_policy:
-        delay: 1m
-        window: 1m
-        condition: any
-#      placement:
-#        constraints:
-#          - node.role == worker
-#          - node.labels.environment == development
-      labels:
-        dockupdater.disable: "true"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --label --latest --cleanup --interval 30
-
   # MSSQL
   mssql:
     image: agiper/mssql
