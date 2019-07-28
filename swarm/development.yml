@@ -1,4 +1,4 @@
-version: "3.4"
+version: "3.7"
 
 networks:
   development:
@@ -7,7 +7,7 @@ networks:
 services:
   # MSSQL
   mssql:
-    image: agiper/mssql:latest
+    image: agiper/mssql
     networks:
       - development
     ports:
@@ -17,11 +17,6 @@ services:
     volumes:
       - ~/volume/mssql/data/development:/var/opt/mssql/data
     deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -33,7 +28,7 @@ services:
 
   # REDIS
   redis:
-    image: agiper/redis:latest
+    image: agiper/redis
     networks:
       - development
     ports:
@@ -41,11 +36,6 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
-      resources:
-        reservations:
-          memory: 512M
-        limits:
-          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
@@ -57,7 +47,7 @@ services:
 
   # RAVENDB
   ravendb:
-    image: agiper/ravendb:latest
+    image: agiper/ravendb
     networks:
       - development
     ports:
@@ -66,11 +56,6 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
-      resources:
-        reservations:
-          memory: 256M
-        limits:
-          memory: 512M
       restart_policy:
         delay: 1m
         window: 1m
@@ -82,7 +67,7 @@ services:
 
   # ELASTIC
   elastic:
-    image: agiper/elastic:latest
+    image: agiper/elastic
     networks:
       - development
     ports:
@@ -96,11 +81,6 @@ services:
       - "bootstrap.memory_lock=true"
       - "enforce.bootstrap.checks=false"
     deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -113,7 +93,7 @@ services:
 
   # STELLAR
   stellar:
-    image: agiper/stellar:latest
+    image: agiper/stellar
     networks:
       - development
     ports:
@@ -121,11 +101,6 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
-      resources:
-        reservations:
-          memory: 512M
-        limits:
-          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
@@ -137,7 +112,7 @@ services:
 
   # RABBITMQ
   rabbitmq:
-    image: agiper/rabbitmq:latest
+    image: agiper/rabbitmq
     networks:
       - development
     ports:
@@ -146,11 +121,6 @@ services:
     environment:
       - ENVIRONMENT=development
     deploy:
-      resources:
-        reservations:
-          memory: 512M
-        limits:
-          memory: 1024M
       restart_policy:
         delay: 1m
         window: 1m
