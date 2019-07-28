@@ -5,6 +5,30 @@ networks:
     external: true
 
 services:
+  # WATCHTOWER
+  watchtower:
+    command: --interval 30
+    image: containrrr/watchtower
+    networks:
+      - development
+    environment:
+      - ENVIRONMENT=development
+    volumes:
+      - /root/.docker/config.json:/config.json
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        reservations:
+          memory: 16M
+        limits:
+          memory: 32M
+      restart_policy:
+        delay: 1m
+        window: 1m
+        condition: any
+      placement:
+        constraints:
+          - node.role == manager
 
   #WEB
   service_web:
