@@ -1,10 +1,10 @@
 FROM agiper/base
 
-ENV JDK_VERSION=12
 ENV ES_VERSION=7.2.0
+ENV JAVA_SDK_VERSION=12
 
 RUN apt-get update && \
-	apt-get install -y openjdk-${JDK_VERSION}-jdk && \
+	apt-get install -y openjdk-${JAVA_SDK_VERSION}-jdk && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
@@ -20,6 +20,6 @@ RUN chown -R daemon:daemon /var/lib/elasticsearch && \
 	chown -R daemon:daemon /var/log/elasticsearch && \
 	chown -R daemon:daemon /usr/share/elasticsearch
 
-ENV JAVA_HOME=/usr/lib/jvm/java-${JDK_VERSION}-openjdk-amd64/bin
+ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_SDK_VERSION}-openjdk-amd64/bin
 
 CMD ["/sbin/setuser", "daemon", "/usr/share/elasticsearch/bin/elasticsearch"]
