@@ -1,4 +1,4 @@
-version: "3.4"
+version: "3.7"
 
 networks:
   testing:
@@ -15,11 +15,7 @@ networks:
 services:
   # NGINX
   nginx:
-    depends_on:
-      - teamcity
-      - portainer
-      - visualizer
-    image: agiper/nginx:latest
+    image: agiper/nginx
     networks:
       - testing
       - staging
@@ -34,11 +30,6 @@ services:
       - ~/volume/nginx:/etc/nginx
       - ~/volume/nginx/www:/etc/nginx/www
     deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -49,7 +40,7 @@ services:
 
 # MSSQL
   mssql:
-    image: agiper/mssql:latest
+    image: agiper/mssql
     networks:
       - infrastructure
     ports:
@@ -57,11 +48,6 @@ services:
     volumes:
       - ~/volume/mssql/data/infrastructure:/var/opt/mssql/data
     deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 2048M
       restart_policy:
         delay: 1m
         window: 1m
@@ -72,7 +58,7 @@ services:
 
   # DOCKER
   docker:
-    image: agiper/docker:latest
+    image: agiper/docker
     networks:
       - infrastructure
     ports:
@@ -80,9 +66,6 @@ services:
     volumes:
       - ~/volume/docker:/var/lib/registry
     deploy:
-      resources:
-        reservations:
-          memory: 128M
       restart_policy:
         delay: 1m
         window: 1m
@@ -93,9 +76,7 @@ services:
 
   # TEAMCITY
   teamcity:
-    depends_on:
-      - mssql
-    image: agiper/teamcity:latest
+    image: agiper/teamcity
     networks:
       - infrastructure
     ports:
@@ -104,11 +85,6 @@ services:
       - ~/volume/teamcity:/var/lib/teamcity
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 4096M
       restart_policy:
         delay: 1m
         window: 1m
@@ -119,7 +95,7 @@ services:
 
 # PORTAINER
   portainer:
-    image: agiper/portainer:latest
+    image: agiper/portainer
     networks:
       - infrastructure
     ports:
@@ -128,9 +104,6 @@ services:
       - ~/volume/portainer:/data
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
-      resources:
-        reservations:
-          memory: 128M
       restart_policy:
         delay: 1m
         window: 1m
@@ -141,7 +114,7 @@ services:
 
 # VISUALIZER
   visualizer:
-    image: agiper/visualizer:latest
+    image: agiper/visualizer
     networks:
       - infrastructure
     ports:
@@ -149,9 +122,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
-      resources:
-        reservations:
-          memory: 128M
       restart_policy:
         delay: 1m
         window: 1m
