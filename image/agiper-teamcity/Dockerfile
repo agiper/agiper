@@ -11,7 +11,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
 	dpkg -i packages-microsoft-prod.deb && \
 	apt-get update && \
 	apt-get install -y docker-ce \
-		openjdk-${JAVA_SDK_VERSION}-jdk && \
+		openjdk-${JAVA_SDK_VERSION}-jdk \
 		dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
 	curl https://download.visualstudio.microsoft.com/download/pr/c624c5d6-0e9c-4dd9-9506-6b197ef44dc8/ad61b332f3abcc7dec3a49434e4766e1/dotnet-sdk-3.0.100-preview7-012821-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet && \
 	apt-get autoremove -y && \
