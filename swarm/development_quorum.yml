@@ -11,6 +11,7 @@ services:
       - development
     environment:
       - ENVIRONMENT=development
+    image: dockupdater/dockupdater
     deploy:
       replicas: 1
       mode: replicated    
@@ -23,7 +24,6 @@ services:
           - node.role == manager
       labels:
         dockupdater.disable: "true"
-      image: dockupdater/dockupdater
     command: --label --latest --cleanup --interval 30
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
