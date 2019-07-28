@@ -19,4 +19,6 @@ RUN chown -R daemon:daemon /var/lib/elasticsearch && \
 	chown -R daemon:daemon /var/log/elasticsearch && \
 	chown -R daemon:daemon /usr/share/elasticsearch
 
+ENV JAVA_HOME=/usr/lib/jvm/java-12-openjdk-amd64/bin
+
 CMD ["/sbin/setuser", "daemon", "/usr/share/elasticsearch/bin/elasticsearch"]
