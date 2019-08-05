@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV RABBITMQ_VERSION=3.7.16-1
+ENV RABBITMQ_VERSION=3.7.17-1
 
 RUN wget -O - "https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc" | apt-key add - &&\
 	echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | tee /etc/apt/sources.list.d/bintray.rabbitmq.list && \
