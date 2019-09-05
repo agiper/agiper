@@ -13,9 +13,9 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsof
   apt-get clean && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-# 3.0.0-preview8-28405-07 (remove this when 3.0.0 RTM is released)
-RUN curl https://download.visualstudio.microsoft.com/download/pr/3873ce54-438c-43bd-871b-0472e4d5462b/01353d2e8c4289bb344d935c4bf4de3e/dotnet-runtime-3.0.0-preview8-28405-07-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet && \
-  curl https://download.visualstudio.microsoft.com/download/pr/0bff102b-7983-4947-be67-be740e168ec1/d4b2a3818f2849501710b6ee16a1e2be/aspnetcore-runtime-3.0.0-preview8.19405.7-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+# 3.0.0-preview9-014004 (remove this when 3.0.0 RTM is released)
+RUN curl https://download.visualstudio.microsoft.com/download/pr/daf57b64-36b6-405e-9e12-0a8627b46951/07c100dd9aed24440e9147daf79f2aa2/dotnet-runtime-3.0.0-preview9-19423-09-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet && \
+  curl https://download.visualstudio.microsoft.com/download/pr/d881776c-82d7-4d50-b13c-9a848da46001/d55ce79c2b3a61b303cb826b7c460d20/aspnetcore-runtime-3.0.0-preview9.19424.4-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
   
 ENV NUGET_XMLDOC_MODE=skip
 ENV DOTNET_HOME=/usr/share/dotnet
