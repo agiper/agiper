@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV MSSQL_VERSION=14.0.3162.1-1
+ENV MSSQL_VERSION=14.0.3223.3-1
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)" && \
