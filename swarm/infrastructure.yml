@@ -46,7 +46,7 @@ services:
     ports:
       - "1433"
     volumes:
-      - ~/volume/mssql/data/infrastructure:/var/opt/mssql/data
+      - ~/volume/mssql:/var/opt/mssql/data
     deploy:
       restart_policy:
         delay: 1m
