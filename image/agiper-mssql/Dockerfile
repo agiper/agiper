@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV MSSQL_VERSION=14.0.3223.3-15
+ENV MSSQL_VERSION=14.0.3192.2-2
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)" && \
@@ -16,7 +16,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 ENV ACCEPT_EULA=Y
-ENV MSSQL_PID=Developer
+ENV MSSQL_PID=Enterprise
 ENV SA_PASSWORD=S@_P@ssw0rd
 
 CMD ["/opt/mssql/bin/sqlservr"]
