@@ -2,7 +2,7 @@ FROM agiper/base
 
 ENV JAVA_SDK_VERSION=8
 ENV DOTNET_SDK_VERSION=2.2
-ENV TEAMCITY_VERSION=2019.1.2
+ENV TEAMCITY_VERSION=2019.1.3
 ENV DOTNET_SDK_MINOR_VERSION=2.2.401-1
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
