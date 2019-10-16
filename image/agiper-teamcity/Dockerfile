@@ -10,7 +10,6 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   dpkg -i packages-microsoft-prod.deb && \
   apt-get update && \
   apt-get install -y docker-ce \
-    dotnet-sdk-2.2 \
     openjdk-${JAVA_SDK_VERSION}-jdk \
     dotnet-sdk-${DOTNET_SDK_VERSION} && \
   apt-get autoremove -y && \
