@@ -17,8 +17,8 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   rm /packages-microsoft-prod.deb && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-# 3.1.100-preview1-014459 (remove this when 3.1 RTM is released)	
-RUN curl https://download.visualstudio.microsoft.com/download/pr/a3cc3d8a-226d-4306-a61b-a5446fdb72ef/604e029047aec0229545e8c397a14ddb/dotnet-sdk-3.1.100-preview1-014459-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+# 3.1.100-preview2 (remove this when 3.1 RTM is released)	
+RUN curl https://download.visualstudio.microsoft.com/download/pr/cea4281b-84fa-428a-a73a-f0c3b89a9590/249ddf191b2dd37c4a53ac3bc383ec8a/dotnet-sdk-3.1.100-preview2-014569-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 RUN mkdir -p /opt/teamcity && \
   curl -L https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
