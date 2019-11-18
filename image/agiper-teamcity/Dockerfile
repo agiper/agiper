@@ -2,7 +2,7 @@ FROM agiper/base
 
 ENV JAVA_SDK_VERSION=8
 ENV DOTNET_SDK_VERSION=3.0
-ENV TEAMCITY_VERSION=2019.1.4
+ENV TEAMCITY_VERSION=2019.1.5
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
@@ -17,8 +17,8 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   rm /packages-microsoft-prod.deb && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-# 3.1.100-preview2 (remove this when 3.1 RTM is released)	
-RUN curl https://download.visualstudio.microsoft.com/download/pr/cea4281b-84fa-428a-a73a-f0c3b89a9590/249ddf191b2dd37c4a53ac3bc383ec8a/dotnet-sdk-3.1.100-preview2-014569-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+# 3.1.100-preview3 (remove this when 3.1 RTM is released)	
+RUN curl https://download.visualstudio.microsoft.com/download/pr/941853c3-98c6-44ff-b11f-3892e4f91814/14e8f22c7a1d95dd6fe9a53296d19073/dotnet-sdk-3.1.100-preview3-014645-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 RUN mkdir -p /opt/teamcity && \
   curl -L https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
