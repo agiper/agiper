@@ -1,4 +1,4 @@
-FROM agiper/base
+FROM agiper/base-mssql
 
 ENV MSSQL_VERSION=15.0.2000.5-5
 
