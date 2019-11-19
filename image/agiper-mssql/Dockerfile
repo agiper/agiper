@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV MSSQL_VERSION=14.0.3238.1-19
+ENV MSSQL_VERSION=15.0.2000.5
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)" && \
@@ -10,7 +10,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	apt-get install -y \
 		mssql-tools \
 		unixodbc-dev \
-		mssql-server=${MSSQL_VERSION} && \
+		mssql-server && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
