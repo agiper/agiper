@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV ES_VERSION=7.5.0
+ENV ES_VERSION=7.4.2
 ENV JAVA_SDK_VERSION=11
 
 RUN apt-get update && \
