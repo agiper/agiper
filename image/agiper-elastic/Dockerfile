@@ -1,7 +1,7 @@
 FROM agiper/base
 
-ENV ES_VERSION=7.4.2
-ENV JAVA_SDK_VERSION=11
+ENV ES_VERSION=7.5.0
+ENV JAVA_SDK_VERSION=13
 
 RUN apt-get update && \
 	apt-get install -y openjdk-${JAVA_SDK_VERSION}-jdk && \
