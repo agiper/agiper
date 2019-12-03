@@ -4,7 +4,7 @@ ENV ES_VERSION=7.5.0
 ENV JAVA_SDK_VERSION=13
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 73C3DB2A && \
-	echo oracle-java13-installer shared/accepted-oracle-license-v1-2 select true | sudo /usr/bin/debconf-set-selections && \
+	echo oracle-java13-installer shared/accepted-oracle-license-v1-2 select true | /usr/bin/debconf-set-selections && \
 	echo "deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/linuxuprising-java.list && \
 	apt-get update && \
 	apt-get install -y oracle-java${JAVA_SDK_VERSION}-installer && \
