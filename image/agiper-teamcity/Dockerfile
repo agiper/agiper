@@ -1,8 +1,9 @@
 FROM agiper/base
 
 ENV TEAMCITY_VERSION=2019.1.5
-ENV DOTNET_RUNTIME_VERSION=3.1
-ENV DOTNET_RUNTIME_MINOR_VERSION=3.1.0-1
+
+ENV DOTNET_SDK_VERSION=3.1
+ENV DOTNET_SDK_MINOR_VERSION=3.1.0-1
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
@@ -12,7 +13,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   apt-get update && \
-  apt-get install -y docker-ce adoptopenjdk-8-hotspot dotnet-sdk-${DOTNET_SDK_VERSION} && \
+  apt-get install -y docker-ce adoptopenjdk-8-hotspot dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm /packages-microsoft-prod.deb && \
