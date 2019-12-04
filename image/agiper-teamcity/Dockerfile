@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV DOTNET_SDK_VERSION=3.0
+ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2019.1.5
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
@@ -17,7 +17,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 # 3.1.100-preview3 (remove this when 3.1 RTM is released)
-RUN curl https://download.visualstudio.microsoft.com/download/pr/941853c3-98c6-44ff-b11f-3892e4f91814/14e8f22c7a1d95dd6fe9a53296d19073/dotnet-sdk-3.1.100-preview3-014645-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+# RUN curl https://download.visualstudio.microsoft.com/download/pr/941853c3-98c6-44ff-b11f-3892e4f91814/14e8f22c7a1d95dd6fe9a53296d19073/dotnet-sdk-3.1.100-preview3-014645-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 RUN mkdir -p /opt/teamcity && \
   curl -L https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
