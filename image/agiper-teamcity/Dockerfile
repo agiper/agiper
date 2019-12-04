@@ -10,7 +10,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   dpkg -i packages-microsoft-prod.deb && \
   apt-get update && \
-  apt-get install -y docker-ce adoptopenjdk-8-openj9 dotnet-sdk-${DOTNET_SDK_VERSION} && \
+  apt-get install -y docker-ce adoptopenjdk-8-hotspot dotnet-sdk-${DOTNET_SDK_VERSION} && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm /packages-microsoft-prod.deb && \
