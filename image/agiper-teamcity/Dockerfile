@@ -1,6 +1,6 @@
 FROM agiper/base
 
-ENV DOTNET_SDK_VERSION=3.1
+ENV DOTNET_SDK_VERSION=3.0
 ENV TEAMCITY_VERSION=2019.1.5
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
