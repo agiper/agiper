@@ -10,13 +10,13 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   dpkg -i packages-microsoft-prod.deb && \
   apt-get update && \
-  apt-get install -y docker-ce adoptopenjdk-8-hotspot dotnet-sdk-${DOTNET_SDK_VERSION} && \
+  apt-get install -y docker-ce adoptopenjdk-8-openj9 dotnet-sdk-${DOTNET_SDK_VERSION} && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm /packages-microsoft-prod.deb && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-# 3.1.100-preview3 (remove this when 3.1 RTM is released)	
+# 3.1.100-preview3 (remove this when 3.1 RTM is released)
 RUN curl https://download.visualstudio.microsoft.com/download/pr/941853c3-98c6-44ff-b11f-3892e4f91814/14e8f22c7a1d95dd6fe9a53296d19073/dotnet-sdk-3.1.100-preview3-014645-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 RUN mkdir -p /opt/teamcity && \
