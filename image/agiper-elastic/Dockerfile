@@ -15,7 +15,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 73C3DB2A &
 RUN mkdir -p /var/lib/elasticsearch && \
 	mkdir -p /var/log/elasticsearch && \
 	mkdir -p /usr/share/elasticsearch && \
-	curl -L https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}-linux-x86_64.tar.gz | tar -xzC /usr/share/elasticsearch --strip-components=1
+	wget -qO- https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}-linux-x86_64.tar.gz | tar -xzC /usr/share/elasticsearch --strip-components=1
 
 COPY elasticsearch.yml /usr/share/elasticsearch/config/
 
