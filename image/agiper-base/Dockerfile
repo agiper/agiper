@@ -4,7 +4,7 @@ MAINTAINER Tom Nuen <tomnuen@agiper.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-	apt-get install curl wget htop nano iputils-ping -y --no-install-recommends && \
+	apt-get install curl wget htop nano telnet iputils-ping -y --no-install-recommends && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	/usr/sbin/enable_insecure_key && \
