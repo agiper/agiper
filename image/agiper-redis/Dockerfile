@@ -1,4 +1,4 @@
-FROM redis:6.0-rc-alpine
+FROM redis:5.0.7
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 COPY redis.conf /etc/redis/
