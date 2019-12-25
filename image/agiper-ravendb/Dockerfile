@@ -1,15 +1,4 @@
-FROM agiper/dotnet
+FROM ravendb:4.2.6-ubuntu.18.04-x64
 
-ENV RAVENDB_VERSION=4.2.6
-
-RUN mkdir -p /opt/RavenDB && \
-	wget -qO- https://daily-builds.s3.amazonaws.com/RavenDB-${RAVENDB_VERSION}-linux-x64.tar.bz2 | tar -xjC /opt/RavenDB --strip-components=1
-
-ENV RAVEN_IN_DOCKER=true
-ENV RAVEN_AUTO_INSTALL_CA=true
-
-WORKDIR /opt/RavenDB/Server
-
-COPY settings.json /opt/RavenDB/Server
-
-CMD ["dotnet", "Raven.Server.dll"]
+ENV RAVEN_ARGS='--Setup.Mode=Unsecured'
+ENV RAVEN_Security_UnsecuredAccessAllowed='PublicNetwork'
