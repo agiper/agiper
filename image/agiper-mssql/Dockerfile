@@ -17,7 +17,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
 	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 ENV ACCEPT_EULA=Y
-ENV MSSQL_PID=Enterprise
-ENV SA_PASSWORD=S@_P@ssw0rd
+ENV MSSQL_PID=Standard
+ENV SA_PASSWORD=Sb6aSj89
 
 CMD ["/opt/mssql/bin/sqlservr"]
