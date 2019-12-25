@@ -3,7 +3,7 @@ MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN mkdir -p /var/lib/redis
 
-COPY redis.conf /usr/local/etc/redis/
-COPY sentinel.conf /usr/local/etc/redis/
+COPY redis.conf /var/lib/redis/
+COPY sentinel.conf /var/lib/redis/
 
-CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]
+CMD ["redis-server", "/var/lib/redis/redis.conf"]
