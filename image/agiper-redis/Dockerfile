@@ -1,7 +1,7 @@
 FROM redis:6.0-rc-alpine
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-USER root
+USER redis
 
 RUN mkdir -p /var/lib/redis
 
