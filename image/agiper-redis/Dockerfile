@@ -1,4 +1,4 @@
-FROM redis:6.0-rc-alpine
+FROM redis:6.0-rc1-alpine
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 RUN mkdir -p /var/lib/redis && \
