@@ -1,9 +1,9 @@
 FROM agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-ENV DOTNET_SDK_VERSION=5.0
+ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2019.2.2
-# ENV DOTNET_SDK_MINOR_VERSION=5.0.100-preview.1.20155.7
+ENV DOTNET_SDK_MINOR_VERSION=3.1.200-1
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
@@ -12,14 +12,13 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   apt-get update && \
-  apt-get install -y docker-ce adoptopenjdk-11-hotspot dotnet-sdk-${DOTNET_SDK_VERSION} && \
-#  apt-get install -y docker-ce adoptopenjdk-11-hotspot dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
+  apt-get install -y docker-ce adoptopenjdk-11-hotspot dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm /packages-microsoft-prod.deb && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-# RUN curl https://download.visualstudio.microsoft.com/download/pr/941853c3-98c6-44ff-b11f-3892e4f91814/14e8f22c7a1d95dd6fe9a53296d19073/dotnet-sdk-3.1.100-preview3-014645-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+RUN curl https://download.visualstudio.microsoft.com/download/pr/c3d1886b-6846-4328-9692-a0adcdf30959/f0bd5e15b1825fc8f5b0a8166008e08a/dotnet-sdk-5.0.100-preview.1.20155.7-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 RUN mkdir -p /opt/teamcity && \
  wget -qO- https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
