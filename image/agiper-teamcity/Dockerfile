@@ -1,9 +1,9 @@
 FROM agiper/base
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
-ENV DOTNET_SDK_VERSION=3.1
+ENV DOTNET_SDK_VERSION=5.0
 ENV TEAMCITY_VERSION=2019.2.2
-ENV DOTNET_SDK_MINOR_VERSION=3.1.102-1
+# ENV DOTNET_SDK_MINOR_VERSION=5.0.100-preview.1.20155.7
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
@@ -12,7 +12,8 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   apt-get update && \
-  apt-get install -y docker-ce adoptopenjdk-11-hotspot dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
+  apt-get install -y docker-ce adoptopenjdk-11-hotspot dotnet-sdk-${DOTNET_SDK_VERSION} && \
+#  apt-get install -y docker-ce adoptopenjdk-11-hotspot dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm /packages-microsoft-prod.deb && \
