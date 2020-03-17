@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1.2-alpine
+FROM mcr.microsoft.com/dotnet/core/runtime:5.0-alpine
 MAINTAINER Tom Nuen <tomnuen@agiper.com>
