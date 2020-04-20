@@ -1,4 +1,3 @@
-FROM elasticsearch:7.6.1
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
+FROM elasticsearch:7.6.2
 
 ENV discovery.type='single-node'
