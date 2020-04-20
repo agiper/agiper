@@ -1,5 +1,4 @@
-FROM redis:6.0-rc2-alpine
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
+FROM redis:6.0-rc3-alpine
 
 RUN mkdir -p /var/lib/redis && \
         chown redis:redis /var/lib/redis
