@@ -1,5 +1,4 @@
 FROM agiper/base-mssql
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 ENV MSSQL_VERSION=15.0.4013.40-8
 
