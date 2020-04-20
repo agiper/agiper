@@ -1,5 +1,4 @@
 FROM agiper/base
-MAINTAINER Tom Nuen <tomnuen@agiper.com>
 
 ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2019.2.2
