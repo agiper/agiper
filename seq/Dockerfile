@@ -1,1 +1,1 @@
-FROM datalust/seq:6.0.3455-pre
+FROM datalust/seq:2020.1.3949-pre
