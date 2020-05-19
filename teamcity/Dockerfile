@@ -17,7 +17,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   rm /packages-microsoft-prod.deb && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-RUN curl https://download.visualstudio.microsoft.com/download/pr/7ceba34e-5d50-4b23-b326-0a7d02b4decd/62dd73db9be67127a5645ef0efb0bba4/dotnet-sdk-5.0.100-preview.3.20216.6-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+RUN curl https://download.visualstudio.microsoft.com/download/pr/473651e3-55d5-4e7c-b255-2cbe11358eea/6b6f33d86ee00720b36a7c34200f4d0c/dotnet-sdk-5.0.100-preview.4.20258.7-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 RUN mkdir -p /opt/teamcity && \
  wget -qO- https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
