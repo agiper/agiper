@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo -e "\e[1;32m[1/1] removing all stacks\e[0m"
-docker stack down agiper
-docker stack down agiper_development
-docker stack down rolene_development
-docker stack down quorum_development

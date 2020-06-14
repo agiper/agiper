@@ -1,1 +1,0 @@
-FROM iconloop/prep-node
