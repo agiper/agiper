@@ -1,4 +1,4 @@
-FROM phusion/baseimage:focal-1.0.0-pre1
+FROM phusion/baseimage:focal-1.0.0alpha1-arm64
 
 ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2020.1
@@ -21,9 +21,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
                  telnet \
                  docker-ce \
                  python3-pip \
-                 libleveldb1d \
                  libleveldb-dev \
-                 rabbitmq-server \
                  libsecp256k1-dev \
                  adoptopenjdk-11-hotspot \
                  dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
@@ -31,6 +29,8 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   apt clean && \
   rm /packages-microsoft-prod.deb && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
+
+RUN pip3 install tbears
 
 RUN curl https://download.visualstudio.microsoft.com/download/pr/7cf9fa3e-af03-4181-baab-e04ed4b05268/fd44776a5169d6b126ee11d6140691be/dotnet-sdk-5.0.100-preview.5.20279.10-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
