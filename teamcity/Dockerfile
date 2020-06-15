@@ -2,7 +2,7 @@ FROM agiper/base
 
 ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2020.1
-ENV DOTNET_SDK_MINOR_VERSION=3.1.300-1
+ENV DOTNET_SDK_MINOR_VERSION=3.1.301-1
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
@@ -11,6 +11,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   apt update && \
+  apt upgrade && \
   apt install -y docker-ce adoptopenjdk-11-hotspot dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
   apt autoremove -y && \
   apt clean && \
