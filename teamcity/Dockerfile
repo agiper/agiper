@@ -12,7 +12,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   apt update && \
-  apt upgrade && \
+  apt upgrade -y && \
   apt purge python3 && \
   apt purge remove python && \
   apt install -y docker-ce \
