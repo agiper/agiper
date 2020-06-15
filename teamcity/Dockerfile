@@ -1,4 +1,4 @@
-FROM agiper/base
+FROM phusion/baseimage:focal-1.0.0-pre1
 
 ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2020.1
@@ -13,10 +13,18 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
   apt update && \
   apt upgrade -y && \
-  apt purge python3 && \
-  apt purge remove python && \
-  apt install -y docker-ce \
-                 python3.8 \
+  apt install -y --no-install-recommends \
+                 curl \
+                 wget \
+                 htop \
+                 nano \
+                 telnet \
+                 docker-ce \
+                 python3-pip \
+                 libleveldb1d \
+                 libleveldb-dev \
+                 rabbitmq-server \
+                 libsecp256k1-dev \
                  adoptopenjdk-11-hotspot \
                  dotnet-sdk-${DOTNET_SDK_VERSION}=${DOTNET_SDK_MINOR_VERSION} && \
   apt autoremove -y && \
