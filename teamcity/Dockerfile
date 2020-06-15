@@ -30,15 +30,11 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   rm /packages-microsoft-prod.deb && \
   rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-RUN pip3 install tbears
-
-RUN curl https://download.visualstudio.microsoft.com/download/pr/7cf9fa3e-af03-4181-baab-e04ed4b05268/fd44776a5169d6b126ee11d6140691be/dotnet-sdk-5.0.100-preview.5.20279.10-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
-
-RUN mkdir -p /opt/teamcity && \
- wget -qO- https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
-  sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties
-
-COPY start /etc/my_init.d/
+RUN pip3 install tbears && \
+  mkdir -p /opt/teamcity && \
+  wget -qO- https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
+  sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties && \
+  curl https://download.visualstudio.microsoft.com/download/pr/7cf9fa3e-af03-4181-baab-e04ed4b05268/fd44776a5169d6b126ee11d6140691be/dotnet-sdk-5.0.100-preview.5.20279.10-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 ENV DOTNET_HOME=/usr/share/dotnet
 ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
