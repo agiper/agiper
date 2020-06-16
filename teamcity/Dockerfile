@@ -37,4 +37,4 @@ ENV DOTNET_HOME=/usr/share/dotnet
 ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
 ENV TEAMCITY_SERVER_OPTS=-Djava.security.egd=file:/dev/./urandom
 
-ENTRYPOINT ["/opt/teamcity/bin/runAll.sh", "start"]
+COPY start /etc/my_init.d/
