@@ -1,4 +1,4 @@
-FROM phusion/baseimage:focal-1.0.0alpha1-amd64
+FROM phusion/baseimage:bionic-1.0.0
 
 ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2020.1.2
@@ -31,7 +31,7 @@ RUN pip3 install tbears && \
   mkdir -p /opt/teamcity && \
   wget -qO- https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
   sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties && \
-  curl https://download.visualstudio.microsoft.com/download/pr/ec4bba83-4586-4705-a6ae-c648861ca284/d9470c2f68161e3c2b8a0785fe7b3329/dotnet-sdk-5.0.100-preview.6.20318.15-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+  curl https://download.visualstudio.microsoft.com/download/pr/6e9bdda1-72b5-4d2e-8908-be9321b8db26/cbc8ab6c3a1aca2a8dd92e272edd3293/dotnet-sdk-5.0.100-preview.7.20366.6-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
 
 ENV DOTNET_HOME=/usr/share/dotnet
 ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
