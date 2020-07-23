@@ -1,4 +1,4 @@
-FROM phusion/baseimage:bionic-1.0.0
+FROM phusion/baseimage:focal-1.0.0alpha1-amd64
 
 ENV DOTNET_SDK_VERSION=3.1
 ENV TEAMCITY_VERSION=2020.1.2
