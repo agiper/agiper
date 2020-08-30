@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/mssql/server:2019-latest
+FROM mcr.microsoft.com/mssql/server:2019-CU6-ubuntu-16.04
 
 ENV ACCEPT_EULA=Y
 ENV MSSQL_PID=Enterprise
