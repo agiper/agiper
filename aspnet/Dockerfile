@@ -1,3 +1,3 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0.0-preview.7-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:5.0.0-preview.8-alpine
 
 RUN apk add --no-cache icu-libs
