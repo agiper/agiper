@@ -1,4 +1,4 @@
-FROM phusion/baseimage:focal-1.0.0-pre1
+FROM phusion/baseimage:bionic-1.0.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 
