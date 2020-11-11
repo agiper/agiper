@@ -1,1 +1,1 @@
-FROM dockupdater/dockupdater
+FROM dockupdater/dockupdater:latest
