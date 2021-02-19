@@ -1,4 +1,4 @@
-FROM phusion/baseimage:master-arm64
+FROM phusion/baseimage:focal-1.0.0alpha1-amd64
 
 ENV DOTNET_SDK_VERSION=5.0
 ENV TEAMCITY_VERSION=2020.2.2
@@ -8,10 +8,10 @@ RUN apt update && \
   apt install wget && \
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
   wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
-  wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
+  wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
   dpkg -i packages-microsoft-prod.deb && \
   add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb && \
-  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" && \
+  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && \
   apt update && \
   apt upgrade -y && \
   apt install -y docker-ce \
