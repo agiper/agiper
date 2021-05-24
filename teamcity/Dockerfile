@@ -1,4 +1,4 @@
-FROM phusion/baseimage:focal-1.0.0alpha1-amd64
+FROM phusion/baseimage:focal-1.0.0-amd64
 
 ENV DOTNET_SDK_VERSION=5.0
 ENV TEAMCITY_VERSION=2021.1
