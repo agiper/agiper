@@ -1,4 +1,4 @@
-FROM redis:6.0.9-alpine
+FROM redis:6.2.4-alpine
 
 RUN mkdir -p /var/lib/redis && \
         chown redis:redis /var/lib/redis
