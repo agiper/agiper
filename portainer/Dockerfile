@@ -1,1 +1,1 @@
-FROM portainer/portainer:1.24.1-alpine
+FROM portainer/portainer:1.24.2-alpine
