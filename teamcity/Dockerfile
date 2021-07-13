@@ -1,7 +1,7 @@
 FROM phusion/baseimage:focal-1.0.0-amd64
 
 ENV DOTNET_SDK_VERSION=5.0
-ENV TEAMCITY_VERSION=2021.1
+ENV TEAMCITY_VERSION=2021.1.1
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
@@ -15,11 +15,6 @@ RUN apt update && \
   apt update && \
   apt upgrade -y && \
   apt install -y docker-ce \
-                 pkg-config \
-                 python3-pip \
-                 libleveldb1d \
-                 libleveldb-dev \
-                 libsecp256k1-dev \
                  adoptopenjdk-11-hotspot \
                  dotnet-sdk-${DOTNET_SDK_VERSION} && \
   apt autoremove -y && \
@@ -30,7 +25,7 @@ RUN apt update && \
 RUN mkdir -p /opt/teamcity && \
   wget -qO- https://download.jetbrains.com/teamcity/TeamCity-${TEAMCITY_VERSION}.tar.gz | tar -xzC /opt/teamcity --strip-components=1 && \
   sed -i -e 's/Default/Local/g' /opt/teamcity/buildAgent/conf/buildAgent.properties && \
-  curl https://download.visualstudio.microsoft.com/download/pr/f5c00d7a-e1c8-494a-a88b-9ed1dc62249e/8438122af4fd928900a0ebf129c6c1d6/dotnet-sdk-6.0.100-preview.4.21255.9-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet
+  curl https://download.visualstudio.microsoft.com/download/pr/2bea75e0-9a2f-41ed-9336-4dc23076a691/62c191c6fb281850d06f8a1c16c34699/dotnet-sdk-6.0.100-preview.5.21302.13-linux-arm64.tar.gz | tar -xz -C /usr/share/dotnet
 
 ENV DOTNET_HOME=/usr/share/dotnet
 ENV TEAMCITY_DATA_PATH=/var/lib/teamcity
